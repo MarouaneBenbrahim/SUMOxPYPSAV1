@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 SUMOxPyPSA 
-Manhattan Grid Simulation with Power Network Visualization and Smart EV Routing
+Manhattan Grid Simulation with Ultra-Realistic Power Network Visualization and Smart EV Routing
 """
 
 from flask import Flask, render_template
@@ -18,8 +18,8 @@ from datetime import datetime
 from config import *
 from sumo_config import SUMO_COMMON_CONFIG, CITY_CONFIGS as SUMO_CITY_CONFIGS
 
-# Import power components
-from pypsa_network_builder import NYCPowerNetworkSimple
+# Import the ultra-realistic power network
+from manhattan_power_network import ManhattanPowerNetworkRealistic
 from traffic_power_integration import TrafficPowerCoupler
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
@@ -43,7 +43,7 @@ metrics = {
     'vehicles': {'total': 0, 'evs': 0, 'charging': 0, 'moving': 0, 'stopped': 0},
     'power': {'total_mw': 0, 'ev_mw': 0, 'traffic_mw': 0, 'peak_mw': 0},
     'traffic_lights': {'total': 0, 'green': 0, 'yellow': 0, 'red': 0},
-    'grid': {'efficiency': 0, 'load_factor': 0, 'renewable_percent': 0}
+    'grid': {'efficiency': 0, 'load_factor': 0, 'renewable_percent': 0, 'violations': 0}
 }
 
 class ManhattanTrafficController:
@@ -59,6 +59,7 @@ class ManhattanTrafficController:
         }
         self.cycle_time = 0
         self.avenue_sync_offset = 0
+        self.traffic_light_states = {}  # Store states for power network
         
     def initialize_manhattan_lights(self):
         """Initialize traffic lights with Manhattan-specific patterns"""
@@ -105,6 +106,7 @@ class ManhattanTrafficController:
                 
                 initial_state = self._generate_manhattan_state(tl_id, 0)
                 traci.trafficlight.setRedYellowGreenState(tl_id, initial_state)
+                self.traffic_light_states[tl_id] = initial_state
             
             return True
             
@@ -179,6 +181,7 @@ class ManhattanTrafficController:
                     
                     new_state = self._generate_manhattan_state(tl_id, light_data['phase'])
                     traci.trafficlight.setRedYellowGreenState(tl_id, new_state)
+                    self.traffic_light_states[tl_id] = new_state
                     
                     light_data['state_history'].append(new_state)
                     if len(light_data['state_history']) > 10:
@@ -198,6 +201,10 @@ class ManhattanTrafficController:
         metrics['traffic_lights']['green'] = green_count
         metrics['traffic_lights']['yellow'] = yellow_count
         metrics['traffic_lights']['red'] = red_count
+    
+    def get_traffic_light_states(self):
+        """Get current traffic light states for power network"""
+        return self.traffic_light_states
 
 class ManhattanEVNetwork:
     """EV charging network with smart routing"""
@@ -205,12 +212,12 @@ class ManhattanEVNetwork:
     def __init__(self):
         self.stations = []
         self.charging_sessions = {}
+        self.charging_vehicles = {}  # Track which vehicles are charging at which station
         self.total_energy_delivered = 0
         self.peak_demand = 0
         self.ev_share_percent = 30
         self.ev_charging_bias_percent = 30
         self.ev_vehicles = {}  # Track EV vehicles
-        self.charging_vehicles = {}  # Track which vehicles are charging
         
     def create_manhattan_grid_stations(self, traffic_light_positions):
         """Create EV stations WITHIN the traffic light grid area"""
@@ -334,7 +341,7 @@ class ManhattanEVNetwork:
     
     def process_ev_charging(self, vehicles):
         """Process EV charging with smart routing"""
-        charging_vehicles = {}
+        self.charging_vehicles = {}  # Reset each update
         total_evs = 0
         charging_count = 0
         
@@ -393,12 +400,12 @@ class ManhattanEVNetwork:
                 lon_diff = abs(vehicle['x'] - station['lon'])
                 
                 if lat_diff < capture_radius and lon_diff < capture_radius:
-                    if station['id'] not in charging_vehicles:
-                        charging_vehicles[station['id']] = []
+                    if station['id'] not in self.charging_vehicles:
+                        self.charging_vehicles[station['id']] = []
                     
-                    if len(charging_vehicles[station['id']]) < station['capacity']:
+                    if len(self.charging_vehicles[station['id']]) < station['capacity']:
                         if speed < 2.0:  # Vehicle is stopped/slow
-                            charging_vehicles[station['id']].append(vid)
+                            self.charging_vehicles[station['id']].append(vid)
                             charging_count += 1
                             ev_data['charging'] = True
                             vehicle['charging'] = True
@@ -426,12 +433,12 @@ class ManhattanEVNetwork:
         
         # Update station occupancy
         for station in self.stations:
-            station['vehicles_charging'] = charging_vehicles.get(station['id'], [])
+            station['vehicles_charging'] = self.charging_vehicles.get(station['id'], [])
         
-        return total_evs, charging_count, charging_vehicles
+        return total_evs, charging_count, self.charging_vehicles
 
 class PowerGridManager:
-    """Advanced power grid management for NYC"""
+    """Advanced power grid management for Manhattan with ultra-realistic network"""
     
     def __init__(self):
         self.network = None
@@ -440,162 +447,64 @@ class PowerGridManager:
         self.total_energy = 0
         
     def initialize_nyc_grid(self):
-        """Initialize NYC power grid"""
-        print("⚡ Initializing NYC Power Grid...")
-        self.network = NYCPowerNetworkSimple()
+        """Initialize NYC power grid with ultra-realistic network"""
+        print("⚡ Initializing Ultra-Realistic Manhattan Power Grid...")
+        self.network = ManhattanPowerNetworkRealistic()
         self.network.build_network()
         
-        # Update capacities for Manhattan distribution lines (using correct names)
-        # These are the actual distribution lines in the new network
-        if 'DL_Times_Square' in self.network.lines:
-            self.network.lines['DL_Times_Square']['capacity_mw'] = 100
-        if 'DL_Central_Park' in self.network.lines:
-            self.network.lines['DL_Central_Park']['capacity_mw'] = 80
-        if 'DL_Union_Square' in self.network.lines:
-            self.network.lines['DL_Union_Square']['capacity_mw'] = 90
-        if 'DL_Wall_Street' in self.network.lines:
-            self.network.lines['DL_Wall_Street']['capacity_mw'] = 100
-        if 'DL_Columbus_Circle' in self.network.lines:
-            self.network.lines['DL_Columbus_Circle']['capacity_mw'] = 80
-        
-        print("✅ NYC Power Grid initialized")
+        print(f"✅ NYC Power Grid initialized with {len(self.network.buses)} buses")
+        print(f"   {len(self.network.lines)} lines, {len(self.network.transformers)} transformers")
+        print(f"   {len(self.network.generators)} generators")
         return self.network
     
     def get_power_network_data(self):
-        """Get power network data for visualization"""
+        """Get comprehensive power network data for visualization"""
         if not self.network:
             return None
         
-        return {
-            'buses': [
-                {
-                    'id': bus_id,
-                    'lat': bus_data['lat'],
-                    'lon': bus_data['lon'],
-                    'voltage': bus_data['voltage'],
-                    'type': bus_data['type']
-                }
-                for bus_id, bus_data in self.network.buses.items()
-            ],
-            'lines': [
-                {
-                    'id': line_id,
-                    'from': line_data['from'],
-                    'to': line_data['to'],
-                    'capacity': line_data['capacity_mw'],
-                    'flow': line_data.get('current_flow', 0),
-                    'from_pos': [
-                        self.network.buses[line_data['from']]['lon'],
-                        self.network.buses[line_data['from']]['lat']
-                    ],
-                    'to_pos': [
-                        self.network.buses[line_data['to']]['lon'],
-                        self.network.buses[line_data['to']]['lat']
-                    ]
-                }
-                for line_id, line_data in self.network.lines.items()
-            ],
-            'generators': [
-                {
-                    'id': gen_id,
-                    'lat': gen_data['lat'],
-                    'lon': gen_data['lon'],
-                    'capacity': gen_data['capacity_mw'],
-                    'output': gen_data.get('current_output', 0),
-                    'type': gen_data['type']
-                }
-                for gen_id, gen_data in self.network.generators.items()
-            ]
-        }
+        # Use the new comprehensive network data method
+        return self.network.get_network_data()
     
-    def calculate_real_time_load(self, traffic_data, ev_data):
-        """Calculate real-time power load"""
-        current_time = time.time()
-        hour = (int(current_time) % 86400) // 3600
+    def calculate_real_time_load(self, traffic_data, ev_data, traffic_light_states):
+        """Calculate real-time power load using realistic network"""
+        # Update traffic loads in the network
+        self.network.update_traffic_loads(
+            traffic_data['vehicle_count'],
+            traffic_light_states,
+            ev_data.get('charging_vehicles', {})
+        )
         
-        base_patterns = {
-            'night': 1800,
-            'morning': 2400,
-            'midday': 2200,
-            'evening': 2600,
-            'late': 2000
-        }
+        # Run power flow simulation
+        self.network.simulate_power_flow()
         
-        if hour < 6:
-            base_load = base_patterns['night']
-        elif hour < 10:
-            base_load = base_patterns['morning']
-        elif hour < 17:
-            base_load = base_patterns['midday']
-        elif hour < 22:
-            base_load = base_patterns['evening']
-        else:
-            base_load = base_patterns['late']
+        # Get status
+        status = self.network.get_status()
         
-        seasonal_factor = 1.0 + 0.1 * math.sin(time.time() / 86400)
-        weather_factor = random.uniform(0.95, 1.05)
-        
-        base_load *= seasonal_factor * weather_factor
-        
-        traffic_lights_mw = traffic_data['lights_count'] * 0.003
-        street_lights_mw = 20.0 if hour < 6 or hour > 18 else 0
-        traffic_systems_mw = traffic_data['vehicle_count'] * 0.0001
-        
-        ev_charging_mw = ev_data['total_power_mw']
-        
-        total_load = base_load + traffic_lights_mw + street_lights_mw + traffic_systems_mw + ev_charging_mw
-        
-        if total_load > self.peak_demand:
-            self.peak_demand = total_load
-        
-        self.total_energy += total_load / 3600
-        
-        # Update line flows for all lines
-        for line_name, line in self.network.lines.items():
-            # Distribution lines (DL_*) carry local loads
-            if line_name.startswith('DL_'):
-                line['current_flow'] = min(total_load * 0.05, line['capacity_mw'])
-            # Transmission lines (TL_*) carry bulk power
-            else:
-                line['current_flow'] = min(total_load * 0.15, line['capacity_mw'])
-        
-        # Update generator outputs
-        remaining_load = total_load
-        for gen_name, gen in self.network.generators.items():
-            if remaining_load > 0:
-                gen['current_output'] = min(gen['capacity_mw'], remaining_load)
-                remaining_load -= gen['current_output']
-            else:
-                gen['current_output'] = 0
-        
-        # Calculate line utilization for key distribution lines
-        line_utilization = {}
-        for line_name in ['DL_Times_Square', 'DL_Central_Park', 'DL_Union_Square', 
-                         'DL_Wall_Street', 'DL_Columbus_Circle']:
-            if line_name in self.network.lines:
-                line = self.network.lines[line_name]
-                utilization = (line['current_flow'] / line['capacity_mw'] * 100) if line['capacity_mw'] > 0 else 0
-                line_utilization[line_name] = min(95, utilization)
-        
-        load_factor = (total_load / self.peak_demand * 100) if self.peak_demand > 0 else 0
-        renewable_percent = 15.0 if 10 <= hour <= 16 else 5.0
-        
-        self.history.append(total_load)
+        # Update history
+        self.history.append(status['total_load_mw'])
         if len(self.history) > 100:
             self.history.pop(0)
         
+        # Update peak demand
+        if status['total_load_mw'] > self.peak_demand:
+            self.peak_demand = status['total_load_mw']
+        
+        self.total_energy += status['total_load_mw'] / 3600
+        
+        # Return formatted data for frontend
         return {
-            'total_load_mw': round(total_load, 1),
-            'base_load_mw': round(base_load, 1),
-            'traffic_infrastructure_mw': round(traffic_lights_mw + street_lights_mw, 1),
-            'ev_charging_mw': round(ev_charging_mw, 3),
-            'traffic_systems_mw': round(traffic_systems_mw, 2),
-            'line_utilization': line_utilization,
-            'load_factor': round(load_factor, 1),
-            'renewable_percent': renewable_percent,
-            'peak_demand_mw': round(self.peak_demand, 1),
-            'total_energy_mwh': round(self.total_energy, 2),
-            'trend': self._calculate_trend()
+            'total_load_mw': status['total_load_mw'],
+            'base_load_mw': status['total_load_mw'] - status['traffic_light_load_mw'] - status['street_light_load_mw'] - status['ev_charging_load_mw'],
+            'traffic_infrastructure_mw': status['traffic_light_load_mw'] + status['street_light_load_mw'],
+            'ev_charging_mw': status['ev_charging_load_mw'],
+            'traffic_systems_mw': status['traffic_light_load_mw'],
+            'line_utilization': status['line_utilization'],
+            'load_factor': (status['total_load_mw'] / self.peak_demand * 100) if self.peak_demand > 0 else 0,
+            'renewable_percent': status['renewable_percent'],
+            'peak_demand_mw': self.peak_demand,
+            'total_energy_mwh': self.total_energy,
+            'trend': self._calculate_trend(),
+            'violations': status.get('violations', {'thermal': 0, 'voltage': 0})
         }
     
     def _calculate_trend(self):
@@ -612,6 +521,7 @@ class PowerGridManager:
             return 'decreasing'
         else:
             return 'stable'
+
 # Initialize systems
 traffic_controller = ManhattanTrafficController()
 ev_network = ManhattanEVNetwork()
@@ -716,6 +626,7 @@ def prepare_ev_station_data(charging_vehicles):
     """Prepare EV station data for frontend"""
     station_data = []
     total_power_mw = 0
+    ev_charging_data = {}  # For power network update
     
     for station in ev_network.stations:
         vehicles_at_station = charging_vehicles.get(station['id'], [])
@@ -724,6 +635,9 @@ def prepare_ev_station_data(charging_vehicles):
         power_output_mw = (num_charging * station['power']) / 1000
         
         total_power_mw += power_output_mw
+        
+        # Prepare data for power network
+        ev_charging_data[station['id']] = vehicles_at_station
         
         station_data.append({
             'id': station['id'],
@@ -740,14 +654,15 @@ def prepare_ev_station_data(charging_vehicles):
             'vehicles_charging': vehicles_at_station
         })
     
-    return station_data, total_power_mw
+    return station_data, total_power_mw, ev_charging_data
 
 def manhattan_simulation():
-    """Main Manhattan simulation loop"""
+    """Main Manhattan simulation loop with ultra-realistic power network"""
     global simulation_running, metrics
     
-    print("🏙️ Starting Manhattan Grid Simulation")
+    print("🏙️ Starting Manhattan Grid Simulation with Ultra-Realistic Power Network")
     print("📍 Area: 40.70°N to 40.80°N, -74.02°W to -73.93°W")
+    print("⚡ Power Network: 138kV/27kV/13.8kV/4.16kV Multi-Level Grid")
     
     city_config = CITY_CONFIGS["newyork"]
     working_dir = city_config["working_dir"]
@@ -799,23 +714,31 @@ def manhattan_simulation():
                     traffic_lights = get_manhattan_traffic_lights()
                     metrics['traffic_lights']['total'] = len(traffic_lights)
                     
-                    ev_stations, total_ev_power_mw = prepare_ev_station_data(charging_vehicles)
+                    ev_stations, total_ev_power_mw, ev_charging_data = prepare_ev_station_data(charging_vehicles)
+                    
+                    # Get traffic light states for power network
+                    traffic_light_states = traffic_controller.get_traffic_light_states()
                     
                     traffic_data = {
                         'lights_count': len(traffic_lights),
                         'vehicle_count': len(vehicles)
                     }
-                    ev_data = {'total_power_mw': total_ev_power_mw}
+                    ev_data = {
+                        'total_power_mw': total_ev_power_mw,
+                        'charging_vehicles': ev_charging_data
+                    }
                     
-                    power_data = power_grid.calculate_real_time_load(traffic_data, ev_data)
+                    # Calculate power with ultra-realistic network
+                    power_data = power_grid.calculate_real_time_load(traffic_data, ev_data, traffic_light_states)
                     
                     metrics['power']['total_mw'] = power_data['total_load_mw']
                     metrics['power']['ev_mw'] = power_data['ev_charging_mw']
                     metrics['power']['traffic_mw'] = power_data['traffic_infrastructure_mw']
                     metrics['grid']['load_factor'] = power_data['load_factor']
                     metrics['grid']['renewable_percent'] = power_data['renewable_percent']
+                    metrics['grid']['violations'] = power_data['violations']['thermal'] + power_data['violations']['voltage']
                     
-                    # Get power network data for visualization
+                    # Get comprehensive power network data for visualization
                     power_network_data = power_grid.get_power_network_data()
                     
                     if step_counter % 100 == 0:
@@ -823,14 +746,16 @@ def manhattan_simulation():
                         print(f"  🚗 Vehicles: {len(vehicles)} in Manhattan ({total_evs} EVs)")
                         print(f"  ⚡ Charging: {charging_evs} EVs at stations")
                         print(f"  🚦 Lights: {metrics['traffic_lights']['green']}G/{metrics['traffic_lights']['yellow']}Y/{metrics['traffic_lights']['red']}R")
-                        print(f"  💡 Power: {power_data['total_load_mw']} MW (EV: {power_data['ev_charging_mw']} MW)")
+                        print(f"  💡 Power: {power_data['total_load_mw']:.1f} MW (EV: {power_data['ev_charging_mw']:.3f} MW)")
+                        print(f"  📊 Grid: {len(power_network_data['buses'])} buses, {len(power_network_data['lines'])} lines")
+                        print(f"  ⚠️ Violations: {power_data['violations']['thermal']} thermal, {power_data['violations']['voltage']} voltage")
                     
                     socketio.emit('update', {
                         'vehicles': vehicles,
                         'traffic_lights': traffic_lights,
                         'ev_stations': ev_stations,
                         'power': power_data,
-                        'power_network': power_network_data,  # Add power network data
+                        'power_network': power_network_data,  # Comprehensive network data
                         'metrics': metrics,
                         'simulation_time': traci.simulation.getTime(),
                         'timestamp': datetime.now().isoformat()
@@ -856,8 +781,15 @@ def manhattan_simulation():
 def handle_connect():
     print("✅ Client connected")
     emit('system_ready', {
-        'message': 'Connected to Manhattan Grid System',
-        'features': ['Traffic Simulation', 'EV Charging', 'Power Grid', 'Real-time Metrics']
+        'message': 'Connected to Manhattan Grid System with Ultra-Realistic Power Network',
+        'features': [
+            'Traffic Simulation', 
+            'EV Charging Network', 
+            'Ultra-Realistic Power Grid (138kV/27kV/13.8kV/4.16kV)',
+            'Real-time Metrics',
+            'Power Flow Analysis',
+            'Violation Detection'
+        ]
     })
 
 @socketio.on('start_simulation')
@@ -865,7 +797,7 @@ def handle_start():
     global simulation_thread
     
     if not simulation_running:
-        print("🚀 Starting Manhattan simulation...")
+        print("🚀 Starting Manhattan simulation with ultra-realistic power network...")
         simulation_thread = threading.Thread(target=manhattan_simulation)
         simulation_thread.start()
 
@@ -910,6 +842,13 @@ def handle_set_ev_charging_bias(data):
     except Exception as e:
         print(f"Error setting EV charging bias: {e}")
 
+@socketio.on('request_power_update')
+def handle_request_power_update():
+    """Send latest power network data on request"""
+    if power_grid and power_grid.network:
+        power_network_data = power_grid.get_power_network_data()
+        emit('power_network_update', {'power_network': power_network_data})
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -917,11 +856,17 @@ def index():
 if __name__ == "__main__":
     print("=" * 80)
     print("🏙️  SUMOxPyPSA MANHATTAN GRID SYSTEM")
+    print("⚡ ULTRA-REALISTIC POWER NETWORK")
     print("=" * 80)
     print("📍 Focus: Manhattan (40.70-40.80°N, -74.02--73.93°W)")
     print("🚦 Traffic: Realistic Manhattan grid patterns")
-    print("⚡ Power: Real-time NYC power grid simulation")
-    print("🔌 EV Network: 12 charging stations with smart routing")
+    print("⚡ Power: Ultra-realistic multi-voltage NYC grid")
+    print("   - 138kV Transmission Network")
+    print("   - 27kV Subtransmission Network")
+    print("   - 13.8kV Primary Distribution")
+    print("   - 4.16kV Secondary Networks")
+    print("🔌 EV Network: 12+ charging stations with smart routing")
+    print("📊 Features: Real-time power flow, violation detection, renewable integration")
     print("=" * 80)
     print(f"🌐 Server: http://{HOST}:{PORT}")
     print("=" * 80)

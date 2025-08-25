@@ -1,0 +1,3265 @@
+{
+  "buses": [
+    {
+      "id": "SUB_Hellgate",
+      "lat": 40.7789,
+      "lon": -73.9442,
+      "voltage": 138,
+      "type": "transmission"
+    },
+    {
+      "id": "SUB_Farragut",
+      "lat": 40.7074,
+      "lon": -74.0113,
+      "voltage": 138,
+      "type": "transmission"
+    },
+    {
+      "id": "SUB_Columbus_Circle",
+      "lat": 40.768,
+      "lon": -73.9819,
+      "voltage": 138,
+      "type": "transmission"
+    },
+    {
+      "id": "SUB_Sherman_Creek",
+      "lat": 40.795,
+      "lon": -73.955,
+      "voltage": 138,
+      "type": "transmission"
+    },
+    {
+      "id": "SUB_Trade_Center",
+      "lat": 40.7127,
+      "lon": -74.0134,
+      "voltage": 138,
+      "type": "transmission"
+    },
+    {
+      "id": "SUB_Murray_Hill",
+      "lat": 40.748,
+      "lon": -73.978,
+      "voltage": 138,
+      "type": "transmission"
+    },
+    {
+      "id": "SUB_Chelsea",
+      "lat": 40.7465,
+      "lon": -74.0014,
+      "voltage": 138,
+      "type": "transmission"
+    },
+    {
+      "id": "SUB_Waterside",
+      "lat": 40.7389,
+      "lon": -73.973,
+      "voltage": 138,
+      "type": "transmission"
+    },
+    {
+      "id": "SUB_27_Times_Square",
+      "lat": 40.758,
+      "lon": -73.9855,
+      "voltage": 27,
+      "type": "subtransmission"
+    },
+    {
+      "id": "SUB_27_Grand_Central",
+      "lat": 40.7527,
+      "lon": -73.9772,
+      "voltage": 27,
+      "type": "subtransmission"
+    },
+    {
+      "id": "SUB_27_Penn_Station",
+      "lat": 40.7505,
+      "lon": -73.9934,
+      "voltage": 27,
+      "type": "subtransmission"
+    },
+    {
+      "id": "SUB_27_Union_Square",
+      "lat": 40.7359,
+      "lon": -73.9911,
+      "voltage": 27,
+      "type": "subtransmission"
+    },
+    {
+      "id": "SUB_27_Wall_Street",
+      "lat": 40.7074,
+      "lon": -74.009,
+      "voltage": 27,
+      "type": "subtransmission"
+    },
+    {
+      "id": "SUB_27_Central_Park_S",
+      "lat": 40.7644,
+      "lon": -73.9735,
+      "voltage": 27,
+      "type": "subtransmission"
+    },
+    {
+      "id": "SUB_13_8_D01",
+      "lat": 40.705,
+      "lon": -74.015,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D02",
+      "lat": 40.705,
+      "lon": -73.999,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D03",
+      "lat": 40.705,
+      "lon": -73.983,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D04",
+      "lat": 40.705,
+      "lon": -73.967,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D05",
+      "lat": 40.705,
+      "lon": -73.95100000000001,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D06",
+      "lat": 40.705,
+      "lon": -73.935,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D07",
+      "lat": 40.71785714285714,
+      "lon": -74.015,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D08",
+      "lat": 40.71785714285714,
+      "lon": -73.999,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D09",
+      "lat": 40.71785714285714,
+      "lon": -73.983,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D10",
+      "lat": 40.71785714285714,
+      "lon": -73.967,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D11",
+      "lat": 40.71785714285714,
+      "lon": -73.95100000000001,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D12",
+      "lat": 40.71785714285714,
+      "lon": -73.935,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D13",
+      "lat": 40.730714285714285,
+      "lon": -74.015,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D14",
+      "lat": 40.730714285714285,
+      "lon": -73.999,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D15",
+      "lat": 40.730714285714285,
+      "lon": -73.983,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D16",
+      "lat": 40.730714285714285,
+      "lon": -73.967,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D17",
+      "lat": 40.730714285714285,
+      "lon": -73.95100000000001,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D18",
+      "lat": 40.730714285714285,
+      "lon": -73.935,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D19",
+      "lat": 40.74357142857143,
+      "lon": -74.015,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D20",
+      "lat": 40.74357142857143,
+      "lon": -73.999,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D21",
+      "lat": 40.74357142857143,
+      "lon": -73.983,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D22",
+      "lat": 40.74357142857143,
+      "lon": -73.967,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D23",
+      "lat": 40.74357142857143,
+      "lon": -73.95100000000001,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D24",
+      "lat": 40.74357142857143,
+      "lon": -73.935,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D25",
+      "lat": 40.75642857142857,
+      "lon": -74.015,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D26",
+      "lat": 40.75642857142857,
+      "lon": -73.999,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D27",
+      "lat": 40.75642857142857,
+      "lon": -73.983,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D28",
+      "lat": 40.75642857142857,
+      "lon": -73.967,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D29",
+      "lat": 40.75642857142857,
+      "lon": -73.95100000000001,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D30",
+      "lat": 40.75642857142857,
+      "lon": -73.935,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D31",
+      "lat": 40.769285714285715,
+      "lon": -74.015,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D32",
+      "lat": 40.769285714285715,
+      "lon": -73.999,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D33",
+      "lat": 40.769285714285715,
+      "lon": -73.983,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D34",
+      "lat": 40.769285714285715,
+      "lon": -73.967,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D35",
+      "lat": 40.769285714285715,
+      "lon": -73.95100000000001,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D36",
+      "lat": 40.769285714285715,
+      "lon": -73.935,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D37",
+      "lat": 40.78214285714286,
+      "lon": -74.015,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D38",
+      "lat": 40.78214285714286,
+      "lon": -73.999,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D39",
+      "lat": 40.78214285714286,
+      "lon": -73.983,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D40",
+      "lat": 40.78214285714286,
+      "lon": -73.967,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D41",
+      "lat": 40.78214285714286,
+      "lon": -73.95100000000001,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D42",
+      "lat": 40.78214285714286,
+      "lon": -73.935,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D43",
+      "lat": 40.795,
+      "lon": -74.015,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D44",
+      "lat": 40.795,
+      "lon": -73.999,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D45",
+      "lat": 40.795,
+      "lon": -73.983,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D46",
+      "lat": 40.795,
+      "lon": -73.967,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D47",
+      "lat": 40.795,
+      "lon": -73.95100000000001,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "SUB_13_8_D48",
+      "lat": 40.795,
+      "lon": -73.935,
+      "voltage": 13.8,
+      "type": "primary_distribution"
+    },
+    {
+      "id": "NET_4_Midtown_Network",
+      "lat": 40.755,
+      "lon": -73.984,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    },
+    {
+      "id": "NET_4_Times_Square_Network",
+      "lat": 40.758,
+      "lon": -73.9855,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    },
+    {
+      "id": "NET_4_Financial_Network",
+      "lat": 40.708,
+      "lon": -74.009,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    },
+    {
+      "id": "NET_4_Chelsea_Network",
+      "lat": 40.7465,
+      "lon": -74.0014,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    },
+    {
+      "id": "NET_4_Murray_Hill_Network",
+      "lat": 40.748,
+      "lon": -73.978,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    },
+    {
+      "id": "NET_4_Union_Square_Network",
+      "lat": 40.7359,
+      "lon": -73.9911,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    },
+    {
+      "id": "NET_4_Columbus_Network",
+      "lat": 40.768,
+      "lon": -73.9819,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    },
+    {
+      "id": "NET_4_Upper_East_Network",
+      "lat": 40.775,
+      "lon": -73.96,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    },
+    {
+      "id": "NET_4_Upper_West_Network",
+      "lat": 40.785,
+      "lon": -74.0,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    },
+    {
+      "id": "NET_4_Gramercy_Network",
+      "lat": 40.738,
+      "lon": -73.985,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    },
+    {
+      "id": "NET_4_Village_Network",
+      "lat": 40.733,
+      "lon": -74.0,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    },
+    {
+      "id": "NET_4_Tribeca_Network",
+      "lat": 40.7163,
+      "lon": -74.0086,
+      "voltage": 4.16,
+      "type": "secondary_network"
+    }
+  ],
+  "lines": [
+    {
+      "id": "TL_138_Hellgate_Columbus",
+      "from": "SUB_Hellgate",
+      "to": "SUB_Columbus_Circle",
+      "voltage": 138,
+      "capacity": 600,
+      "flow": 480.0,
+      "utilization": 80.0,
+      "from_pos": [
+        -73.9442,
+        40.7789
+      ],
+      "to_pos": [
+        -73.9819,
+        40.768
+      ]
+    },
+    {
+      "id": "TL_138_Columbus_Murray",
+      "from": "SUB_Columbus_Circle",
+      "to": "SUB_Murray_Hill",
+      "voltage": 138,
+      "capacity": 550,
+      "flow": 440.0,
+      "utilization": 80.0,
+      "from_pos": [
+        -73.9819,
+        40.768
+      ],
+      "to_pos": [
+        -73.978,
+        40.748
+      ]
+    },
+    {
+      "id": "TL_138_Murray_Chelsea",
+      "from": "SUB_Murray_Hill",
+      "to": "SUB_Chelsea",
+      "voltage": 138,
+      "capacity": 600,
+      "flow": 480.0,
+      "utilization": 80.0,
+      "from_pos": [
+        -73.978,
+        40.748
+      ],
+      "to_pos": [
+        -74.0014,
+        40.7465
+      ]
+    },
+    {
+      "id": "TL_138_Chelsea_Trade",
+      "from": "SUB_Chelsea",
+      "to": "SUB_Trade_Center",
+      "voltage": 138,
+      "capacity": 700,
+      "flow": 560.0,
+      "utilization": 80.0,
+      "from_pos": [
+        -74.0014,
+        40.7465
+      ],
+      "to_pos": [
+        -74.0134,
+        40.7127
+      ]
+    },
+    {
+      "id": "TL_138_Trade_Farragut",
+      "from": "SUB_Trade_Center",
+      "to": "SUB_Farragut",
+      "voltage": 138,
+      "capacity": 650,
+      "flow": 520.0,
+      "utilization": 80.0,
+      "from_pos": [
+        -74.0134,
+        40.7127
+      ],
+      "to_pos": [
+        -74.0113,
+        40.7074
+      ]
+    },
+    {
+      "id": "TL_138_Murray_Waterside",
+      "from": "SUB_Murray_Hill",
+      "to": "SUB_Waterside",
+      "voltage": 138,
+      "capacity": 500,
+      "flow": 400.0,
+      "utilization": 80.0,
+      "from_pos": [
+        -73.978,
+        40.748
+      ],
+      "to_pos": [
+        -73.973,
+        40.7389
+      ]
+    },
+    {
+      "id": "TL_138_Hellgate_Sherman",
+      "from": "SUB_Hellgate",
+      "to": "SUB_Sherman_Creek",
+      "voltage": 138,
+      "capacity": 550,
+      "flow": 440.0,
+      "utilization": 80.0,
+      "from_pos": [
+        -73.9442,
+        40.7789
+      ],
+      "to_pos": [
+        -73.955,
+        40.795
+      ]
+    },
+    {
+      "id": "TL_138_Sherman_Columbus",
+      "from": "SUB_Sherman_Creek",
+      "to": "SUB_Columbus_Circle",
+      "voltage": 138,
+      "capacity": 500,
+      "flow": 400.0,
+      "utilization": 80.0,
+      "from_pos": [
+        -73.955,
+        40.795
+      ],
+      "to_pos": [
+        -73.9819,
+        40.768
+      ]
+    },
+    {
+      "id": "TL_27_SUB_Columbus_Circle_SUB_27_Times_Square",
+      "from": "SUB_Columbus_Circle",
+      "to": "SUB_27_Times_Square",
+      "voltage": 27,
+      "capacity": 200,
+      "flow": 130.5870000000034,
+      "utilization": 65.2935000000017,
+      "from_pos": [
+        -73.9819,
+        40.768
+      ],
+      "to_pos": [
+        -73.9855,
+        40.758
+      ]
+    },
+    {
+      "id": "TL_27_SUB_Murray_Hill_SUB_27_Grand_Central",
+      "from": "SUB_Murray_Hill",
+      "to": "SUB_27_Grand_Central",
+      "voltage": 27,
+      "capacity": 200,
+      "flow": 130.5870000000034,
+      "utilization": 65.2935000000017,
+      "from_pos": [
+        -73.978,
+        40.748
+      ],
+      "to_pos": [
+        -73.9772,
+        40.7527
+      ]
+    },
+    {
+      "id": "TL_27_SUB_Chelsea_SUB_27_Penn_Station",
+      "from": "SUB_Chelsea",
+      "to": "SUB_27_Penn_Station",
+      "voltage": 27,
+      "capacity": 200,
+      "flow": 130.5870000000034,
+      "utilization": 65.2935000000017,
+      "from_pos": [
+        -74.0014,
+        40.7465
+      ],
+      "to_pos": [
+        -73.9934,
+        40.7505
+      ]
+    },
+    {
+      "id": "TL_27_SUB_Chelsea_SUB_27_Union_Square",
+      "from": "SUB_Chelsea",
+      "to": "SUB_27_Union_Square",
+      "voltage": 27,
+      "capacity": 200,
+      "flow": 130.5870000000034,
+      "utilization": 65.2935000000017,
+      "from_pos": [
+        -74.0014,
+        40.7465
+      ],
+      "to_pos": [
+        -73.9911,
+        40.7359
+      ]
+    },
+    {
+      "id": "TL_27_SUB_Trade_Center_SUB_27_Wall_Street",
+      "from": "SUB_Trade_Center",
+      "to": "SUB_27_Wall_Street",
+      "voltage": 27,
+      "capacity": 200,
+      "flow": 130.5870000000034,
+      "utilization": 65.2935000000017,
+      "from_pos": [
+        -74.0134,
+        40.7127
+      ],
+      "to_pos": [
+        -74.009,
+        40.7074
+      ]
+    },
+    {
+      "id": "TL_27_SUB_Columbus_Circle_SUB_27_Central_Park_S",
+      "from": "SUB_Columbus_Circle",
+      "to": "SUB_27_Central_Park_S",
+      "voltage": 27,
+      "capacity": 200,
+      "flow": 130.5870000000034,
+      "utilization": 65.2935000000017,
+      "from_pos": [
+        -73.9819,
+        40.768
+      ],
+      "to_pos": [
+        -73.9735,
+        40.7644
+      ]
+    },
+    {
+      "id": "FDR_13_8_001",
+      "from": "SUB_27_Times_Square",
+      "to": "SUB_13_8_D20",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9855,
+        40.758
+      ],
+      "to_pos": [
+        -73.999,
+        40.74357142857143
+      ]
+    },
+    {
+      "id": "FDR_13_8_002",
+      "from": "SUB_27_Times_Square",
+      "to": "SUB_13_8_D21",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9855,
+        40.758
+      ],
+      "to_pos": [
+        -73.983,
+        40.74357142857143
+      ]
+    },
+    {
+      "id": "FDR_13_8_003",
+      "from": "SUB_27_Times_Square",
+      "to": "SUB_13_8_D26",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9855,
+        40.758
+      ],
+      "to_pos": [
+        -73.999,
+        40.75642857142857
+      ]
+    },
+    {
+      "id": "FDR_13_8_004",
+      "from": "SUB_27_Times_Square",
+      "to": "SUB_13_8_D27",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9855,
+        40.758
+      ],
+      "to_pos": [
+        -73.983,
+        40.75642857142857
+      ]
+    },
+    {
+      "id": "FDR_13_8_005",
+      "from": "SUB_27_Times_Square",
+      "to": "SUB_13_8_D28",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9855,
+        40.758
+      ],
+      "to_pos": [
+        -73.967,
+        40.75642857142857
+      ]
+    },
+    {
+      "id": "FDR_13_8_006",
+      "from": "SUB_27_Times_Square",
+      "to": "SUB_13_8_D32",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9855,
+        40.758
+      ],
+      "to_pos": [
+        -73.999,
+        40.769285714285715
+      ]
+    },
+    {
+      "id": "FDR_13_8_007",
+      "from": "SUB_27_Times_Square",
+      "to": "SUB_13_8_D33",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9855,
+        40.758
+      ],
+      "to_pos": [
+        -73.983,
+        40.769285714285715
+      ]
+    },
+    {
+      "id": "FDR_13_8_008",
+      "from": "SUB_27_Grand_Central",
+      "to": "SUB_13_8_D21",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9772,
+        40.7527
+      ],
+      "to_pos": [
+        -73.983,
+        40.74357142857143
+      ]
+    },
+    {
+      "id": "FDR_13_8_009",
+      "from": "SUB_27_Grand_Central",
+      "to": "SUB_13_8_D22",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9772,
+        40.7527
+      ],
+      "to_pos": [
+        -73.967,
+        40.74357142857143
+      ]
+    },
+    {
+      "id": "FDR_13_8_010",
+      "from": "SUB_27_Grand_Central",
+      "to": "SUB_13_8_D26",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9772,
+        40.7527
+      ],
+      "to_pos": [
+        -73.999,
+        40.75642857142857
+      ]
+    },
+    {
+      "id": "FDR_13_8_011",
+      "from": "SUB_27_Grand_Central",
+      "to": "SUB_13_8_D27",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9772,
+        40.7527
+      ],
+      "to_pos": [
+        -73.983,
+        40.75642857142857
+      ]
+    },
+    {
+      "id": "FDR_13_8_012",
+      "from": "SUB_27_Grand_Central",
+      "to": "SUB_13_8_D28",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9772,
+        40.7527
+      ],
+      "to_pos": [
+        -73.967,
+        40.75642857142857
+      ]
+    },
+    {
+      "id": "FDR_13_8_013",
+      "from": "SUB_27_Grand_Central",
+      "to": "SUB_13_8_D33",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9772,
+        40.7527
+      ],
+      "to_pos": [
+        -73.983,
+        40.769285714285715
+      ]
+    },
+    {
+      "id": "FDR_13_8_014",
+      "from": "SUB_27_Penn_Station",
+      "to": "SUB_13_8_D19",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9934,
+        40.7505
+      ],
+      "to_pos": [
+        -74.015,
+        40.74357142857143
+      ]
+    },
+    {
+      "id": "FDR_13_8_015",
+      "from": "SUB_27_Penn_Station",
+      "to": "SUB_13_8_D20",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9934,
+        40.7505
+      ],
+      "to_pos": [
+        -73.999,
+        40.74357142857143
+      ]
+    },
+    {
+      "id": "FDR_13_8_016",
+      "from": "SUB_27_Penn_Station",
+      "to": "SUB_13_8_D21",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9934,
+        40.7505
+      ],
+      "to_pos": [
+        -73.983,
+        40.74357142857143
+      ]
+    },
+    {
+      "id": "FDR_13_8_017",
+      "from": "SUB_27_Penn_Station",
+      "to": "SUB_13_8_D25",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9934,
+        40.7505
+      ],
+      "to_pos": [
+        -74.015,
+        40.75642857142857
+      ]
+    },
+    {
+      "id": "FDR_13_8_018",
+      "from": "SUB_27_Penn_Station",
+      "to": "SUB_13_8_D26",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9934,
+        40.7505
+      ],
+      "to_pos": [
+        -73.999,
+        40.75642857142857
+      ]
+    },
+    {
+      "id": "FDR_13_8_019",
+      "from": "SUB_27_Penn_Station",
+      "to": "SUB_13_8_D27",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9934,
+        40.7505
+      ],
+      "to_pos": [
+        -73.983,
+        40.75642857142857
+      ]
+    },
+    {
+      "id": "FDR_13_8_020",
+      "from": "SUB_27_Union_Square",
+      "to": "SUB_13_8_D14",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9911,
+        40.7359
+      ],
+      "to_pos": [
+        -73.999,
+        40.730714285714285
+      ]
+    },
+    {
+      "id": "FDR_13_8_021",
+      "from": "SUB_27_Union_Square",
+      "to": "SUB_13_8_D15",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9911,
+        40.7359
+      ],
+      "to_pos": [
+        -73.983,
+        40.730714285714285
+      ]
+    },
+    {
+      "id": "FDR_13_8_022",
+      "from": "SUB_27_Union_Square",
+      "to": "SUB_13_8_D20",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9911,
+        40.7359
+      ],
+      "to_pos": [
+        -73.999,
+        40.74357142857143
+      ]
+    },
+    {
+      "id": "FDR_13_8_023",
+      "from": "SUB_27_Union_Square",
+      "to": "SUB_13_8_D21",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9911,
+        40.7359
+      ],
+      "to_pos": [
+        -73.983,
+        40.74357142857143
+      ]
+    },
+    {
+      "id": "FDR_13_8_024",
+      "from": "SUB_27_Wall_Street",
+      "to": "SUB_13_8_D01",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -74.009,
+        40.7074
+      ],
+      "to_pos": [
+        -74.015,
+        40.705
+      ]
+    },
+    {
+      "id": "FDR_13_8_025",
+      "from": "SUB_27_Wall_Street",
+      "to": "SUB_13_8_D02",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -74.009,
+        40.7074
+      ],
+      "to_pos": [
+        -73.999,
+        40.705
+      ]
+    },
+    {
+      "id": "FDR_13_8_026",
+      "from": "SUB_27_Wall_Street",
+      "to": "SUB_13_8_D07",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -74.009,
+        40.7074
+      ],
+      "to_pos": [
+        -74.015,
+        40.71785714285714
+      ]
+    },
+    {
+      "id": "FDR_13_8_027",
+      "from": "SUB_27_Wall_Street",
+      "to": "SUB_13_8_D08",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -74.009,
+        40.7074
+      ],
+      "to_pos": [
+        -73.999,
+        40.71785714285714
+      ]
+    },
+    {
+      "id": "FDR_13_8_028",
+      "from": "SUB_27_Central_Park_S",
+      "to": "SUB_13_8_D27",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9735,
+        40.7644
+      ],
+      "to_pos": [
+        -73.983,
+        40.75642857142857
+      ]
+    },
+    {
+      "id": "FDR_13_8_029",
+      "from": "SUB_27_Central_Park_S",
+      "to": "SUB_13_8_D28",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9735,
+        40.7644
+      ],
+      "to_pos": [
+        -73.967,
+        40.75642857142857
+      ]
+    },
+    {
+      "id": "FDR_13_8_030",
+      "from": "SUB_27_Central_Park_S",
+      "to": "SUB_13_8_D33",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9735,
+        40.7644
+      ],
+      "to_pos": [
+        -73.983,
+        40.769285714285715
+      ]
+    },
+    {
+      "id": "FDR_13_8_031",
+      "from": "SUB_27_Central_Park_S",
+      "to": "SUB_13_8_D34",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9735,
+        40.7644
+      ],
+      "to_pos": [
+        -73.967,
+        40.769285714285715
+      ]
+    },
+    {
+      "id": "FDR_13_8_032",
+      "from": "SUB_27_Central_Park_S",
+      "to": "SUB_13_8_D35",
+      "voltage": 13.8,
+      "capacity": 40,
+      "flow": 21.764500000000567,
+      "utilization": 54.411250000001424,
+      "from_pos": [
+        -73.9735,
+        40.7644
+      ],
+      "to_pos": [
+        -73.95100000000001,
+        40.769285714285715
+      ]
+    },
+    {
+      "id": "FDR_4_16_033",
+      "from": "SUB_13_8_D01",
+      "to": "NET_4_Financial_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -74.015,
+        40.705
+      ],
+      "to_pos": [
+        -74.009,
+        40.708
+      ]
+    },
+    {
+      "id": "FDR_4_16_034",
+      "from": "SUB_13_8_D01",
+      "to": "NET_4_Tribeca_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -74.015,
+        40.705
+      ],
+      "to_pos": [
+        -74.0086,
+        40.7163
+      ]
+    },
+    {
+      "id": "FDR_4_16_035",
+      "from": "SUB_13_8_D02",
+      "to": "NET_4_Financial_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.705
+      ],
+      "to_pos": [
+        -74.009,
+        40.708
+      ]
+    },
+    {
+      "id": "FDR_4_16_036",
+      "from": "SUB_13_8_D02",
+      "to": "NET_4_Tribeca_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.705
+      ],
+      "to_pos": [
+        -74.0086,
+        40.7163
+      ]
+    },
+    {
+      "id": "FDR_4_16_037",
+      "from": "SUB_13_8_D07",
+      "to": "NET_4_Financial_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -74.015,
+        40.71785714285714
+      ],
+      "to_pos": [
+        -74.009,
+        40.708
+      ]
+    },
+    {
+      "id": "FDR_4_16_038",
+      "from": "SUB_13_8_D07",
+      "to": "NET_4_Tribeca_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -74.015,
+        40.71785714285714
+      ],
+      "to_pos": [
+        -74.0086,
+        40.7163
+      ]
+    },
+    {
+      "id": "FDR_4_16_039",
+      "from": "SUB_13_8_D08",
+      "to": "NET_4_Financial_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.71785714285714
+      ],
+      "to_pos": [
+        -74.009,
+        40.708
+      ]
+    },
+    {
+      "id": "FDR_4_16_040",
+      "from": "SUB_13_8_D08",
+      "to": "NET_4_Tribeca_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.71785714285714
+      ],
+      "to_pos": [
+        -74.0086,
+        40.7163
+      ]
+    },
+    {
+      "id": "FDR_4_16_041",
+      "from": "SUB_13_8_D13",
+      "to": "NET_4_Village_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -74.015,
+        40.730714285714285
+      ],
+      "to_pos": [
+        -74.0,
+        40.733
+      ]
+    },
+    {
+      "id": "FDR_4_16_042",
+      "from": "SUB_13_8_D14",
+      "to": "NET_4_Union_Square_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.730714285714285
+      ],
+      "to_pos": [
+        -73.9911,
+        40.7359
+      ]
+    },
+    {
+      "id": "FDR_4_16_043",
+      "from": "SUB_13_8_D14",
+      "to": "NET_4_Gramercy_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.730714285714285
+      ],
+      "to_pos": [
+        -73.985,
+        40.738
+      ]
+    },
+    {
+      "id": "FDR_4_16_044",
+      "from": "SUB_13_8_D14",
+      "to": "NET_4_Village_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.730714285714285
+      ],
+      "to_pos": [
+        -74.0,
+        40.733
+      ]
+    },
+    {
+      "id": "FDR_4_16_045",
+      "from": "SUB_13_8_D15",
+      "to": "NET_4_Union_Square_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.730714285714285
+      ],
+      "to_pos": [
+        -73.9911,
+        40.7359
+      ]
+    },
+    {
+      "id": "FDR_4_16_046",
+      "from": "SUB_13_8_D15",
+      "to": "NET_4_Gramercy_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.730714285714285
+      ],
+      "to_pos": [
+        -73.985,
+        40.738
+      ]
+    },
+    {
+      "id": "FDR_4_16_047",
+      "from": "SUB_13_8_D15",
+      "to": "NET_4_Village_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.730714285714285
+      ],
+      "to_pos": [
+        -74.0,
+        40.733
+      ]
+    },
+    {
+      "id": "FDR_4_16_048",
+      "from": "SUB_13_8_D19",
+      "to": "NET_4_Chelsea_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -74.015,
+        40.74357142857143
+      ],
+      "to_pos": [
+        -74.0014,
+        40.7465
+      ]
+    },
+    {
+      "id": "FDR_4_16_049",
+      "from": "SUB_13_8_D20",
+      "to": "NET_4_Chelsea_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.74357142857143
+      ],
+      "to_pos": [
+        -74.0014,
+        40.7465
+      ]
+    },
+    {
+      "id": "FDR_4_16_050",
+      "from": "SUB_13_8_D20",
+      "to": "NET_4_Union_Square_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.74357142857143
+      ],
+      "to_pos": [
+        -73.9911,
+        40.7359
+      ]
+    },
+    {
+      "id": "FDR_4_16_051",
+      "from": "SUB_13_8_D20",
+      "to": "NET_4_Gramercy_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.74357142857143
+      ],
+      "to_pos": [
+        -73.985,
+        40.738
+      ]
+    },
+    {
+      "id": "FDR_4_16_052",
+      "from": "SUB_13_8_D20",
+      "to": "NET_4_Village_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.74357142857143
+      ],
+      "to_pos": [
+        -74.0,
+        40.733
+      ]
+    },
+    {
+      "id": "FDR_4_16_053",
+      "from": "SUB_13_8_D21",
+      "to": "NET_4_Midtown_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.74357142857143
+      ],
+      "to_pos": [
+        -73.984,
+        40.755
+      ]
+    },
+    {
+      "id": "FDR_4_16_054",
+      "from": "SUB_13_8_D21",
+      "to": "NET_4_Murray_Hill_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.74357142857143
+      ],
+      "to_pos": [
+        -73.978,
+        40.748
+      ]
+    },
+    {
+      "id": "FDR_4_16_055",
+      "from": "SUB_13_8_D21",
+      "to": "NET_4_Union_Square_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.74357142857143
+      ],
+      "to_pos": [
+        -73.9911,
+        40.7359
+      ]
+    },
+    {
+      "id": "FDR_4_16_056",
+      "from": "SUB_13_8_D21",
+      "to": "NET_4_Gramercy_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.74357142857143
+      ],
+      "to_pos": [
+        -73.985,
+        40.738
+      ]
+    },
+    {
+      "id": "FDR_4_16_057",
+      "from": "SUB_13_8_D22",
+      "to": "NET_4_Murray_Hill_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.967,
+        40.74357142857143
+      ],
+      "to_pos": [
+        -73.978,
+        40.748
+      ]
+    },
+    {
+      "id": "FDR_4_16_058",
+      "from": "SUB_13_8_D26",
+      "to": "NET_4_Midtown_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.75642857142857
+      ],
+      "to_pos": [
+        -73.984,
+        40.755
+      ]
+    },
+    {
+      "id": "FDR_4_16_059",
+      "from": "SUB_13_8_D26",
+      "to": "NET_4_Times_Square_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.75642857142857
+      ],
+      "to_pos": [
+        -73.9855,
+        40.758
+      ]
+    },
+    {
+      "id": "FDR_4_16_060",
+      "from": "SUB_13_8_D26",
+      "to": "NET_4_Chelsea_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.75642857142857
+      ],
+      "to_pos": [
+        -74.0014,
+        40.7465
+      ]
+    },
+    {
+      "id": "FDR_4_16_061",
+      "from": "SUB_13_8_D27",
+      "to": "NET_4_Midtown_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.75642857142857
+      ],
+      "to_pos": [
+        -73.984,
+        40.755
+      ]
+    },
+    {
+      "id": "FDR_4_16_062",
+      "from": "SUB_13_8_D27",
+      "to": "NET_4_Times_Square_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.75642857142857
+      ],
+      "to_pos": [
+        -73.9855,
+        40.758
+      ]
+    },
+    {
+      "id": "FDR_4_16_063",
+      "from": "SUB_13_8_D27",
+      "to": "NET_4_Murray_Hill_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.75642857142857
+      ],
+      "to_pos": [
+        -73.978,
+        40.748
+      ]
+    },
+    {
+      "id": "FDR_4_16_064",
+      "from": "SUB_13_8_D27",
+      "to": "NET_4_Columbus_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.75642857142857
+      ],
+      "to_pos": [
+        -73.9819,
+        40.768
+      ]
+    },
+    {
+      "id": "FDR_4_16_065",
+      "from": "SUB_13_8_D28",
+      "to": "NET_4_Midtown_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.967,
+        40.75642857142857
+      ],
+      "to_pos": [
+        -73.984,
+        40.755
+      ]
+    },
+    {
+      "id": "FDR_4_16_066",
+      "from": "SUB_13_8_D28",
+      "to": "NET_4_Murray_Hill_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.967,
+        40.75642857142857
+      ],
+      "to_pos": [
+        -73.978,
+        40.748
+      ]
+    },
+    {
+      "id": "FDR_4_16_067",
+      "from": "SUB_13_8_D32",
+      "to": "NET_4_Columbus_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.769285714285715
+      ],
+      "to_pos": [
+        -73.9819,
+        40.768
+      ]
+    },
+    {
+      "id": "FDR_4_16_068",
+      "from": "SUB_13_8_D33",
+      "to": "NET_4_Times_Square_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.769285714285715
+      ],
+      "to_pos": [
+        -73.9855,
+        40.758
+      ]
+    },
+    {
+      "id": "FDR_4_16_069",
+      "from": "SUB_13_8_D33",
+      "to": "NET_4_Columbus_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.769285714285715
+      ],
+      "to_pos": [
+        -73.9819,
+        40.768
+      ]
+    },
+    {
+      "id": "FDR_4_16_070",
+      "from": "SUB_13_8_D34",
+      "to": "NET_4_Columbus_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.967,
+        40.769285714285715
+      ],
+      "to_pos": [
+        -73.9819,
+        40.768
+      ]
+    },
+    {
+      "id": "FDR_4_16_071",
+      "from": "SUB_13_8_D34",
+      "to": "NET_4_Upper_East_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.967,
+        40.769285714285715
+      ],
+      "to_pos": [
+        -73.96,
+        40.775
+      ]
+    },
+    {
+      "id": "FDR_4_16_072",
+      "from": "SUB_13_8_D35",
+      "to": "NET_4_Upper_East_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.95100000000001,
+        40.769285714285715
+      ],
+      "to_pos": [
+        -73.96,
+        40.775
+      ]
+    },
+    {
+      "id": "FDR_4_16_073",
+      "from": "SUB_13_8_D37",
+      "to": "NET_4_Upper_West_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -74.015,
+        40.78214285714286
+      ],
+      "to_pos": [
+        -74.0,
+        40.785
+      ]
+    },
+    {
+      "id": "FDR_4_16_074",
+      "from": "SUB_13_8_D38",
+      "to": "NET_4_Upper_West_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.78214285714286
+      ],
+      "to_pos": [
+        -74.0,
+        40.785
+      ]
+    },
+    {
+      "id": "FDR_4_16_075",
+      "from": "SUB_13_8_D39",
+      "to": "NET_4_Upper_West_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.983,
+        40.78214285714286
+      ],
+      "to_pos": [
+        -74.0,
+        40.785
+      ]
+    },
+    {
+      "id": "FDR_4_16_076",
+      "from": "SUB_13_8_D40",
+      "to": "NET_4_Upper_East_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.967,
+        40.78214285714286
+      ],
+      "to_pos": [
+        -73.96,
+        40.775
+      ]
+    },
+    {
+      "id": "FDR_4_16_077",
+      "from": "SUB_13_8_D41",
+      "to": "NET_4_Upper_East_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.95100000000001,
+        40.78214285714286
+      ],
+      "to_pos": [
+        -73.96,
+        40.775
+      ]
+    },
+    {
+      "id": "FDR_4_16_078",
+      "from": "SUB_13_8_D44",
+      "to": "NET_4_Upper_West_Network",
+      "voltage": 4.16,
+      "capacity": 15,
+      "flow": 6.5293500000001705,
+      "utilization": 43.52900000000114,
+      "from_pos": [
+        -73.999,
+        40.795
+      ],
+      "to_pos": [
+        -74.0,
+        40.785
+      ]
+    }
+  ],
+  "generators": [
+    {
+      "id": "GEN_East_River_GT1",
+      "lat": 40.7789,
+      "lon": -73.94,
+      "capacity": 180,
+      "output": 0,
+      "type": "gas_turbine",
+      "utilization": 0.0
+    },
+    {
+      "id": "GEN_East_River_GT2",
+      "lat": 40.7789,
+      "lon": -73.94,
+      "capacity": 180,
+      "output": 0,
+      "type": "gas_turbine",
+      "utilization": 0.0
+    },
+    {
+      "id": "GEN_Hudson_CC1",
+      "lat": 40.7465,
+      "lon": -74.01,
+      "capacity": 500,
+      "output": 494.8502828592717,
+      "type": "combined_cycle",
+      "utilization": 98.97005657185434
+    },
+    {
+      "id": "GEN_ConEd_Steam",
+      "lat": 40.748,
+      "lon": -73.975,
+      "capacity": 300,
+      "output": 0,
+      "type": "steam_turbine",
+      "utilization": 0.0
+    },
+    {
+      "id": "GEN_Solar_Midtown",
+      "lat": 40.758,
+      "lon": -73.9855,
+      "capacity": 25,
+      "output": 20.5259238086427,
+      "type": "solar_pv",
+      "utilization": 82.1036952345708
+    },
+    {
+      "id": "GEN_Solar_Chelsea",
+      "lat": 40.7465,
+      "lon": -74.0014,
+      "capacity": 20,
+      "output": 16.42073904691416,
+      "type": "solar_pv",
+      "utilization": 82.10369523457081
+    },
+    {
+      "id": "GEN_Solar_Financial",
+      "lat": 40.7074,
+      "lon": -74.009,
+      "capacity": 15,
+      "output": 12.315554285185621,
+      "type": "solar_pv",
+      "utilization": 82.10369523457081
+    },
+    {
+      "id": "GEN_BESS_Times_Square",
+      "lat": 40.758,
+      "lon": -73.9855,
+      "capacity": 50,
+      "output": 0,
+      "type": "battery",
+      "utilization": 0.0
+    },
+    {
+      "id": "GEN_BESS_Wall_Street",
+      "lat": 40.7074,
+      "lon": -74.009,
+      "capacity": 40,
+      "output": 0,
+      "type": "battery",
+      "utilization": 0.0
+    },
+    {
+      "id": "GEN_Emergency_Traffic_Control",
+      "lat": 40.758,
+      "lon": -73.9855,
+      "capacity": 5,
+      "output": 0,
+      "type": "diesel",
+      "utilization": 0.0
+    },
+    {
+      "id": "GEN_FuelCell_OneWTC",
+      "lat": 40.7127,
+      "lon": -74.0134,
+      "capacity": 10,
+      "output": 0,
+      "type": "fuel_cell",
+      "utilization": 0.0
+    }
+  ],
+  "transformers": [
+    {
+      "id": "XFMR_138_27_01",
+      "rating": 300,
+      "voltage_ratio": "138/27",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_138_27_02",
+      "rating": 350,
+      "voltage_ratio": "138/27",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_138_27_03",
+      "rating": 400,
+      "voltage_ratio": "138/27",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_138_27_04",
+      "rating": 250,
+      "voltage_ratio": "138/27",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_138_27_05",
+      "rating": 450,
+      "voltage_ratio": "138/27",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_138_27_06",
+      "rating": 280,
+      "voltage_ratio": "138/27",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_07",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_08",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_09",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_10",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_11",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_12",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_13",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_14",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_15",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_16",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_17",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_18",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_19",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_20",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_21",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_22",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_23",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_24",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_25",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_26",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_27",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_28",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_29",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_30",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_31",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_32",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_33",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_34",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_35",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_36",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_37",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_27_13_8_38",
+      "rating": 50,
+      "voltage_ratio": "27/13.8",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_39",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_40",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_41",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_42",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_43",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_44",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_45",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_46",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_47",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_48",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_49",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_50",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_51",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_52",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_53",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_54",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_55",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_56",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_57",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_58",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_59",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_60",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_61",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_62",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_63",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_64",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_65",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_66",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_67",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_68",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_69",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_70",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_71",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_72",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_73",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_74",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_75",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_76",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_77",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_78",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_79",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_80",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_81",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_82",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_83",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    },
+    {
+      "id": "XFMR_13_8_4_16_84",
+      "rating": 15,
+      "voltage_ratio": "13.8/4.16",
+      "type": "three_phase"
+    }
+  ],
+  "ev_stations": [
+    {
+      "id": "EV_DC_Times_Square_Hub",
+      "lat": 40.759,
+      "lon": -73.9845,
+      "capacity": 1.5,
+      "utilization": 0,
+      "type": "dc_fast"
+    },
+    {
+      "id": "EV_DC_Penn_Station_Hub",
+      "lat": 40.751,
+      "lon": -73.992,
+      "capacity": 1.8,
+      "utilization": 0,
+      "type": "dc_fast"
+    },
+    {
+      "id": "EV_DC_Columbus_Circle_Hub",
+      "lat": 40.7685,
+      "lon": -73.9815,
+      "capacity": 1.2,
+      "utilization": 0,
+      "type": "dc_fast"
+    },
+    {
+      "id": "EV_DC_Union_Square_Hub",
+      "lat": 40.7365,
+      "lon": -73.9905,
+      "capacity": 1.2,
+      "utilization": 0,
+      "type": "dc_fast"
+    },
+    {
+      "id": "EV_DC_Wall_Street_Hub",
+      "lat": 40.708,
+      "lon": -74.0085,
+      "capacity": 0.9,
+      "utilization": 0,
+      "type": "dc_fast"
+    },
+    {
+      "id": "EV_DC_Grand_Central_Hub",
+      "lat": 40.753,
+      "lon": -73.9765,
+      "capacity": 1.5,
+      "utilization": 0,
+      "type": "dc_fast"
+    },
+    {
+      "id": "EV_L2_007",
+      "lat": 40.71,
+      "lon": -74.01,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_008",
+      "lat": 40.71,
+      "lon": -74.0,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_009",
+      "lat": 40.71,
+      "lon": -73.99,
+      "capacity": 0.0576,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_010",
+      "lat": 40.71,
+      "lon": -73.97999999999999,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_011",
+      "lat": 40.71,
+      "lon": -73.96999999999998,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_012",
+      "lat": 40.71,
+      "lon": -73.95999999999998,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_013",
+      "lat": 40.71,
+      "lon": -73.94999999999997,
+      "capacity": 0.072,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_014",
+      "lat": 40.71,
+      "lon": -73.93999999999997,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_015",
+      "lat": 40.72,
+      "lon": -74.01,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_016",
+      "lat": 40.72,
+      "lon": -74.0,
+      "capacity": 0.072,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_017",
+      "lat": 40.72,
+      "lon": -73.99,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_018",
+      "lat": 40.72,
+      "lon": -73.97999999999999,
+      "capacity": 0.0432,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_019",
+      "lat": 40.72,
+      "lon": -73.96999999999998,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_020",
+      "lat": 40.72,
+      "lon": -73.95999999999998,
+      "capacity": 0.0432,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_021",
+      "lat": 40.72,
+      "lon": -73.94999999999997,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_022",
+      "lat": 40.72,
+      "lon": -73.93999999999997,
+      "capacity": 0.0792,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_023",
+      "lat": 40.73,
+      "lon": -74.01,
+      "capacity": 0.072,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_024",
+      "lat": 40.73,
+      "lon": -74.0,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_025",
+      "lat": 40.73,
+      "lon": -73.99,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_026",
+      "lat": 40.73,
+      "lon": -73.97999999999999,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_027",
+      "lat": 40.73,
+      "lon": -73.96999999999998,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_028",
+      "lat": 40.73,
+      "lon": -73.95999999999998,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_029",
+      "lat": 40.73,
+      "lon": -73.94999999999997,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_030",
+      "lat": 40.73,
+      "lon": -73.93999999999997,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_031",
+      "lat": 40.739999999999995,
+      "lon": -74.01,
+      "capacity": 0.0576,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_032",
+      "lat": 40.739999999999995,
+      "lon": -74.0,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_033",
+      "lat": 40.739999999999995,
+      "lon": -73.99,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_034",
+      "lat": 40.739999999999995,
+      "lon": -73.97999999999999,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_035",
+      "lat": 40.739999999999995,
+      "lon": -73.96999999999998,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_036",
+      "lat": 40.739999999999995,
+      "lon": -73.95999999999998,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_037",
+      "lat": 40.739999999999995,
+      "lon": -73.94999999999997,
+      "capacity": 0.0432,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_038",
+      "lat": 40.739999999999995,
+      "lon": -73.93999999999997,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_039",
+      "lat": 40.74999999999999,
+      "lon": -74.01,
+      "capacity": 0.0648,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_040",
+      "lat": 40.74999999999999,
+      "lon": -74.0,
+      "capacity": 0.0792,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_041",
+      "lat": 40.74999999999999,
+      "lon": -73.99,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_042",
+      "lat": 40.74999999999999,
+      "lon": -73.97999999999999,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_043",
+      "lat": 40.74999999999999,
+      "lon": -73.96999999999998,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_044",
+      "lat": 40.74999999999999,
+      "lon": -73.95999999999998,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_045",
+      "lat": 40.74999999999999,
+      "lon": -73.94999999999997,
+      "capacity": 0.0432,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_046",
+      "lat": 40.74999999999999,
+      "lon": -73.93999999999997,
+      "capacity": 0.0648,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_047",
+      "lat": 40.75999999999999,
+      "lon": -74.01,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_048",
+      "lat": 40.75999999999999,
+      "lon": -74.0,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_049",
+      "lat": 40.75999999999999,
+      "lon": -73.99,
+      "capacity": 0.072,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_050",
+      "lat": 40.75999999999999,
+      "lon": -73.97999999999999,
+      "capacity": 0.0648,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_051",
+      "lat": 40.75999999999999,
+      "lon": -73.96999999999998,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_052",
+      "lat": 40.75999999999999,
+      "lon": -73.95999999999998,
+      "capacity": 0.0576,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_053",
+      "lat": 40.75999999999999,
+      "lon": -73.94999999999997,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_054",
+      "lat": 40.75999999999999,
+      "lon": -73.93999999999997,
+      "capacity": 0.0432,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_055",
+      "lat": 40.76999999999999,
+      "lon": -74.01,
+      "capacity": 0.0648,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_056",
+      "lat": 40.76999999999999,
+      "lon": -74.0,
+      "capacity": 0.072,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_057",
+      "lat": 40.76999999999999,
+      "lon": -73.99,
+      "capacity": 0.0432,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_058",
+      "lat": 40.76999999999999,
+      "lon": -73.97999999999999,
+      "capacity": 0.0648,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_059",
+      "lat": 40.76999999999999,
+      "lon": -73.96999999999998,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_060",
+      "lat": 40.76999999999999,
+      "lon": -73.95999999999998,
+      "capacity": 0.0792,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_061",
+      "lat": 40.76999999999999,
+      "lon": -73.94999999999997,
+      "capacity": 0.0288,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_062",
+      "lat": 40.76999999999999,
+      "lon": -73.93999999999997,
+      "capacity": 0.0648,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_063",
+      "lat": 40.77999999999999,
+      "lon": -74.01,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_064",
+      "lat": 40.77999999999999,
+      "lon": -74.0,
+      "capacity": 0.072,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_065",
+      "lat": 40.77999999999999,
+      "lon": -73.99,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_066",
+      "lat": 40.77999999999999,
+      "lon": -73.97999999999999,
+      "capacity": 0.0576,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_067",
+      "lat": 40.77999999999999,
+      "lon": -73.96999999999998,
+      "capacity": 0.0648,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_068",
+      "lat": 40.77999999999999,
+      "lon": -73.95999999999998,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_069",
+      "lat": 40.77999999999999,
+      "lon": -73.94999999999997,
+      "capacity": 0.0504,
+      "utilization": 0,
+      "type": "level_2"
+    },
+    {
+      "id": "EV_L2_070",
+      "lat": 40.77999999999999,
+      "lon": -73.93999999999997,
+      "capacity": 0.036,
+      "utilization": 0,
+      "type": "level_2"
+    }
+  ],
+  "metrics": {
+    "total_generation": 544.11,
+    "total_load": 544.11,
+    "losses": 0.0,
+    "renewable_generation": 49.26,
+    "battery_output": 0,
+    "num_violations": 0
+  }
+}

@@ -760,6 +760,496 @@
     </div>
     
     <script>
+        // Enhanced Power Grid Visualization System
+        class ManhattanPowerGridVisualizer {
+            constructor(map, powerGridLayer) {
+                this.map = map;
+                this.powerGridLayer = powerGridLayer;
+                this.components = {
+                    substations138kV: L.layerGroup(),
+                    substations27kV: L.layerGroup(),
+                    substations13_8kV: L.layerGroup(),
+                    substations4_16kV: L.layerGroup(),
+                    transmissionLines: L.layerGroup(),
+                    distributionLines: L.layerGroup(),
+                    generators: L.layerGroup(),
+                    transformers: L.layerGroup(),
+                    evStations: L.layerGroup(),
+                    criticalLoads: L.layerGroup()
+                };
+                
+                // Add all component layers to main power grid layer
+                Object.values(this.components).forEach(layer => {
+                    powerGridLayer.addLayer(layer);
+                });
+                
+                // Color schemes for different voltage levels
+                this.voltageColors = {
+                    138: '#FF0000',      // Red for transmission
+                    27: '#FF6600',       // Orange for subtransmission
+                    13.8: '#FFAA00',     // Yellow-orange for primary distribution
+                    4.16: '#FFD700',     // Gold for secondary distribution
+                    0.48: '#90EE90'      // Light green for service level
+                };
+                
+                // Line styles by voltage
+                this.lineStyles = {
+                    138: { weight: 5, opacity: 0.9, dashArray: null },
+                    27: { weight: 4, opacity: 0.85, dashArray: '10, 5' },
+                    13.8: { weight: 3, opacity: 0.8, dashArray: '5, 5' },
+                    4.16: { weight: 2, opacity: 0.75, dashArray: '3, 3' }
+                };
+                
+                // Component icons
+                this.icons = this.createIcons();
+                
+                // Animation states
+                this.animationEnabled = true;
+                this.flowAnimations = [];
+            }
+            
+            createIcons() {
+                return {
+                    substation138kV: L.divIcon({
+                        html: `<div style="width: 50px; height: 50px; background: linear-gradient(135deg, #FF0000 0%, #8B0000 100%); 
+                               border-radius: 50%; border: 4px solid white; box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+                               display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+                               ⚡
+                            </div>`,
+                        iconSize: [50, 50],
+                        iconAnchor: [25, 25],
+                        className: 'substation-138kv'
+                    }),
+                    
+                    substation27kV: L.divIcon({
+                        html: `<div style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF6600 0%, #CC5200 100%); 
+                               border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+                               display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">
+                               ⚡
+                            </div>`,
+                        iconSize: [40, 40],
+                        iconAnchor: [20, 20],
+                        className: 'substation-27kv'
+                    }),
+                    
+                    substation13_8kV: L.divIcon({
+                        html: `<div style="width: 32px; height: 32px; background: linear-gradient(135deg, #FFAA00 0%, #CC8800 100%); 
+                               border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                               display: flex; align-items: center; justify-content: center; color: white; font-size: 16px;">
+                               🔌
+                            </div>`,
+                        iconSize: [32, 32],
+                        iconAnchor: [16, 16],
+                        className: 'substation-13-8kv'
+                    }),
+                    
+                    substation4_16kV: L.divIcon({
+                        html: `<div style="width: 24px; height: 24px; background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%); 
+                               border-radius: 50%; border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+                               display: flex; align-items: center; justify-content: center; color: #333; font-size: 12px;">
+                               ⊡
+                            </div>`,
+                        iconSize: [24, 24],
+                        iconAnchor: [12, 12],
+                        className: 'substation-4-16kv'
+                    }),
+                    
+                    gasGenerator: L.divIcon({
+                        html: `<div style="width: 36px; height: 36px; background: linear-gradient(135deg, #808080 0%, #404040 100%); 
+                               border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                               display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;">
+                               ⚙️
+                            </div>`,
+                        iconSize: [36, 36],
+                        iconAnchor: [18, 18],
+                        className: 'generator-gas'
+                    }),
+                    
+                    solarGenerator: L.divIcon({
+                        html: `<div style="width: 36px; height: 36px; background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%); 
+                               border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                               display: flex; align-items: center; justify-content: center; font-size: 18px;">
+                               ☀️
+                            </div>`,
+                        iconSize: [36, 36],
+                        iconAnchor: [18, 18],
+                        className: 'generator-solar'
+                    }),
+                    
+                    batteryStorage: L.divIcon({
+                        html: `<div style="width: 36px; height: 36px; background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); 
+                               border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                               display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;">
+                               🔋
+                            </div>`,
+                        iconSize: [36, 36],
+                        iconAnchor: [18, 18],
+                        className: 'generator-battery'
+                    }),
+                    
+                    transformer: L.divIcon({
+                        html: `<div style="width: 20px; height: 20px; background: #9C27B0; 
+                               border-radius: 4px; border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+                               display: flex; align-items: center; justify-content: center; color: white; font-size: 10px;">
+                               T
+                            </div>`,
+                        iconSize: [20, 20],
+                        iconAnchor: [10, 10],
+                        className: 'transformer'
+                    })
+                };
+            }
+            
+            drawPowerNetwork(networkData) {
+                if (!networkData) return;
+                
+                // Clear existing components
+                Object.values(this.components).forEach(layer => layer.clearLayers());
+                
+                // Draw buses (substations)
+                if (networkData.buses) {
+                    networkData.buses.forEach(bus => {
+                        let icon, layer;
+                        
+                        // Select icon and layer based on voltage
+                        if (bus.voltage === 138) {
+                            icon = this.icons.substation138kV;
+                            layer = this.components.substations138kV;
+                        } else if (bus.voltage === 27) {
+                            icon = this.icons.substation27kV;
+                            layer = this.components.substations27kV;
+                        } else if (bus.voltage === 13.8) {
+                            icon = this.icons.substation13_8kV;
+                            layer = this.components.substations13_8kV;
+                        } else if (bus.voltage === 4.16) {
+                            icon = this.icons.substation4_16kV;
+                            layer = this.components.substations4_16kV;
+                        }
+                        
+                        if (icon && layer) {
+                            const marker = L.marker([bus.lat, bus.lon], { 
+                                icon: icon,
+                                zIndexOffset: 1000 - bus.voltage // Higher voltage = higher z-index
+                            });
+                            
+                            marker.bindPopup(`
+                                <div style="min-width: 250px;">
+                                    <h3>📍 ${bus.id}</h3>
+                                    <table style="width: 100%;">
+                                        <tr><td>Type:</td><td><b>${bus.type}</b></td></tr>
+                                        <tr><td>Voltage:</td><td><b>${bus.voltage} kV</b></td></tr>
+                                        <tr><td>Location:</td><td>${bus.lat.toFixed(4)}, ${bus.lon.toFixed(4)}</td></tr>
+                                    </table>
+                                </div>
+                            `);
+                            
+                            layer.addLayer(marker);
+                        }
+                    });
+                }
+                
+                // Draw lines with proper styling and animation
+                if (networkData.lines) {
+                    networkData.lines.forEach(line => {
+                        const voltage = line.voltage || 138;
+                        const color = this.voltageColors[voltage] || '#999999';
+                        const style = this.lineStyles[voltage] || { weight: 2, opacity: 0.7 };
+                        
+                        // Calculate color based on utilization
+                        let lineColor = color;
+                        if (line.utilization > 90) {
+                            lineColor = '#FF0000'; // Critical
+                        } else if (line.utilization > 75) {
+                            lineColor = '#FF6600'; // Warning
+                        } else if (line.utilization > 50) {
+                            lineColor = '#FFAA00'; // Moderate
+                        } else {
+                            lineColor = color; // Normal
+                        }
+                        
+                        const polyline = L.polyline(
+                            [
+                                [line.from_pos[1], line.from_pos[0]],
+                                [line.to_pos[1], line.to_pos[0]]
+                            ],
+                            {
+                                color: lineColor,
+                                weight: style.weight * (1 + line.utilization / 200), // Thicker when loaded
+                                opacity: style.opacity,
+                                dashArray: style.dashArray,
+                                className: `power-line voltage-${voltage}`
+                            }
+                        );
+                        
+                        // Add animated flow effect for high utilization
+                        if (line.utilization > 30 && this.animationEnabled) {
+                            polyline.options.className += ' power-flow-active';
+                        }
+                        
+                        polyline.bindPopup(`
+                            <div style="min-width: 300px;">
+                                <h3>⚡ ${line.id}</h3>
+                                <table style="width: 100%;">
+                                    <tr><td>Voltage:</td><td><b>${voltage} kV</b></td></tr>
+                                    <tr><td>Capacity:</td><td><b>${line.capacity} MW</b></td></tr>
+                                    <tr><td>Current Flow:</td><td><b>${line.flow.toFixed(1)} MW</b></td></tr>
+                                    <tr><td>Utilization:</td><td>
+                                        <div style="width: 100%; height: 20px; background: #ddd; border-radius: 10px; overflow: hidden;">
+                                            <div style="width: ${line.utilization}%; height: 100%; 
+                                                 background: ${line.utilization > 90 ? '#FF0000' : line.utilization > 75 ? '#FF6600' : '#4CAF50'};">
+                                            </div>
+                                        </div>
+                                        <b>${line.utilization.toFixed(1)}%</b>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        `);
+                        
+                        // Add to appropriate layer
+                        if (voltage >= 100) {
+                            this.components.transmissionLines.addLayer(polyline);
+                        } else {
+                            this.components.distributionLines.addLayer(polyline);
+                        }
+                    });
+                }
+                
+                // Draw generators with real-time output
+                if (networkData.generators) {
+                    networkData.generators.forEach(gen => {
+                        let icon;
+                        
+                        // Select icon based on generator type
+                        if (gen.type === 'solar_pv') {
+                            icon = this.icons.solarGenerator;
+                        } else if (gen.type === 'battery') {
+                            icon = this.icons.batteryStorage;
+                        } else {
+                            icon = this.icons.gasGenerator;
+                        }
+                        
+                        const marker = L.marker([gen.lat, gen.lon], { 
+                            icon: icon,
+                            zIndexOffset: 500
+                        });
+                        
+                        // Add pulsing effect for active generators
+                        if (gen.output > 0) {
+                            marker.options.className = (marker.options.className || '') + ' generator-active';
+                        }
+                        
+                        marker.bindPopup(`
+                            <div style="min-width: 280px;">
+                                <h3>🏭 ${gen.id}</h3>
+                                <table style="width: 100%;">
+                                    <tr><td>Type:</td><td><b>${gen.type.replace('_', ' ')}</b></td></tr>
+                                    <tr><td>Capacity:</td><td><b>${gen.capacity} MW</b></td></tr>
+                                    <tr><td>Output:</td><td><b>${gen.output.toFixed(1)} MW</b></td></tr>
+                                    <tr><td>Utilization:</td><td>
+                                        <div style="width: 100%; height: 20px; background: #ddd; border-radius: 10px; overflow: hidden;">
+                                            <div style="width: ${gen.utilization}%; height: 100%; 
+                                                 background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%);">
+                                            </div>
+                                        </div>
+                                        <b>${gen.utilization.toFixed(1)}%</b>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        `);
+                        
+                        this.components.generators.addLayer(marker);
+                    });
+                }
+                
+                // Draw transformers at key locations
+                if (networkData.transformers) {
+                    // Place transformer symbols at midpoints of certain lines
+                    networkData.transformers.slice(0, 20).forEach((xfmr, idx) => {
+                        // Calculate a position based on the transformer's voltage ratio
+                        const lat = 40.71 + (idx % 10) * 0.008;
+                        const lon = -74.00 + Math.floor(idx / 10) * 0.01;
+                        
+                        const marker = L.marker([lat, lon], { 
+                            icon: this.icons.transformer,
+                            zIndexOffset: 300
+                        });
+                        
+                        marker.bindPopup(`
+                            <div>
+                                <h4>🔄 ${xfmr.id}</h4>
+                                <p>Rating: ${xfmr.rating} MVA</p>
+                                <p>Voltage: ${xfmr.voltage_ratio}</p>
+                            </div>
+                        `);
+                        
+                        this.components.transformers.addLayer(marker);
+                    });
+                }
+                
+                // Draw EV stations with utilization
+                if (networkData.ev_stations) {
+                    networkData.ev_stations.forEach(station => {
+                        const color = station.utilization > 80 ? '#FF0000' : 
+                                     station.utilization > 50 ? '#FFA500' : '#4CAF50';
+                        
+                        const icon = L.divIcon({
+                            html: `<div style="width: 28px; height: 28px; background: ${color}; 
+                                   border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                                   display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: bold;">
+                                   ⚡
+                                </div>`,
+                            iconSize: [28, 28],
+                            iconAnchor: [14, 14],
+                            className: 'ev-station-power'
+                        });
+                        
+                        const marker = L.marker([station.lat, station.lon], { 
+                            icon: icon,
+                            zIndexOffset: 400
+                        });
+                        
+                        marker.bindPopup(`
+                            <div style="min-width: 250px;">
+                                <h3>🔌 EV Station ${station.id}</h3>
+                                <table style="width: 100%;">
+                                    <tr><td>Type:</td><td><b>${station.type}</b></td></tr>
+                                    <tr><td>Capacity:</td><td><b>${station.capacity} MW</b></td></tr>
+                                    <tr><td>Utilization:</td><td><b>${station.utilization.toFixed(1)}%</b></td></tr>
+                                </table>
+                            </div>
+                        `);
+                        
+                        this.components.evStations.addLayer(marker);
+                    });
+                }
+                
+                // Add metrics overlay
+                this.updateMetricsOverlay(networkData.metrics);
+            }
+            
+            updateMetricsOverlay(metrics) {
+                if (!metrics) return;
+                
+                // Remove existing overlay if present
+                const existingOverlay = document.getElementById('power-metrics-overlay');
+                if (existingOverlay) {
+                    existingOverlay.remove();
+                }
+                
+                // Create new metrics overlay
+                const overlay = document.createElement('div');
+                overlay.id = 'power-metrics-overlay';
+                overlay.style.cssText = `
+                    position: absolute;
+                    top: 150px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(255, 255, 255, 0.95);
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                    z-index: 1000;
+                    display: flex;
+                    gap: 20px;
+                    font-size: 12px;
+                `;
+                
+                overlay.innerHTML = `
+                    <div>
+                        <strong>Generation:</strong> ${metrics.total_generation} MW
+                    </div>
+                    <div>
+                        <strong>Load:</strong> ${metrics.total_load} MW
+                    </div>
+                    <div>
+                        <strong>Losses:</strong> ${metrics.losses} MW
+                    </div>
+                    <div>
+                        <strong>Renewable:</strong> ${metrics.renewable_generation} MW
+                    </div>
+                    <div>
+                        <strong>Battery:</strong> ${metrics.battery_output} MW
+                    </div>
+                    ${metrics.num_violations > 0 ? `
+                        <div style="color: red;">
+                            <strong>⚠️ Violations:</strong> ${metrics.num_violations}
+                        </div>
+                    ` : ''}
+                `;
+                
+                document.body.appendChild(overlay);
+            }
+            
+            toggleAnimation() {
+                this.animationEnabled = !this.animationEnabled;
+                // Update all line animations
+                this.components.transmissionLines.eachLayer(layer => {
+                    if (this.animationEnabled) {
+                        layer._path.classList.add('power-flow-active');
+                    } else {
+                        layer._path.classList.remove('power-flow-active');
+                    }
+                });
+            }
+        }
+        
+        // Add CSS for enhanced power grid animations
+        const powerGridStyles = document.createElement('style');
+        powerGridStyles.innerHTML = `
+            .power-line {
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+            
+            .power-flow-active {
+                stroke-dasharray: 10, 10;
+                animation: power-flow 2s linear infinite;
+            }
+            
+            @keyframes power-flow {
+                0% { stroke-dashoffset: 0; }
+                100% { stroke-dashoffset: -20; }
+            }
+            
+            .generator-active {
+                animation: generator-pulse 2s ease-in-out infinite;
+            }
+            
+            @keyframes generator-pulse {
+                0%, 100% { transform: scale(1); opacity: 1; }
+                50% { transform: scale(1.2); opacity: 0.8; }
+            }
+            
+            .substation-138kv, .substation-27kv, .substation-13-8kv, .substation-4-16kv {
+                transition: transform 0.3s ease;
+            }
+            
+            .substation-138kv:hover, .substation-27kv:hover, .substation-13-8kv:hover, .substation-4-16kv:hover {
+                transform: scale(1.1);
+            }
+            
+            #power-metrics-overlay {
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            .voltage-138 { z-index: 500; }
+            .voltage-27 { z-index: 400; }
+            .voltage-13 { z-index: 300; }
+            .voltage-4 { z-index: 200; }
+            
+            /* Violation warning animation */
+            @keyframes violation-pulse {
+                0%, 100% { background-color: rgba(255, 0, 0, 0.2); }
+                50% { background-color: rgba(255, 0, 0, 0.5); }
+            }
+            
+            .violation-warning {
+                animation: violation-pulse 1s ease-in-out infinite;
+            }
+        `;
+        document.head.appendChild(powerGridStyles);
+        
         // Initialize map centered on Manhattan
         const map = L.map('map', {
             center: [40.7580, -73.9855],  // Times Square
@@ -797,13 +1287,13 @@
         const evStationLayer = L.layerGroup().addTo(map);
         const powerGridLayer = L.layerGroup();  // Not added by default
         
+        // Initialize the enhanced power grid visualizer
+        let powerGridVisualizer = new ManhattanPowerGridVisualizer(map, powerGridLayer);
+        
         // Storage
         let vehicles = {};
         let trafficLights = {};
         let evStations = {};
-        let powerLines = {};
-        let substations = {};
-        let generators = {};
         let gridVisible = false;
         
         // Create vehicle icon
@@ -875,111 +1365,6 @@
             });
         }
         
-        // Create substation icon
-        function createSubstationIcon(bus) {
-            const icon = bus.type === 'transmission' ? '⚡' : '🔌';
-            const size = bus.type === 'transmission' ? 40 : 32;
-            
-            return L.divIcon({
-                html: `<div class="substation-icon" style="width: ${size}px; height: ${size}px;">
-                    ${icon}
-                </div>`,
-                iconSize: [size, size],
-                iconAnchor: [size/2, size/2],
-                className: 'substation-marker'
-            });
-        }
-        
-        // Create generator icon
-        function createGeneratorIcon(generator) {
-            const icon = generator.type === 'solar' ? '☀️' : '⚙️';
-            const className = generator.type === 'solar' ? 'solar' : '';
-            
-            return L.divIcon({
-                html: `<div class="generator-icon ${className}">
-                    ${icon}
-                </div>`,
-                iconSize: [36, 36],
-                iconAnchor: [18, 18],
-                className: 'generator-marker'
-            });
-        }
-        
-        // Draw power lines
-        function drawPowerGrid(powerNetwork) {
-            if (!powerNetwork) return;
-            
-            // Clear existing power grid
-            powerGridLayer.clearLayers();
-            
-            // Draw power lines
-            if (powerNetwork.lines) {
-                powerNetwork.lines.forEach(line => {
-                    const polyline = L.polyline(
-                        [
-                            [line.from_pos[1], line.from_pos[0]],
-                            [line.to_pos[1], line.to_pos[0]]
-                        ],
-                        {
-                            color: line.capacity > 400 ? '#F44336' : '#FF9800',
-                            weight: line.capacity > 400 ? 4 : 2,
-                            opacity: 0.8,
-                            className: line.capacity > 400 ? 'power-line high-voltage' : 'power-line distribution'
-                        }
-                    );
-                    
-                    const utilization = (line.flow / line.capacity * 100).toFixed(1);
-                    polyline.bindPopup(`
-                        <strong>${line.id}</strong><br>
-                        Capacity: ${line.capacity} MW<br>
-                        Current Flow: ${line.flow.toFixed(1)} MW<br>
-                        Utilization: ${utilization}%
-                    `);
-                    
-                    powerGridLayer.addLayer(polyline);
-                });
-            }
-            
-            // Draw substations
-            if (powerNetwork.buses) {
-                powerNetwork.buses.forEach(bus => {
-                    const marker = L.marker(
-                        [bus.lat, bus.lon],
-                        { icon: createSubstationIcon(bus) }
-                    );
-                    
-                    marker.bindPopup(`
-                        <strong>${bus.id}</strong><br>
-                        Type: ${bus.type}<br>
-                        Voltage: ${bus.voltage} kV
-                    `);
-                    
-                    powerGridLayer.addLayer(marker);
-                });
-            }
-            
-            // Draw generators
-            if (powerNetwork.generators) {
-                powerNetwork.generators.forEach(gen => {
-                    const marker = L.marker(
-                        [gen.lat, gen.lon],
-                        { icon: createGeneratorIcon(gen) }
-                    );
-                    
-                    const utilization = (gen.output / gen.capacity * 100).toFixed(1);
-                    marker.bindPopup(`
-                        <strong>${gen.id}</strong><br>
-                        Type: ${gen.type}<br>
-                        Capacity: ${gen.capacity} MW<br>
-                        Output: ${gen.output.toFixed(1)} MW<br>
-                        Utilization: ${utilization}%
-                    `);
-                    
-                    powerGridLayer.addLayer(marker);
-                });
-            }
-        }
-        
         // Toggle power grid visibility
         document.getElementById('grid-toggle').addEventListener('click', () => {
             gridVisible = !gridVisible;
@@ -988,9 +1373,18 @@
             if (gridVisible) {
                 powerGridLayer.addTo(map);
                 toggleBtn.classList.add('active');
+                toggleBtn.innerHTML = '<i class="fas fa-bolt"></i> Hide Power Grid';
+                
+                // Request latest power network data
+                socket.emit('request_power_update');
             } else {
                 map.removeLayer(powerGridLayer);
                 toggleBtn.classList.remove('active');
+                toggleBtn.innerHTML = '<i class="fas fa-bolt"></i> Show Power Grid';
+                
+                // Remove metrics overlay
+                const overlay = document.getElementById('power-metrics-overlay');
+                if (overlay) overlay.remove();
             }
         });
         
@@ -1045,7 +1439,7 @@
                     animation: { duration: 0 },
                     plugins: { legend: { display: false } },
                     scales: {
-                        y: { beginAtZero: false, min: 1800, max: 2800 },
+                        y: { beginAtZero: false, min: 0, max: 3000 },
                         x: { display: false }
                     }
                 }
@@ -1057,7 +1451,8 @@
         let updateCounter = 0;
         
         socket.on('connect', () => {
-            console.log('✅ Connected to Manhattan Grid System');
+            console.log('✅ Connected to Manhattan Grid System with Ultra-Realistic Power Network');
+            console.log('⚡ Multi-voltage network: 138kV/27kV/13.8kV/4.16kV');
             setTimeout(() => {
                 document.getElementById('loading').classList.add('hidden');
             }, 1000);
@@ -1065,6 +1460,9 @@
         
         socket.on('system_ready', (data) => {
             console.log('System ready:', data.message);
+            if (data.features) {
+                console.log('Features:', data.features);
+            }
         });
         
         socket.on('update', (data) => {
@@ -1174,9 +1572,9 @@
                 });
             }
             
-            // Update power grid visualization
-            if (data.power_network) {
-                drawPowerGrid(data.power_network);
+            // Update power grid visualization with enhanced network data
+            if (data.power_network && powerGridVisualizer && gridVisible) {
+                powerGridVisualizer.drawPowerNetwork(data.power_network);
             }
             
             // Update metrics
@@ -1213,12 +1611,18 @@
             document.getElementById('peak-demand').textContent = (power.peak_demand_mw || 0).toFixed(1) + ' MW';
             document.getElementById('renewable').textContent = (power.renewable_percent || 0).toFixed(1) + '%';
             
-            // Update traffic flow status
+            // Update traffic flow status with violations
             const trafficDensity = metrics.vehicles?.total || 0;
+            const violations = metrics.grid?.violations || 0;
             let trafficStatus = 'Normal';
             if (trafficDensity > 500) trafficStatus = 'Heavy';
             else if (trafficDensity > 300) trafficStatus = 'Moderate';
             else if (trafficDensity < 100) trafficStatus = 'Light';
+            
+            // Add violation warning if present
+            if (violations > 0) {
+                trafficStatus += ` ⚠️ ${violations}`;
+            }
             document.getElementById('traffic-flow').textContent = trafficStatus;
             
             // Update charts
@@ -1239,9 +1643,20 @@
             }
         });
         
+        // Handle power network updates
+        socket.on('power_network_update', (data) => {
+            if (data.power_network && powerGridVisualizer && gridVisible) {
+                powerGridVisualizer.drawPowerNetwork(data.power_network);
+                console.log('⚡ Power network updated with', 
+                            data.power_network.buses?.length || 0, 'buses,',
+                            data.power_network.lines?.length || 0, 'lines,',
+                            data.power_network.generators?.length || 0, 'generators');
+            }
+        });
+        
         // Control handlers
         document.getElementById('start-btn').addEventListener('click', () => {
-            console.log('Starting simulation...');
+            console.log('Starting simulation with ultra-realistic power network...');
             socket.emit('start_simulation');
             document.getElementById('start-btn').style.display = 'none';
             document.getElementById('restart-btn').style.display = 'block';
@@ -1260,9 +1675,6 @@
             vehicles = {};
             trafficLights = {};
             evStations = {};
-            powerLines = {};
-            substations = {};
-            generators = {};
             trafficHistory = [];
             powerHistory = [];
             updateCounter = 0;
@@ -1306,10 +1718,11 @@
         // Initialize
         window.addEventListener('load', () => {
             initCharts();
-            console.log('🏙️ Manhattan Grid System with Power Network Ready');
-            console.log('⚡ Power grid visualization available');
+            console.log('🏙️ Manhattan Grid System with Ultra-Realistic Power Network Ready');
+            console.log('⚡ Power grid visualization: 138kV → 27kV → 13.8kV → 4.16kV');
+            console.log('📊 Supporting:', powerGridVisualizer.components);
             console.log('🚗 Smart EV routing enabled');
         });
-    </script>
+        </script>
 </body>
 </html>
