@@ -1,0 +1,229 @@
+{
+    "simulation": {
+        "name": "Manhattan Midtown Coupled Simulation",
+        "area": {
+            "north": 40.7614,
+            "south": 40.7527,
+            "east": -73.9734,
+            "west": -73.9897,
+            "description": "42nd-52nd Street, 5th-8th Avenue, Times Square Area"
+        },
+        "duration_seconds": 3600,
+        "step_size": 1.0,
+        "speed_factor": 10,
+        "visualization_port": 8050,
+        "seed": 42
+    },
+    
+    "sumo": {
+        "gui": false,
+        "step_length": 1.0,
+        "collision.action": "warn",
+        "routing.algorithm": "dijkstra",
+        "device.emissions.probability": 1.0,
+        "device.battery.probability": 1.0,
+        "lateral-resolution": 0.8,
+        "ignore-junction-blocker": 5
+    },
+    
+    "pypsa": {
+        "frequency": 60,
+        "voltage_levels": {
+            "transmission": 138000,
+            "distribution": 13800,
+            "low_voltage": 480
+        },
+        "slack_bus": "TimesSquare_Sub",
+        "solver": "glpk",
+        "snapshots": 3600
+    },
+    
+    "vehicles": {
+        "total_vehicles": 1000,
+        "ev_percentage": 0.15,
+        "bus_percentage": 0.05,
+        "taxi_percentage": 0.10,
+        "battery_capacity_kwh": {
+            "small_ev": 40,
+            "medium_ev": 60,
+            "large_ev": 100,
+            "bus_ev": 200
+        },
+        "consumption_kwh_per_km": {
+            "small_ev": 0.15,
+            "medium_ev": 0.20,
+            "large_ev": 0.25,
+            "bus_ev": 1.2
+        }
+    },
+    
+    "ev_charging": {
+        "level_2": {
+            "power_kw": 7.2,
+            "efficiency": 0.90
+        },
+        "dc_fast": {
+            "power_kw": 150,
+            "efficiency": 0.95
+        },
+        "supercharger": {
+            "power_kw": 250,
+            "efficiency": 0.95
+        },
+        "charge_threshold": 0.20,
+        "target_soc": 0.80
+    },
+    
+    "traffic_signals": {
+        "cycle_time": 120,
+        "yellow_time": 3,
+        "all_red_time": 2,
+        "power_consumption_w": {
+            "led": 100,
+            "traditional": 500
+        },
+        "backup_battery_hours": 4
+    },
+    
+    "buildings": {
+        "types": {
+            "office": {
+                "base_load_w_per_m2": 100,
+                "peak_factor": 1.5,
+                "peak_hours": [9, 17]
+            },
+            "residential": {
+                "base_load_w_per_m2": 40,
+                "peak_factor": 2.0,
+                "peak_hours": [19, 22]
+            },
+            "retail": {
+                "base_load_w_per_m2": 150,
+                "peak_factor": 1.3,
+                "peak_hours": [12, 20]
+            },
+            "hotel": {
+                "base_load_w_per_m2": 80,
+                "peak_factor": 1.4,
+                "peak_hours": [8, 23]
+            }
+        }
+    },
+    
+    "scenarios": {
+        "normal": {
+            "name": "Normal Day",
+            "time_of_day": "14:00",
+            "vehicle_factor": 1.0,
+            "load_factor": 1.0,
+            "ev_charging_demand": "moderate"
+        },
+        "rush_hour": {
+            "name": "Morning Rush Hour",
+            "time_of_day": "08:00",
+            "vehicle_factor": 2.0,
+            "load_factor": 1.3,
+            "ev_charging_demand": "low"
+        },
+        "evening_peak": {
+            "name": "Evening Peak",
+            "time_of_day": "18:00",
+            "vehicle_factor": 1.8,
+            "load_factor": 1.5,
+            "ev_charging_demand": "high"
+        },
+        "night": {
+            "name": "Night Time",
+            "time_of_day": "02:00",
+            "vehicle_factor": 0.3,
+            "load_factor": 0.6,
+            "ev_charging_demand": "very_high"
+        },
+        "blackout": {
+            "name": "Power Blackout",
+            "affected_substations": ["GrandCentral_Sub"],
+            "duration_minutes": 30,
+            "cascading": true
+        },
+        "traffic_incident": {
+            "name": "Major Traffic Incident",
+            "location": "Times Square",
+            "blocked_lanes": 2,
+            "duration_minutes": 45
+        },
+        "extreme_weather": {
+            "name": "Heat Wave",
+            "temperature_c": 38,
+            "load_increase_factor": 1.4,
+            "ev_range_reduction": 0.15
+        }
+    },
+    
+    "coupling": {
+        "sync_interval": 1.0,
+        "traffic_to_power": {
+            "signal_load": true,
+            "ev_charging": true,
+            "building_occupancy": true,
+            "street_lighting": true
+        },
+        "power_to_traffic": {
+            "signal_failures": true,
+            "charging_availability": true,
+            "building_evacuation": true,
+            "emergency_response": true
+        },
+        "cascade_thresholds": {
+            "voltage_collapse": 0.85,
+            "frequency_deviation": 0.5,
+            "traffic_gridlock": 0.75
+        }
+    },
+    
+    "visualization": {
+        "update_interval_ms": 100,
+        "map_center": [40.7570, -73.9815],
+        "initial_zoom": 15,
+        "3d_buildings": true,
+        "show_power_grid": true,
+        "show_traffic_flow": true,
+        "heatmap_resolution": 50,
+        "animation_speed": 1.0
+    },
+    
+    "metrics": {
+        "traffic": [
+            "average_speed",
+            "total_waiting_time",
+            "total_distance_traveled",
+            "emissions_co2",
+            "ev_charging_queue_length"
+        ],
+        "power": [
+            "total_load",
+            "peak_demand",
+            "voltage_violations",
+            "line_losses",
+            "renewable_penetration"
+        ],
+        "resilience": [
+            "recovery_time",
+            "cascade_size",
+            "affected_population",
+            "economic_loss"
+        ]
+    },
+    
+    "api_keys": {
+        "openai": "your-key-here",
+        "google_maps": "optional",
+        "weather": "optional"
+    },
+    
+    "logging": {
+        "level": "INFO",
+        "save_to_file": true,
+        "console_output": true,
+        "log_metrics_interval": 10
+    }
+}

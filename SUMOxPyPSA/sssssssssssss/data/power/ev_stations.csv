@@ -1,0 +1,9 @@
+name,lat,lon,type,power_kw,num_chargers,station_id,total_power_kw,queue_capacity,price_per_kwh
+Times Square Supercharger,40.758,-73.9855,SUPERCHARGER,250.0,8,ev_station_0,2000.0,16,0.35
+Bryant Park Fast Charge,40.7536,-73.9832,DC_FAST,150.0,6,ev_station_1,900.0,12,0.25
+Grand Central Station,40.7527,-73.9772,LEVEL_2,7.2,20,ev_station_2,144.0,40,0.25
+Port Authority Terminal,40.7571,-73.9897,DC_FAST,150.0,4,ev_station_3,600.0,8,0.25
+Rockefeller Center,40.7587,-73.9787,DC_FAST,100.0,6,ev_station_4,600.0,12,0.25
+5th Ave Parking,40.756,-73.974,LEVEL_2,7.2,15,ev_station_5,108.0,30,0.25
+8th Ave Garage,40.755,-73.987,LEVEL_2,7.2,10,ev_station_6,72.0,20,0.25
+Madison Square,40.754,-73.98,DC_FAST,50.0,8,ev_station_7,400.0,16,0.25

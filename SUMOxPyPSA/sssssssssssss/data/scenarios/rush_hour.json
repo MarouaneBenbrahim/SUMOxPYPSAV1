@@ -1,0 +1,9 @@
+{
+  "name": "Morning Rush Hour",
+  "description": "Peak morning traffic with high power demand",
+  "start_time": "08:00",
+  "vehicle_multiplier": 2.0,
+  "power_multiplier": 1.3,
+  "ev_charge_probability": 0.1,
+  "incidents": []
+}

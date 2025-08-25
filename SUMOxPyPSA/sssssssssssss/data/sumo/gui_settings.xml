@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<viewsettings>
+    <scheme name="Manhattan Simulation"/>
+    <viewport zoom="100" x="-8212856.7" y="4523549.699999999"/>
+    <delay value="100"/>
+    <vehicles vehicleQuality="2" showBlinker="true" vehicleSize="1"/>
+</viewsettings>

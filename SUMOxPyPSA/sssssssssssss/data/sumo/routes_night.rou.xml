@@ -1,0 +1,706 @@
+<?xml version="1.0" ?>
+<routes>
+    <route id="route_0" edges="e13 e33"/>
+    <route id="route_1" edges="e185 e206 e218"/>
+    <route id="route_2" edges="e207 e209"/>
+    <route id="route_3" edges="e96 e99 e119 e121"/>
+    <route id="route_4" edges="e31 e34 e55 e75"/>
+    <route id="route_5" edges="e98 e100 e102"/>
+    <route id="route_6" edges="e163 e165"/>
+    <route id="route_7" edges="e0 e2 e4 e6"/>
+    <route id="route_8" edges="e113 e116 e137"/>
+    <route id="route_9" edges="e197 e200"/>
+    <route id="route_10" edges="e187 e207 e209"/>
+    <route id="route_11" edges="e211 e212 e213 e214"/>
+    <route id="route_12" edges="e126 e128"/>
+    <route id="route_13" edges="e111 e113"/>
+    <route id="route_14" edges="e205 e208 e219"/>
+    <route id="route_15" edges="e20 e41 e62"/>
+    <route id="route_16" edges="e15 e36 e57"/>
+    <route id="route_17" edges="e65 e68 e89 e110"/>
+    <route id="route_18" edges="e203 e206"/>
+    <route id="route_19" edges="e159 e162 e182"/>
+    <route id="route_20" edges="e143 e164 e185 e205 e208 e219"/>
+    <route id="route_21" edges="e73 e76 e97 e118 e138 e141 e161 e164"/>
+    <route id="route_22" edges="e9 e29 e31 e33 e35 e37 e39"/>
+    <route id="route_23" edges="e158 e179 e200 e215 e216"/>
+    <route id="route_24" edges="e159 e162 e183 e203 e205"/>
+    <route id="route_25" edges="e214 e215 e216 e217 e218 e219"/>
+    <route id="route_26" edges="e162 e182 e185 e206 e218 e219"/>
+    <route id="route_27" edges="e152 e173 e194 e212 e213 e214"/>
+    <route id="route_28" edges="e108 e128 e130 e132 e134 e136"/>
+    <route id="route_29" edges="e10 e12 e15 e36 e56"/>
+    <route id="route_30" edges="e86 e89 e109 e111 e114 e135 e156"/>
+    <route id="route_31" edges="e33 e36 e57 e78 e98 e100"/>
+    <route id="route_32" edges="e114 e134 e136 e139 e159 e161"/>
+    <route id="route_33" edges="e176 e178 e181 e202 e216 e217 e218"/>
+    <route id="route_34" edges="e112 e132 e134 e137 e158 e178"/>
+    <route id="route_35" edges="e68 e89 e109 e111 e114"/>
+    <route id="route_36" edges="e3 e23 e26 e46 e48 e50 e53 e73"/>
+    <route id="route_37" edges="e40 e60 e62 e83 e104 e125"/>
+    <route id="route_38" edges="e124 e144 e146 e167 e188 e209"/>
+    <route id="route_39" edges="e192 e211 e212 e213 e214 e215 e216"/>
+    <route id="route_40" edges="e51 e71 e74 e94 e97 e118"/>
+    <route id="route_41" edges="e85 e106 e126 e128 e131 e151"/>
+    <route id="route_42" edges="e173 e193 e196 e213 e214 e215 e216"/>
+    <route id="route_43" edges="e128 e130 e133 e153 e155"/>
+    <route id="route_44" edges="e94 e96 e98 e100 e103 e123"/>
+    <route id="route_45" edges="e125 e146 e167 e188 e209"/>
+    <route id="route_46" edges="e17 e38 e58 e60 e62 e83"/>
+    <route id="route_47" edges="e43 e64 e84 e87 e108 e129"/>
+    <route id="route_48" edges="e215 e216 e217 e218 e219"/>
+    <route id="route_49" edges="e84 e86 e88 e91 e112 e132 e134 e137 e157 e160 e181 e202 e216 e217 e218"/>
+    <route id="route_50" edges="e215 e216 e217 e218 e219"/>
+    <route id="route_51" edges="e100 e102 e104 e125 e146 e167 e188 e209"/>
+    <route id="route_52" edges="e173 e193 e196 e213 e214 e215 e216 e217 e218"/>
+    <route id="route_53" edges="e151 e153 e156 e177 e198 e214 e215 e216 e217 e218 e219"/>
+    <route id="route_54" edges="e119 e122 e143 e163 e165 e167 e188 e209"/>
+    <route id="route_55" edges="e68 e89 e110 e131 e151 e153 e156 e177 e198"/>
+    <route id="route_56" edges="e20 e41 e62 e83 e104 e125 e146 e167 e188 e209"/>
+    <route id="route_57" edges="e50 e53 e73 e75 e78 e99 e119 e122 e142 e145 e166 e187 e208 e219"/>
+    <route id="route_58" edges="e216 e217 e218 e219"/>
+    <route id="route_59" edges="e33 e35 e38 e59 e79 e81 e83 e104 e125"/>
+    <route id="route_60" edges="e206 e218 e219"/>
+    <route id="route_61" edges="e126 e128 e131 e151 e153 e155 e157 e160 e181 e202 e216"/>
+    <route id="route_62" edges="e57 e78 e98 e100 e103 e124 e145 e166 e187 e208 e219"/>
+    <route id="route_63" edges="e75 e77 e80 e100 e103 e123 e125 e146 e167 e188 e209"/>
+    <route id="route_64" edges="e181 e201 e203 e206 e218 e219"/>
+    <route id="route_65" edges="e135 e155 e157 e160 e181 e202 e216 e217 e218 e219"/>
+    <route id="route_66" edges="e29 e32 e52 e55 e76 e96 e98 e101 e122 e143 e163"/>
+    <route id="route_67" edges="e90 e93 e114 e134 e137 e158 e178 e180 e182 e185 e205"/>
+    <route id="route_68" edges="e177 e198 e214 e215 e216 e217 e218 e219"/>
+    <vehicle id="veh_2" type="car" route="route_58" depart="0"/>
+    <vehicle id="veh_4" type="car" route="route_16" depart="0"/>
+    <vehicle id="veh_9" type="car" route="route_51" depart="0"/>
+    <vehicle id="veh_11" type="car" route="route_15" depart="0"/>
+    <vehicle id="veh_13" type="car" route="route_13" depart="0"/>
+    <vehicle id="veh_15" type="ev" route="route_52" depart="0">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="52197"/>
+    </vehicle>
+    <vehicle id="veh_23" type="bus" route="route_35" depart="0"/>
+    <vehicle id="veh_25" type="taxi" route="route_63" depart="0"/>
+    <vehicle id="veh_30" type="car" route="route_22" depart="0"/>
+    <vehicle id="veh_40" type="car" route="route_35" depart="0"/>
+    <vehicle id="veh_41" type="ev" route="route_65" depart="0">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="25251"/>
+    </vehicle>
+    <vehicle id="veh_50" type="ev" route="route_14" depart="0">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="28617"/>
+    </vehicle>
+    <vehicle id="veh_51" type="car" route="route_15" depart="0"/>
+    <vehicle id="veh_52" type="car" route="route_55" depart="0"/>
+    <vehicle id="veh_61" type="car" route="route_9" depart="0"/>
+    <vehicle id="veh_73" type="car" route="route_11" depart="0"/>
+    <vehicle id="veh_87" type="car" route="route_54" depart="0"/>
+    <vehicle id="veh_91" type="car" route="route_62" depart="0"/>
+    <vehicle id="veh_96" type="car" route="route_33" depart="0"/>
+    <vehicle id="veh_102" type="car" route="route_14" depart="0"/>
+    <vehicle id="veh_109" type="taxi" route="route_68" depart="0"/>
+    <vehicle id="veh_114" type="car" route="route_42" depart="0"/>
+    <vehicle id="veh_119" type="bus" route="route_38" depart="0"/>
+    <vehicle id="veh_132" type="taxi" route="route_33" depart="0"/>
+    <vehicle id="veh_136" type="taxi" route="route_68" depart="0"/>
+    <vehicle id="veh_138" type="ev" route="route_47" depart="0">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="44192"/>
+    </vehicle>
+    <vehicle id="veh_144" type="car" route="route_10" depart="0"/>
+    <vehicle id="veh_163" type="ev" route="route_67" depart="0">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="35826"/>
+    </vehicle>
+    <vehicle id="veh_164" type="car" route="route_53" depart="0"/>
+    <vehicle id="veh_182" type="taxi" route="route_54" depart="0"/>
+    <vehicle id="veh_189" type="car" route="route_49" depart="0"/>
+    <vehicle id="veh_212" type="car" route="route_27" depart="0"/>
+    <vehicle id="veh_213" type="car" route="route_24" depart="0"/>
+    <vehicle id="veh_216" type="bus" route="route_46" depart="0"/>
+    <vehicle id="veh_217" type="car" route="route_0" depart="0"/>
+    <vehicle id="veh_220" type="car" route="route_34" depart="0"/>
+    <vehicle id="veh_226" type="car" route="route_60" depart="0"/>
+    <vehicle id="veh_228" type="ev" route="route_19" depart="0">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="26710"/>
+    </vehicle>
+    <vehicle id="veh_232" type="car" route="route_35" depart="0"/>
+    <vehicle id="veh_238" type="car" route="route_51" depart="0"/>
+    <vehicle id="veh_239" type="car" route="route_7" depart="0"/>
+    <vehicle id="veh_243" type="bus" route="route_0" depart="0"/>
+    <vehicle id="veh_249" type="car" route="route_1" depart="0"/>
+    <vehicle id="veh_253" type="car" route="route_16" depart="0"/>
+    <vehicle id="veh_254" type="car" route="route_48" depart="0"/>
+    <vehicle id="veh_259" type="bus" route="route_37" depart="0"/>
+    <vehicle id="veh_264" type="car" route="route_21" depart="0"/>
+    <vehicle id="veh_272" type="car" route="route_23" depart="0"/>
+    <vehicle id="veh_286" type="car" route="route_32" depart="0"/>
+    <vehicle id="veh_287" type="car" route="route_43" depart="0"/>
+    <vehicle id="veh_291" type="ev" route="route_51" depart="0">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="45866"/>
+    </vehicle>
+    <vehicle id="veh_292" type="car" route="route_20" depart="0"/>
+    <vehicle id="veh_293" type="car" route="route_38" depart="0"/>
+    <vehicle id="veh_300" type="car" route="route_58" depart="0"/>
+    <vehicle id="veh_311" type="car" route="route_40" depart="0"/>
+    <vehicle id="veh_314" type="car" route="route_54" depart="0"/>
+    <vehicle id="veh_315" type="car" route="route_68" depart="0"/>
+    <vehicle id="veh_320" type="car" route="route_50" depart="0"/>
+    <vehicle id="veh_323" type="car" route="route_43" depart="0"/>
+    <vehicle id="veh_324" type="car" route="route_23" depart="0"/>
+    <vehicle id="veh_330" type="car" route="route_12" depart="0"/>
+    <vehicle id="veh_335" type="car" route="route_1" depart="0"/>
+    <vehicle id="veh_342" type="car" route="route_68" depart="0"/>
+    <vehicle id="veh_350" type="car" route="route_59" depart="0"/>
+    <vehicle id="veh_355" type="car" route="route_3" depart="0"/>
+    <vehicle id="veh_357" type="taxi" route="route_53" depart="0"/>
+    <vehicle id="veh_366" type="car" route="route_31" depart="0"/>
+    <vehicle id="veh_369" type="ev" route="route_12" depart="0">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="19378"/>
+    </vehicle>
+    <vehicle id="veh_372" type="car" route="route_2" depart="0"/>
+    <vehicle id="veh_389" type="ev" route="route_41" depart="0">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="12433"/>
+    </vehicle>
+    <vehicle id="veh_391" type="car" route="route_58" depart="0"/>
+    <vehicle id="veh_83" type="car" route="route_50" depart="59"/>
+    <vehicle id="veh_221" type="ev" route="route_50" depart="104">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="41100"/>
+    </vehicle>
+    <vehicle id="veh_31" type="car" route="route_5" depart="108"/>
+    <vehicle id="veh_317" type="taxi" route="route_22" depart="110"/>
+    <vehicle id="veh_321" type="car" route="route_29" depart="186"/>
+    <vehicle id="veh_222" type="ev" route="route_35" depart="217">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="72255"/>
+    </vehicle>
+    <vehicle id="veh_296" type="ev" route="route_6" depart="240">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="46388"/>
+    </vehicle>
+    <vehicle id="veh_192" type="taxi" route="route_0" depart="243"/>
+    <vehicle id="veh_81" type="car" route="route_29" depart="353"/>
+    <vehicle id="veh_367" type="car" route="route_67" depart="429"/>
+    <vehicle id="veh_278" type="bus" route="route_60" depart="808"/>
+    <vehicle id="veh_145" type="ev" route="route_62" depart="858">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="16984"/>
+    </vehicle>
+    <vehicle id="veh_19" type="car" route="route_65" depart="982"/>
+    <vehicle id="veh_227" type="car" route="route_13" depart="1030"/>
+    <vehicle id="veh_201" type="car" route="route_60" depart="1106"/>
+    <vehicle id="veh_275" type="car" route="route_4" depart="1180"/>
+    <vehicle id="veh_380" type="car" route="route_60" depart="1262"/>
+    <vehicle id="veh_53" type="car" route="route_11" depart="1372"/>
+    <vehicle id="veh_318" type="car" route="route_47" depart="1493"/>
+    <vehicle id="veh_45" type="car" route="route_0" depart="1575"/>
+    <vehicle id="veh_303" type="bus" route="route_26" depart="1590"/>
+    <vehicle id="veh_120" type="ev" route="route_31" depart="1592">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="76344"/>
+    </vehicle>
+    <vehicle id="veh_130" type="car" route="route_2" depart="1602"/>
+    <vehicle id="veh_8" type="car" route="route_54" depart="1622"/>
+    <vehicle id="veh_343" type="car" route="route_14" depart="1709"/>
+    <vehicle id="veh_172" type="car" route="route_17" depart="1822"/>
+    <vehicle id="veh_69" type="car" route="route_33" depart="1885"/>
+    <vehicle id="veh_147" type="ev" route="route_66" depart="1906">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="80284"/>
+    </vehicle>
+    <vehicle id="veh_206" type="car" route="route_55" depart="2044"/>
+    <vehicle id="veh_188" type="car" route="route_16" depart="2073"/>
+    <vehicle id="veh_90" type="car" route="route_61" depart="2125"/>
+    <vehicle id="veh_100" type="car" route="route_52" depart="2172"/>
+    <vehicle id="veh_58" type="car" route="route_41" depart="2240"/>
+    <vehicle id="veh_43" type="car" route="route_5" depart="2313"/>
+    <vehicle id="veh_387" type="car" route="route_35" depart="2358"/>
+    <vehicle id="veh_363" type="ev" route="route_63" depart="2491">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="38678"/>
+    </vehicle>
+    <vehicle id="veh_177" type="car" route="route_42" depart="2521"/>
+    <vehicle id="veh_354" type="taxi" route="route_43" depart="2551"/>
+    <vehicle id="veh_84" type="car" route="route_61" depart="2643"/>
+    <vehicle id="veh_325" type="car" route="route_36" depart="2663"/>
+    <vehicle id="veh_26" type="car" route="route_66" depart="2664"/>
+    <vehicle id="veh_224" type="car" route="route_60" depart="2690"/>
+    <vehicle id="veh_251" type="car" route="route_31" depart="2801"/>
+    <vehicle id="veh_139" type="car" route="route_13" depart="2824"/>
+    <vehicle id="veh_295" type="bus" route="route_17" depart="2891"/>
+    <vehicle id="veh_383" type="taxi" route="route_5" depart="2904"/>
+    <vehicle id="veh_345" type="car" route="route_49" depart="2912"/>
+    <vehicle id="veh_116" type="car" route="route_4" depart="2952"/>
+    <vehicle id="veh_261" type="taxi" route="route_62" depart="2952"/>
+    <vehicle id="veh_202" type="car" route="route_66" depart="2988"/>
+    <vehicle id="veh_34" type="car" route="route_40" depart="3030"/>
+    <vehicle id="veh_368" type="car" route="route_5" depart="3162"/>
+    <vehicle id="veh_6" type="ev" route="route_16" depart="3252">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="35758"/>
+    </vehicle>
+    <vehicle id="veh_390" type="taxi" route="route_36" depart="3268"/>
+    <vehicle id="veh_0" type="car" route="route_18" depart="3300"/>
+    <vehicle id="veh_1" type="car" route="route_25" depart="3300"/>
+    <vehicle id="veh_3" type="ev" route="route_60" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="22047"/>
+    </vehicle>
+    <vehicle id="veh_5" type="car" route="route_55" depart="3300"/>
+    <vehicle id="veh_7" type="car" route="route_67" depart="3300"/>
+    <vehicle id="veh_10" type="car" route="route_30" depart="3300"/>
+    <vehicle id="veh_12" type="car" route="route_43" depart="3300"/>
+    <vehicle id="veh_14" type="car" route="route_5" depart="3300"/>
+    <vehicle id="veh_16" type="car" route="route_55" depart="3300"/>
+    <vehicle id="veh_17" type="taxi" route="route_61" depart="3300"/>
+    <vehicle id="veh_18" type="car" route="route_23" depart="3300"/>
+    <vehicle id="veh_20" type="ev" route="route_47" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="26245"/>
+    </vehicle>
+    <vehicle id="veh_21" type="car" route="route_58" depart="3300"/>
+    <vehicle id="veh_22" type="car" route="route_56" depart="3300"/>
+    <vehicle id="veh_24" type="car" route="route_12" depart="3300"/>
+    <vehicle id="veh_27" type="car" route="route_65" depart="3300"/>
+    <vehicle id="veh_28" type="car" route="route_54" depart="3300"/>
+    <vehicle id="veh_29" type="taxi" route="route_49" depart="3300"/>
+    <vehicle id="veh_32" type="car" route="route_26" depart="3300"/>
+    <vehicle id="veh_33" type="car" route="route_35" depart="3300"/>
+    <vehicle id="veh_35" type="ev" route="route_36" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="23961"/>
+    </vehicle>
+    <vehicle id="veh_36" type="taxi" route="route_56" depart="3300"/>
+    <vehicle id="veh_37" type="taxi" route="route_21" depart="3300"/>
+    <vehicle id="veh_38" type="taxi" route="route_33" depart="3300"/>
+    <vehicle id="veh_39" type="car" route="route_13" depart="3300"/>
+    <vehicle id="veh_42" type="car" route="route_3" depart="3300"/>
+    <vehicle id="veh_44" type="car" route="route_68" depart="3300"/>
+    <vehicle id="veh_46" type="car" route="route_3" depart="3300"/>
+    <vehicle id="veh_47" type="car" route="route_36" depart="3300"/>
+    <vehicle id="veh_48" type="car" route="route_54" depart="3300"/>
+    <vehicle id="veh_49" type="car" route="route_66" depart="3300"/>
+    <vehicle id="veh_54" type="car" route="route_35" depart="3300"/>
+    <vehicle id="veh_55" type="car" route="route_14" depart="3300"/>
+    <vehicle id="veh_56" type="car" route="route_10" depart="3300"/>
+    <vehicle id="veh_57" type="car" route="route_28" depart="3300"/>
+    <vehicle id="veh_59" type="bus" route="route_42" depart="3300"/>
+    <vehicle id="veh_60" type="taxi" route="route_65" depart="3300"/>
+    <vehicle id="veh_62" type="car" route="route_40" depart="3300"/>
+    <vehicle id="veh_63" type="car" route="route_4" depart="3300"/>
+    <vehicle id="veh_64" type="car" route="route_66" depart="3300"/>
+    <vehicle id="veh_65" type="car" route="route_4" depart="3300"/>
+    <vehicle id="veh_66" type="car" route="route_1" depart="3300"/>
+    <vehicle id="veh_67" type="taxi" route="route_48" depart="3300"/>
+    <vehicle id="veh_68" type="car" route="route_28" depart="3300"/>
+    <vehicle id="veh_70" type="car" route="route_62" depart="3300"/>
+    <vehicle id="veh_71" type="car" route="route_63" depart="3300"/>
+    <vehicle id="veh_72" type="taxi" route="route_25" depart="3300"/>
+    <vehicle id="veh_74" type="car" route="route_27" depart="3300"/>
+    <vehicle id="veh_75" type="ev" route="route_26" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="23776"/>
+    </vehicle>
+    <vehicle id="veh_76" type="car" route="route_4" depart="3300"/>
+    <vehicle id="veh_77" type="car" route="route_33" depart="3300"/>
+    <vehicle id="veh_78" type="car" route="route_30" depart="3300"/>
+    <vehicle id="veh_79" type="car" route="route_61" depart="3300"/>
+    <vehicle id="veh_80" type="car" route="route_23" depart="3300"/>
+    <vehicle id="veh_82" type="car" route="route_62" depart="3300"/>
+    <vehicle id="veh_85" type="taxi" route="route_28" depart="3300"/>
+    <vehicle id="veh_86" type="ev" route="route_57" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="33105"/>
+    </vehicle>
+    <vehicle id="veh_88" type="ev" route="route_14" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="52427"/>
+    </vehicle>
+    <vehicle id="veh_89" type="car" route="route_50" depart="3300"/>
+    <vehicle id="veh_92" type="car" route="route_30" depart="3300"/>
+    <vehicle id="veh_93" type="ev" route="route_52" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="36269"/>
+    </vehicle>
+    <vehicle id="veh_94" type="ev" route="route_40" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="27417"/>
+    </vehicle>
+    <vehicle id="veh_95" type="car" route="route_56" depart="3300"/>
+    <vehicle id="veh_97" type="car" route="route_34" depart="3300"/>
+    <vehicle id="veh_98" type="car" route="route_28" depart="3300"/>
+    <vehicle id="veh_99" type="car" route="route_5" depart="3300"/>
+    <vehicle id="veh_101" type="taxi" route="route_21" depart="3300"/>
+    <vehicle id="veh_103" type="car" route="route_42" depart="3300"/>
+    <vehicle id="veh_104" type="ev" route="route_2" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="31195"/>
+    </vehicle>
+    <vehicle id="veh_105" type="car" route="route_11" depart="3300"/>
+    <vehicle id="veh_106" type="car" route="route_42" depart="3300"/>
+    <vehicle id="veh_107" type="car" route="route_8" depart="3300"/>
+    <vehicle id="veh_108" type="car" route="route_66" depart="3300"/>
+    <vehicle id="veh_110" type="bus" route="route_20" depart="3300"/>
+    <vehicle id="veh_111" type="car" route="route_50" depart="3300"/>
+    <vehicle id="veh_112" type="car" route="route_29" depart="3300"/>
+    <vehicle id="veh_113" type="taxi" route="route_20" depart="3300"/>
+    <vehicle id="veh_115" type="car" route="route_31" depart="3300"/>
+    <vehicle id="veh_117" type="car" route="route_67" depart="3300"/>
+    <vehicle id="veh_118" type="ev" route="route_5" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="46488"/>
+    </vehicle>
+    <vehicle id="veh_121" type="ev" route="route_48" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="37418"/>
+    </vehicle>
+    <vehicle id="veh_122" type="car" route="route_16" depart="3300"/>
+    <vehicle id="veh_123" type="car" route="route_34" depart="3300"/>
+    <vehicle id="veh_124" type="car" route="route_9" depart="3300"/>
+    <vehicle id="veh_125" type="ev" route="route_53" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="72209"/>
+    </vehicle>
+    <vehicle id="veh_126" type="ev" route="route_19" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="79815"/>
+    </vehicle>
+    <vehicle id="veh_127" type="ev" route="route_24" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="77557"/>
+    </vehicle>
+    <vehicle id="veh_128" type="car" route="route_39" depart="3300"/>
+    <vehicle id="veh_129" type="car" route="route_54" depart="3300"/>
+    <vehicle id="veh_131" type="car" route="route_58" depart="3300"/>
+    <vehicle id="veh_133" type="car" route="route_60" depart="3300"/>
+    <vehicle id="veh_134" type="car" route="route_54" depart="3300"/>
+    <vehicle id="veh_135" type="ev" route="route_61" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="38195"/>
+    </vehicle>
+    <vehicle id="veh_137" type="car" route="route_48" depart="3300"/>
+    <vehicle id="veh_140" type="car" route="route_3" depart="3300"/>
+    <vehicle id="veh_141" type="car" route="route_29" depart="3300"/>
+    <vehicle id="veh_142" type="car" route="route_61" depart="3300"/>
+    <vehicle id="veh_143" type="car" route="route_39" depart="3300"/>
+    <vehicle id="veh_146" type="car" route="route_10" depart="3300"/>
+    <vehicle id="veh_148" type="car" route="route_29" depart="3300"/>
+    <vehicle id="veh_149" type="ev" route="route_39" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="27072"/>
+    </vehicle>
+    <vehicle id="veh_150" type="car" route="route_19" depart="3300"/>
+    <vehicle id="veh_151" type="ev" route="route_52" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="63918"/>
+    </vehicle>
+    <vehicle id="veh_152" type="car" route="route_34" depart="3300"/>
+    <vehicle id="veh_153" type="car" route="route_62" depart="3300"/>
+    <vehicle id="veh_154" type="car" route="route_40" depart="3300"/>
+    <vehicle id="veh_155" type="car" route="route_30" depart="3300"/>
+    <vehicle id="veh_156" type="car" route="route_61" depart="3300"/>
+    <vehicle id="veh_157" type="car" route="route_10" depart="3300"/>
+    <vehicle id="veh_158" type="car" route="route_54" depart="3300"/>
+    <vehicle id="veh_159" type="car" route="route_48" depart="3300"/>
+    <vehicle id="veh_160" type="ev" route="route_15" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="15890"/>
+    </vehicle>
+    <vehicle id="veh_161" type="bus" route="route_56" depart="3300"/>
+    <vehicle id="veh_162" type="car" route="route_14" depart="3300"/>
+    <vehicle id="veh_165" type="car" route="route_37" depart="3300"/>
+    <vehicle id="veh_166" type="ev" route="route_34" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="43917"/>
+    </vehicle>
+    <vehicle id="veh_167" type="car" route="route_47" depart="3300"/>
+    <vehicle id="veh_168" type="car" route="route_21" depart="3300"/>
+    <vehicle id="veh_169" type="ev" route="route_47" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="71101"/>
+    </vehicle>
+    <vehicle id="veh_170" type="car" route="route_32" depart="3300"/>
+    <vehicle id="veh_171" type="car" route="route_26" depart="3300"/>
+    <vehicle id="veh_173" type="bus" route="route_60" depart="3300"/>
+    <vehicle id="veh_174" type="ev" route="route_60" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="24452"/>
+    </vehicle>
+    <vehicle id="veh_175" type="ev" route="route_24" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="19484"/>
+    </vehicle>
+    <vehicle id="veh_176" type="bus" route="route_12" depart="3300"/>
+    <vehicle id="veh_178" type="ev" route="route_20" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="58121"/>
+    </vehicle>
+    <vehicle id="veh_179" type="ev" route="route_28" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="63549"/>
+    </vehicle>
+    <vehicle id="veh_180" type="car" route="route_1" depart="3300"/>
+    <vehicle id="veh_181" type="car" route="route_35" depart="3300"/>
+    <vehicle id="veh_183" type="car" route="route_39" depart="3300"/>
+    <vehicle id="veh_184" type="car" route="route_51" depart="3300"/>
+    <vehicle id="veh_185" type="car" route="route_25" depart="3300"/>
+    <vehicle id="veh_186" type="ev" route="route_27" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="14471"/>
+    </vehicle>
+    <vehicle id="veh_187" type="taxi" route="route_33" depart="3300"/>
+    <vehicle id="veh_190" type="car" route="route_35" depart="3300"/>
+    <vehicle id="veh_191" type="car" route="route_60" depart="3300"/>
+    <vehicle id="veh_193" type="car" route="route_27" depart="3300"/>
+    <vehicle id="veh_194" type="ev" route="route_21" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="38789"/>
+    </vehicle>
+    <vehicle id="veh_195" type="car" route="route_0" depart="3300"/>
+    <vehicle id="veh_196" type="car" route="route_6" depart="3300"/>
+    <vehicle id="veh_197" type="ev" route="route_60" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="33314"/>
+    </vehicle>
+    <vehicle id="veh_198" type="car" route="route_64" depart="3300"/>
+    <vehicle id="veh_199" type="car" route="route_30" depart="3300"/>
+    <vehicle id="veh_200" type="car" route="route_48" depart="3300"/>
+    <vehicle id="veh_203" type="car" route="route_10" depart="3300"/>
+    <vehicle id="veh_204" type="car" route="route_27" depart="3300"/>
+    <vehicle id="veh_205" type="car" route="route_35" depart="3300"/>
+    <vehicle id="veh_207" type="car" route="route_62" depart="3300"/>
+    <vehicle id="veh_208" type="car" route="route_32" depart="3300"/>
+    <vehicle id="veh_209" type="car" route="route_55" depart="3300"/>
+    <vehicle id="veh_210" type="car" route="route_22" depart="3300"/>
+    <vehicle id="veh_211" type="ev" route="route_44" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="48793"/>
+    </vehicle>
+    <vehicle id="veh_214" type="car" route="route_22" depart="3300"/>
+    <vehicle id="veh_215" type="car" route="route_1" depart="3300"/>
+    <vehicle id="veh_218" type="car" route="route_42" depart="3300"/>
+    <vehicle id="veh_219" type="ev" route="route_64" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="50969"/>
+    </vehicle>
+    <vehicle id="veh_223" type="car" route="route_3" depart="3300"/>
+    <vehicle id="veh_225" type="car" route="route_58" depart="3300"/>
+    <vehicle id="veh_229" type="car" route="route_22" depart="3300"/>
+    <vehicle id="veh_230" type="car" route="route_16" depart="3300"/>
+    <vehicle id="veh_231" type="ev" route="route_7" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="13345"/>
+    </vehicle>
+    <vehicle id="veh_233" type="car" route="route_24" depart="3300"/>
+    <vehicle id="veh_234" type="car" route="route_2" depart="3300"/>
+    <vehicle id="veh_235" type="car" route="route_40" depart="3300"/>
+    <vehicle id="veh_236" type="car" route="route_21" depart="3300"/>
+    <vehicle id="veh_237" type="car" route="route_46" depart="3300"/>
+    <vehicle id="veh_240" type="ev" route="route_34" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="38850"/>
+    </vehicle>
+    <vehicle id="veh_241" type="ev" route="route_25" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="19602"/>
+    </vehicle>
+    <vehicle id="veh_242" type="car" route="route_52" depart="3300"/>
+    <vehicle id="veh_244" type="car" route="route_44" depart="3300"/>
+    <vehicle id="veh_245" type="ev" route="route_11" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="38454"/>
+    </vehicle>
+    <vehicle id="veh_246" type="car" route="route_59" depart="3300"/>
+    <vehicle id="veh_247" type="ev" route="route_11" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="16380"/>
+    </vehicle>
+    <vehicle id="veh_248" type="bus" route="route_2" depart="3300"/>
+    <vehicle id="veh_250" type="taxi" route="route_47" depart="3300"/>
+    <vehicle id="veh_252" type="car" route="route_24" depart="3300"/>
+    <vehicle id="veh_255" type="car" route="route_22" depart="3300"/>
+    <vehicle id="veh_256" type="taxi" route="route_40" depart="3300"/>
+    <vehicle id="veh_257" type="car" route="route_24" depart="3300"/>
+    <vehicle id="veh_258" type="taxi" route="route_25" depart="3300"/>
+    <vehicle id="veh_260" type="taxi" route="route_56" depart="3300"/>
+    <vehicle id="veh_262" type="car" route="route_46" depart="3300"/>
+    <vehicle id="veh_263" type="car" route="route_66" depart="3300"/>
+    <vehicle id="veh_265" type="ev" route="route_68" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="100000"/>
+        <param key="actualBatteryCapacity" value="53140"/>
+    </vehicle>
+    <vehicle id="veh_266" type="car" route="route_55" depart="3300"/>
+    <vehicle id="veh_267" type="car" route="route_36" depart="3300"/>
+    <vehicle id="veh_268" type="taxi" route="route_64" depart="3300"/>
+    <vehicle id="veh_269" type="car" route="route_34" depart="3300"/>
+    <vehicle id="veh_270" type="ev" route="route_59" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="18197"/>
+    </vehicle>
+    <vehicle id="veh_271" type="taxi" route="route_14" depart="3300"/>
+    <vehicle id="veh_273" type="car" route="route_59" depart="3300"/>
+    <vehicle id="veh_274" type="car" route="route_47" depart="3300"/>
+    <vehicle id="veh_276" type="car" route="route_13" depart="3300"/>
+    <vehicle id="veh_277" type="car" route="route_1" depart="3300"/>
+    <vehicle id="veh_279" type="car" route="route_12" depart="3300"/>
+    <vehicle id="veh_280" type="bus" route="route_45" depart="3300"/>
+    <vehicle id="veh_281" type="car" route="route_59" depart="3300"/>
+    <vehicle id="veh_282" type="car" route="route_2" depart="3300"/>
+    <vehicle id="veh_283" type="car" route="route_58" depart="3300"/>
+    <vehicle id="veh_284" type="car" route="route_55" depart="3300"/>
+    <vehicle id="veh_285" type="car" route="route_60" depart="3300"/>
+    <vehicle id="veh_288" type="car" route="route_51" depart="3300"/>
+    <vehicle id="veh_289" type="car" route="route_29" depart="3300"/>
+    <vehicle id="veh_290" type="car" route="route_64" depart="3300"/>
+    <vehicle id="veh_294" type="car" route="route_67" depart="3300"/>
+    <vehicle id="veh_297" type="car" route="route_39" depart="3300"/>
+    <vehicle id="veh_298" type="car" route="route_18" depart="3300"/>
+    <vehicle id="veh_299" type="car" route="route_58" depart="3300"/>
+    <vehicle id="veh_301" type="ev" route="route_22" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="16809"/>
+    </vehicle>
+    <vehicle id="veh_302" type="car" route="route_10" depart="3300"/>
+    <vehicle id="veh_304" type="car" route="route_31" depart="3300"/>
+    <vehicle id="veh_305" type="bus" route="route_47" depart="3300"/>
+    <vehicle id="veh_306" type="ev" route="route_60" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="20273"/>
+    </vehicle>
+    <vehicle id="veh_307" type="car" route="route_50" depart="3300"/>
+    <vehicle id="veh_308" type="car" route="route_60" depart="3300"/>
+    <vehicle id="veh_309" type="car" route="route_59" depart="3300"/>
+    <vehicle id="veh_310" type="car" route="route_12" depart="3300"/>
+    <vehicle id="veh_312" type="car" route="route_17" depart="3300"/>
+    <vehicle id="veh_313" type="car" route="route_41" depart="3300"/>
+    <vehicle id="veh_316" type="ev" route="route_3" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="42115"/>
+    </vehicle>
+    <vehicle id="veh_319" type="car" route="route_64" depart="3300"/>
+    <vehicle id="veh_322" type="ev" route="route_38" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="13061"/>
+    </vehicle>
+    <vehicle id="veh_326" type="car" route="route_61" depart="3300"/>
+    <vehicle id="veh_327" type="ev" route="route_50" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="24462"/>
+    </vehicle>
+    <vehicle id="veh_328" type="car" route="route_13" depart="3300"/>
+    <vehicle id="veh_329" type="car" route="route_10" depart="3300"/>
+    <vehicle id="veh_331" type="car" route="route_51" depart="3300"/>
+    <vehicle id="veh_332" type="car" route="route_1" depart="3300"/>
+    <vehicle id="veh_333" type="bus" route="route_16" depart="3300"/>
+    <vehicle id="veh_334" type="car" route="route_49" depart="3300"/>
+    <vehicle id="veh_336" type="car" route="route_51" depart="3300"/>
+    <vehicle id="veh_337" type="car" route="route_6" depart="3300"/>
+    <vehicle id="veh_338" type="car" route="route_33" depart="3300"/>
+    <vehicle id="veh_339" type="car" route="route_14" depart="3300"/>
+    <vehicle id="veh_340" type="car" route="route_57" depart="3300"/>
+    <vehicle id="veh_341" type="car" route="route_60" depart="3300"/>
+    <vehicle id="veh_344" type="car" route="route_54" depart="3300"/>
+    <vehicle id="veh_346" type="car" route="route_10" depart="3300"/>
+    <vehicle id="veh_347" type="bus" route="route_43" depart="3300"/>
+    <vehicle id="veh_348" type="car" route="route_33" depart="3300"/>
+    <vehicle id="veh_349" type="bus" route="route_58" depart="3300"/>
+    <vehicle id="veh_351" type="taxi" route="route_15" depart="3300"/>
+    <vehicle id="veh_352" type="car" route="route_58" depart="3300"/>
+    <vehicle id="veh_353" type="car" route="route_47" depart="3300"/>
+    <vehicle id="veh_356" type="car" route="route_22" depart="3300"/>
+    <vehicle id="veh_358" type="ev" route="route_4" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="60000"/>
+        <param key="actualBatteryCapacity" value="28716"/>
+    </vehicle>
+    <vehicle id="veh_359" type="car" route="route_45" depart="3300"/>
+    <vehicle id="veh_360" type="car" route="route_68" depart="3300"/>
+    <vehicle id="veh_361" type="car" route="route_31" depart="3300"/>
+    <vehicle id="veh_362" type="bus" route="route_68" depart="3300"/>
+    <vehicle id="veh_364" type="car" route="route_35" depart="3300"/>
+    <vehicle id="veh_365" type="car" route="route_58" depart="3300"/>
+    <vehicle id="veh_370" type="car" route="route_10" depart="3300"/>
+    <vehicle id="veh_371" type="car" route="route_38" depart="3300"/>
+    <vehicle id="veh_373" type="bus" route="route_32" depart="3300"/>
+    <vehicle id="veh_374" type="car" route="route_10" depart="3300"/>
+    <vehicle id="veh_375" type="car" route="route_55" depart="3300"/>
+    <vehicle id="veh_376" type="car" route="route_24" depart="3300"/>
+    <vehicle id="veh_377" type="car" route="route_38" depart="3300"/>
+    <vehicle id="veh_378" type="car" route="route_31" depart="3300"/>
+    <vehicle id="veh_379" type="car" route="route_6" depart="3300"/>
+    <vehicle id="veh_381" type="taxi" route="route_55" depart="3300"/>
+    <vehicle id="veh_382" type="taxi" route="route_23" depart="3300"/>
+    <vehicle id="veh_384" type="car" route="route_23" depart="3300"/>
+    <vehicle id="veh_385" type="car" route="route_34" depart="3300"/>
+    <vehicle id="veh_386" type="ev" route="route_53" depart="3300">
+        <param key="has.battery.device" value="true"/>
+        <param key="maximumBatteryCapacity" value="40000"/>
+        <param key="actualBatteryCapacity" value="12449"/>
+    </vehicle>
+    <vehicle id="veh_388" type="taxi" route="route_40" depart="3300"/>
+    <vehicle id="veh_392" type="car" route="route_42" depart="3300"/>
+    <vehicle id="veh_393" type="car" route="route_60" depart="3300"/>
+</routes>

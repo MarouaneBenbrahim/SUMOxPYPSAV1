@@ -1,0 +1,4 @@
+name,substation_id,lat,lon,voltage_kv,capacity_mva
+TimesSquare_Sub,SUB_1,40.758,-73.9855,138,100
+GrandCentral_Sub,SUB_2,40.7527,-73.9772,138,150
+PortAuth_Sub,SUB_3,40.7571,-73.9897,138,120

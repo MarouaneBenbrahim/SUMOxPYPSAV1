@@ -1,0 +1,117 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+  <vType id="passenger" vClass="passenger" color="0.7,0.7,0.7" length="4.5" width="1.8" height="1.5" accel="2.6" decel="4.5" sigma="0.5" maxSpeed="55.56" speedFactor="normc(1.0,0.1,0.2,2.0)"/>
+  <vType id="electric" vClass="passenger" color="0,1,0" length="4.8" width="1.9" height="1.5" accel="3.0" decel="4.5" sigma="0.5" maxSpeed="50" emissionClass="Zero">
+    <param key="has.battery.device" value="true"/>
+    <param key="maximumBatteryCapacity" value="60000"/>
+    <param key="actualBatteryCapacity" value="45000"/>
+  </vType>
+  <vType id="taxi" vClass="taxi" color="1,1,0" length="4.5" width="1.8" accel="2.8" decel="4.5" sigma="0.8" maxSpeed="55.56"/>
+  <vType id="bus" vClass="bus" color="0.5,0,0.5" length="12" width="2.5" height="3.4" accel="1.2" decel="4" sigma="0.9" maxSpeed="22.22"/>
+  <route id="route_0" edges="e0 e1"/>
+  <route id="route_1" edges="e1 e2"/>
+  <route id="route_2" edges="e2 e3"/>
+  <route id="route_3" edges="e3 e4"/>
+  <route id="route_4" edges="e4 e5"/>
+  <route id="route_5" edges="e5 e6"/>
+  <route id="route_6" edges="e6 e7"/>
+  <route id="route_7" edges="e7 e8"/>
+  <route id="route_8" edges="e8 e9"/>
+  <route id="route_9" edges="e9 e10"/>
+  <flow id="flow_car_0" type="passenger" route="route_0" begin="0" end="3600" number="10" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_0" type="electric" route="route_0" begin="0" end="3600" number="2" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_0" type="taxi" route="route_0" begin="0" end="3600" number="1" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_0" type="bus" route="route_0" begin="0" end="3600" number="0" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_1" type="passenger" route="route_0" begin="3600" end="7200" number="5" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_1" type="electric" route="route_0" begin="3600" end="7200" number="1" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_1" type="taxi" route="route_0" begin="3600" end="7200" number="0" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_1" type="bus" route="route_0" begin="3600" end="7200" number="0" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_2" type="passenger" route="route_0" begin="7200" end="10800" number="5" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_2" type="electric" route="route_0" begin="7200" end="10800" number="1" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_2" type="taxi" route="route_0" begin="7200" end="10800" number="0" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_2" type="bus" route="route_0" begin="7200" end="10800" number="0" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_3" type="passenger" route="route_0" begin="10800" end="14400" number="5" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_3" type="electric" route="route_0" begin="10800" end="14400" number="1" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_3" type="taxi" route="route_0" begin="10800" end="14400" number="0" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_3" type="bus" route="route_0" begin="10800" end="14400" number="0" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_4" type="passenger" route="route_0" begin="14400" end="18000" number="5" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_4" type="electric" route="route_0" begin="14400" end="18000" number="1" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_4" type="taxi" route="route_0" begin="14400" end="18000" number="0" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_4" type="bus" route="route_0" begin="14400" end="18000" number="0" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_5" type="passenger" route="route_0" begin="18000" end="21600" number="10" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_5" type="electric" route="route_0" begin="18000" end="21600" number="2" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_5" type="taxi" route="route_0" begin="18000" end="21600" number="1" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_5" type="bus" route="route_0" begin="18000" end="21600" number="0" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_6" type="passenger" route="route_0" begin="21600" end="25200" number="30" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_6" type="electric" route="route_0" begin="21600" end="25200" number="6" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_6" type="taxi" route="route_0" begin="21600" end="25200" number="4" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_6" type="bus" route="route_0" begin="21600" end="25200" number="1" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_7" type="passenger" route="route_0" begin="25200" end="28800" number="80" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_7" type="electric" route="route_0" begin="25200" end="28800" number="16" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_7" type="taxi" route="route_0" begin="25200" end="28800" number="12" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_7" type="bus" route="route_0" begin="25200" end="28800" number="4" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_8" type="passenger" route="route_0" begin="28800" end="32400" number="100" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_8" type="electric" route="route_0" begin="28800" end="32400" number="20" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_8" type="taxi" route="route_0" begin="28800" end="32400" number="15" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_8" type="bus" route="route_0" begin="28800" end="32400" number="5" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_9" type="passenger" route="route_0" begin="32400" end="36000" number="90" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_9" type="electric" route="route_0" begin="32400" end="36000" number="18" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_9" type="taxi" route="route_0" begin="32400" end="36000" number="13" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_9" type="bus" route="route_0" begin="32400" end="36000" number="4" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_10" type="passenger" route="route_0" begin="36000" end="39600" number="70" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_10" type="electric" route="route_0" begin="36000" end="39600" number="14" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_10" type="taxi" route="route_0" begin="36000" end="39600" number="10" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_10" type="bus" route="route_0" begin="36000" end="39600" number="3" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_11" type="passenger" route="route_0" begin="39600" end="43200" number="60" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_11" type="electric" route="route_0" begin="39600" end="43200" number="12" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_11" type="taxi" route="route_0" begin="39600" end="43200" number="9" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_11" type="bus" route="route_0" begin="39600" end="43200" number="3" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_12" type="passenger" route="route_0" begin="43200" end="46800" number="70" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_12" type="electric" route="route_0" begin="43200" end="46800" number="14" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_12" type="taxi" route="route_0" begin="43200" end="46800" number="10" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_12" type="bus" route="route_0" begin="43200" end="46800" number="3" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_13" type="passenger" route="route_0" begin="46800" end="50400" number="70" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_13" type="electric" route="route_0" begin="46800" end="50400" number="14" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_13" type="taxi" route="route_0" begin="46800" end="50400" number="10" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_13" type="bus" route="route_0" begin="46800" end="50400" number="3" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_14" type="passenger" route="route_0" begin="50400" end="54000" number="60" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_14" type="electric" route="route_0" begin="50400" end="54000" number="12" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_14" type="taxi" route="route_0" begin="50400" end="54000" number="9" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_14" type="bus" route="route_0" begin="50400" end="54000" number="3" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_15" type="passenger" route="route_0" begin="54000" end="57600" number="70" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_15" type="electric" route="route_0" begin="54000" end="57600" number="14" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_15" type="taxi" route="route_0" begin="54000" end="57600" number="10" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_15" type="bus" route="route_0" begin="54000" end="57600" number="3" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_16" type="passenger" route="route_0" begin="57600" end="61200" number="80" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_16" type="electric" route="route_0" begin="57600" end="61200" number="16" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_16" type="taxi" route="route_0" begin="57600" end="61200" number="12" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_16" type="bus" route="route_0" begin="57600" end="61200" number="4" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_17" type="passenger" route="route_0" begin="61200" end="64800" number="100" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_17" type="electric" route="route_0" begin="61200" end="64800" number="20" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_17" type="taxi" route="route_0" begin="61200" end="64800" number="15" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_17" type="bus" route="route_0" begin="61200" end="64800" number="5" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_18" type="passenger" route="route_0" begin="64800" end="68400" number="90" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_18" type="electric" route="route_0" begin="64800" end="68400" number="18" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_18" type="taxi" route="route_0" begin="64800" end="68400" number="13" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_18" type="bus" route="route_0" begin="64800" end="68400" number="4" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_19" type="passenger" route="route_0" begin="68400" end="72000" number="70" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_19" type="electric" route="route_0" begin="68400" end="72000" number="14" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_19" type="taxi" route="route_0" begin="68400" end="72000" number="10" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_19" type="bus" route="route_0" begin="68400" end="72000" number="3" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_20" type="passenger" route="route_0" begin="72000" end="75600" number="50" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_20" type="electric" route="route_0" begin="72000" end="75600" number="10" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_20" type="taxi" route="route_0" begin="72000" end="75600" number="7" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_20" type="bus" route="route_0" begin="72000" end="75600" number="2" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_21" type="passenger" route="route_0" begin="75600" end="79200" number="40" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_21" type="electric" route="route_0" begin="75600" end="79200" number="8" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_21" type="taxi" route="route_0" begin="75600" end="79200" number="6" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_21" type="bus" route="route_0" begin="75600" end="79200" number="2" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_22" type="passenger" route="route_0" begin="79200" end="82800" number="30" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_22" type="electric" route="route_0" begin="79200" end="82800" number="6" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_22" type="taxi" route="route_0" begin="79200" end="82800" number="4" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_22" type="bus" route="route_0" begin="79200" end="82800" number="1" departLane="best" departSpeed="max"/>
+  <flow id="flow_car_23" type="passenger" route="route_0" begin="82800" end="86400" number="20" departLane="best" departSpeed="random"/>
+  <flow id="flow_ev_23" type="electric" route="route_0" begin="82800" end="86400" number="4" departLane="best" departSpeed="random"/>
+  <flow id="flow_taxi_23" type="taxi" route="route_0" begin="82800" end="86400" number="3" departLane="best" departSpeed="random"/>
+  <flow id="flow_bus_23" type="bus" route="route_0" begin="82800" end="86400" number="1" departLane="best" departSpeed="max"/>
+</routes>

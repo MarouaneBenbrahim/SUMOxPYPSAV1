@@ -1,0 +1,9 @@
+{
+  "buses": 68,
+  "generators": 32,
+  "loads": 24,
+  "lines": 63,
+  "snapshots": 60,
+  "total_generation_capacity_MW": 371.45,
+  "total_load_MW": 600.0373137421666
+}

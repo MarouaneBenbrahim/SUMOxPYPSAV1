@@ -1,0 +1,96 @@
+<?xml version="1.0" ?>
+<additional>
+    <parkingArea id="pa_ev_station_0" lane="e0_0" startPos="0" endPos="40" roadsideCapacity="8" friendlyPos="true">
+        <space x="-8212390.5" y="4524138.0" name="Times Square Supercharger_spot_0"/>
+        <space x="-8212385.5" y="4524138.0" name="Times Square Supercharger_spot_1"/>
+        <space x="-8212380.5" y="4524138.0" name="Times Square Supercharger_spot_2"/>
+        <space x="-8212375.5" y="4524138.0" name="Times Square Supercharger_spot_3"/>
+        <space x="-8212370.5" y="4524138.0" name="Times Square Supercharger_spot_4"/>
+        <space x="-8212365.5" y="4524138.0" name="Times Square Supercharger_spot_5"/>
+        <space x="-8212360.5" y="4524138.0" name="Times Square Supercharger_spot_6"/>
+        <space x="-8212355.5" y="4524138.0" name="Times Square Supercharger_spot_7"/>
+    </parkingArea>
+    <parkingArea id="pa_ev_station_1" lane="e0_0" startPos="50" endPos="90" roadsideCapacity="6" friendlyPos="true">
+        <space x="-8212135.199999999" y="4523649.6" name="Bryant Park Fast Charge_spot_0"/>
+        <space x="-8212130.199999999" y="4523649.6" name="Bryant Park Fast Charge_spot_1"/>
+        <space x="-8212125.199999999" y="4523649.6" name="Bryant Park Fast Charge_spot_2"/>
+        <space x="-8212120.199999999" y="4523649.6" name="Bryant Park Fast Charge_spot_3"/>
+        <space x="-8212115.199999999" y="4523649.6" name="Bryant Park Fast Charge_spot_4"/>
+        <space x="-8212110.199999999" y="4523649.6" name="Bryant Park Fast Charge_spot_5"/>
+    </parkingArea>
+    <parkingArea id="pa_ev_station_2" lane="e0_0" startPos="100" endPos="140" roadsideCapacity="20" friendlyPos="true">
+        <space x="-8211469.199999999" y="4523549.699999999" name="Grand Central Station_spot_0"/>
+        <space x="-8211464.199999999" y="4523549.699999999" name="Grand Central Station_spot_1"/>
+        <space x="-8211459.199999999" y="4523549.699999999" name="Grand Central Station_spot_2"/>
+        <space x="-8211454.199999999" y="4523549.699999999" name="Grand Central Station_spot_3"/>
+        <space x="-8211449.199999999" y="4523549.699999999" name="Grand Central Station_spot_4"/>
+        <space x="-8211444.199999999" y="4523549.699999999" name="Grand Central Station_spot_5"/>
+        <space x="-8211439.199999999" y="4523549.699999999" name="Grand Central Station_spot_6"/>
+        <space x="-8211434.199999999" y="4523549.699999999" name="Grand Central Station_spot_7"/>
+        <space x="-8211429.199999999" y="4523549.699999999" name="Grand Central Station_spot_8"/>
+        <space x="-8211424.199999999" y="4523549.699999999" name="Grand Central Station_spot_9"/>
+        <space x="-8211419.199999999" y="4523549.699999999" name="Grand Central Station_spot_10"/>
+        <space x="-8211414.199999999" y="4523549.699999999" name="Grand Central Station_spot_11"/>
+        <space x="-8211409.199999999" y="4523549.699999999" name="Grand Central Station_spot_12"/>
+        <space x="-8211404.199999999" y="4523549.699999999" name="Grand Central Station_spot_13"/>
+        <space x="-8211399.199999999" y="4523549.699999999" name="Grand Central Station_spot_14"/>
+        <space x="-8211394.199999999" y="4523549.699999999" name="Grand Central Station_spot_15"/>
+        <space x="-8211389.199999999" y="4523549.699999999" name="Grand Central Station_spot_16"/>
+        <space x="-8211384.199999999" y="4523549.699999999" name="Grand Central Station_spot_17"/>
+        <space x="-8211379.199999999" y="4523549.699999999" name="Grand Central Station_spot_18"/>
+        <space x="-8211374.199999999" y="4523549.699999999" name="Grand Central Station_spot_19"/>
+    </parkingArea>
+    <parkingArea id="pa_ev_station_3" lane="e0_0" startPos="150" endPos="190" roadsideCapacity="4" friendlyPos="true">
+        <space x="-8212856.7" y="4524038.100000001" name="Port Authority Terminal_spot_0"/>
+        <space x="-8212851.7" y="4524038.100000001" name="Port Authority Terminal_spot_1"/>
+        <space x="-8212846.7" y="4524038.100000001" name="Port Authority Terminal_spot_2"/>
+        <space x="-8212841.7" y="4524038.100000001" name="Port Authority Terminal_spot_3"/>
+    </parkingArea>
+    <parkingArea id="pa_ev_station_4" lane="e0_0" startPos="200" endPos="240" roadsideCapacity="6" friendlyPos="true">
+        <space x="-8211635.7" y="4524215.7" name="Rockefeller Center_spot_0"/>
+        <space x="-8211630.7" y="4524215.7" name="Rockefeller Center_spot_1"/>
+        <space x="-8211625.7" y="4524215.7" name="Rockefeller Center_spot_2"/>
+        <space x="-8211620.7" y="4524215.7" name="Rockefeller Center_spot_3"/>
+        <space x="-8211615.7" y="4524215.7" name="Rockefeller Center_spot_4"/>
+        <space x="-8211610.7" y="4524215.7" name="Rockefeller Center_spot_5"/>
+    </parkingArea>
+    <parkingArea id="pa_ev_station_5" lane="e0_0" startPos="250" endPos="290" roadsideCapacity="15" friendlyPos="true">
+        <space x="-8211114.0" y="4523916.0" name="5th Ave Parking_spot_0"/>
+        <space x="-8211109.0" y="4523916.0" name="5th Ave Parking_spot_1"/>
+        <space x="-8211104.0" y="4523916.0" name="5th Ave Parking_spot_2"/>
+        <space x="-8211099.0" y="4523916.0" name="5th Ave Parking_spot_3"/>
+        <space x="-8211094.0" y="4523916.0" name="5th Ave Parking_spot_4"/>
+        <space x="-8211089.0" y="4523916.0" name="5th Ave Parking_spot_5"/>
+        <space x="-8211084.0" y="4523916.0" name="5th Ave Parking_spot_6"/>
+        <space x="-8211079.0" y="4523916.0" name="5th Ave Parking_spot_7"/>
+        <space x="-8211074.0" y="4523916.0" name="5th Ave Parking_spot_8"/>
+        <space x="-8211069.0" y="4523916.0" name="5th Ave Parking_spot_9"/>
+        <space x="-8211064.0" y="4523916.0" name="5th Ave Parking_spot_10"/>
+        <space x="-8211059.0" y="4523916.0" name="5th Ave Parking_spot_11"/>
+        <space x="-8211054.0" y="4523916.0" name="5th Ave Parking_spot_12"/>
+        <space x="-8211049.0" y="4523916.0" name="5th Ave Parking_spot_13"/>
+        <space x="-8211044.0" y="4523916.0" name="5th Ave Parking_spot_14"/>
+    </parkingArea>
+    <parkingArea id="pa_ev_station_6" lane="e0_0" startPos="300" endPos="340" roadsideCapacity="10" friendlyPos="true">
+        <space x="-8212556.999999999" y="4523805.0" name="8th Ave Garage_spot_0"/>
+        <space x="-8212551.999999999" y="4523805.0" name="8th Ave Garage_spot_1"/>
+        <space x="-8212546.999999999" y="4523805.0" name="8th Ave Garage_spot_2"/>
+        <space x="-8212541.999999999" y="4523805.0" name="8th Ave Garage_spot_3"/>
+        <space x="-8212536.999999999" y="4523805.0" name="8th Ave Garage_spot_4"/>
+        <space x="-8212531.999999999" y="4523805.0" name="8th Ave Garage_spot_5"/>
+        <space x="-8212526.999999999" y="4523805.0" name="8th Ave Garage_spot_6"/>
+        <space x="-8212521.999999999" y="4523805.0" name="8th Ave Garage_spot_7"/>
+        <space x="-8212516.999999999" y="4523805.0" name="8th Ave Garage_spot_8"/>
+        <space x="-8212511.999999999" y="4523805.0" name="8th Ave Garage_spot_9"/>
+    </parkingArea>
+    <parkingArea id="pa_ev_station_7" lane="e0_0" startPos="350" endPos="390" roadsideCapacity="8" friendlyPos="true">
+        <space x="-8211780.0" y="4523694.0" name="Madison Square_spot_0"/>
+        <space x="-8211775.0" y="4523694.0" name="Madison Square_spot_1"/>
+        <space x="-8211770.0" y="4523694.0" name="Madison Square_spot_2"/>
+        <space x="-8211765.0" y="4523694.0" name="Madison Square_spot_3"/>
+        <space x="-8211760.0" y="4523694.0" name="Madison Square_spot_4"/>
+        <space x="-8211755.0" y="4523694.0" name="Madison Square_spot_5"/>
+        <space x="-8211750.0" y="4523694.0" name="Madison Square_spot_6"/>
+        <space x="-8211745.0" y="4523694.0" name="Madison Square_spot_7"/>
+    </parkingArea>
+</additional>

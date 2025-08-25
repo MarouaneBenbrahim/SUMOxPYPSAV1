@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<routes>
+    <!--This is a template. Actual routes will be generated at runtime-->
+    <route id="route_0" edges="e0 e1 e2 e3 e4"/>
+    <route id="route_1" edges="e1 e2 e3 e4 e5"/>
+    <route id="route_2" edges="e2 e3 e4 e5 e6"/>
+    <route id="route_3" edges="e3 e4 e5 e6 e7"/>
+    <route id="route_4" edges="e4 e5 e6 e7 e8"/>
+</routes>

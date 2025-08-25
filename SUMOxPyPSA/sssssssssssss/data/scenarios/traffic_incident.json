@@ -1,0 +1,20 @@
+{
+  "name": "Times Square Incident",
+  "description": "Major traffic incident blocks Times Square",
+  "start_time": "12:00",
+  "vehicle_multiplier": 1.2,
+  "power_multiplier": 1.0,
+  "ev_charge_probability": 0.3,
+  "incidents": [
+    {
+      "time": 600,
+      "type": "road_closure",
+      "location": {
+        "lat": 40.758,
+        "lon": -73.9855
+      },
+      "radius": 200,
+      "duration": 2400
+    }
+  ]
+}

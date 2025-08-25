@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<types>
+    <type id="avenue" priority="10" numLanes="3" speed="13.89" width="3.5" sidewalkWidth="3.0"/>
+    <type id="street" priority="5" numLanes="2" speed="11.11" width="3.0" sidewalkWidth="2.0"/>
+    <type id="highway" priority="15" numLanes="4" speed="22.22" width="3.5"/>
+</types>

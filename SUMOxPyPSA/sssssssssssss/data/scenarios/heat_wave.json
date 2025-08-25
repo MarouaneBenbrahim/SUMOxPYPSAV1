@@ -1,0 +1,11 @@
+{
+  "name": "Extreme Heat Wave",
+  "description": "High temperature causes increased AC load and EV range reduction",
+  "start_time": "14:00",
+  "vehicle_multiplier": 0.8,
+  "power_multiplier": 1.5,
+  "ev_charge_probability": 0.5,
+  "temperature_c": 38,
+  "ev_range_reduction": 0.15,
+  "incidents": []
+}

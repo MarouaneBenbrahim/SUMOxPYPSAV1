@@ -1,0 +1,9 @@
+{
+  "name": "Normal Day",
+  "description": "Typical weekday traffic and power patterns",
+  "start_time": "14:00",
+  "vehicle_multiplier": 1.0,
+  "power_multiplier": 1.0,
+  "ev_charge_probability": 0.3,
+  "incidents": []
+}
