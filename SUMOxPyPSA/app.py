@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 SUMOxPyPSA 
-Perfect NYC Manhattan Grid Simulation with Real-Time Power Integration
+Manhattan Grid Simulation with Power Network Visualization and Smart EV Routing
 """
 
 from flask import Flask, render_template
@@ -200,27 +200,24 @@ class ManhattanTrafficController:
         metrics['traffic_lights']['red'] = red_count
 
 class ManhattanEVNetwork:
-    """EV charging network for Manhattan with realistic placement"""
+    """EV charging network with smart routing"""
     
     def __init__(self):
         self.stations = []
         self.charging_sessions = {}
         self.total_energy_delivered = 0
         self.peak_demand = 0
-        # Default EV share percent (0-100)
         self.ev_share_percent = 30
-        # Propensity for EVs to seek/engage charging (0-100)
         self.ev_charging_bias_percent = 30
+        self.ev_vehicles = {}  # Track EV vehicles
+        self.charging_vehicles = {}  # Track which vehicles are charging
         
     def create_manhattan_grid_stations(self, traffic_light_positions):
         """Create EV stations WITHIN the traffic light grid area"""
-        # If we have traffic lights, place stations near them
         if traffic_light_positions and len(traffic_light_positions) > 0:
-            # Sort traffic lights by location to get good distribution
             sorted_lights = sorted(traffic_light_positions, key=lambda x: (x[1], x[0]))
             
-            # Select evenly distributed positions for stations
-            num_stations = min(12, len(sorted_lights) // 5)  # 1 station per 5 traffic lights
+            num_stations = min(12, len(sorted_lights) // 5)
             step = len(sorted_lights) // num_stations if num_stations > 0 else 1
             
             station_names = [
@@ -236,11 +233,9 @@ class ManhattanEVNetwork:
                     break
                     
                 light_pos = sorted_lights[i]
-                # Place station very close to traffic light (within 0.001 degrees)
                 station_lat = light_pos[1] + random.uniform(-0.0005, 0.0005)
                 station_lon = light_pos[0] + random.uniform(-0.0005, 0.0005)
                 
-                # Ensure still within bounds
                 station_lat = max(40.700, min(40.800, station_lat))
                 station_lon = max(-74.020, min(-73.930, station_lon))
                 
@@ -251,10 +246,11 @@ class ManhattanEVNetwork:
                     'name': station_names[len(self.stations)] if len(self.stations) < len(station_names) else f'Station {len(self.stations)}',
                     'power': random.choice([150, 250, 350]),
                     'capacity': random.randint(6, 12),
-                    'street': f'Near intersection {i}'
+                    'street': f'Near intersection {i}',
+                    'vehicles_charging': []
                 })
         else:
-            # Fallback: create stations in grid pattern within bounds
+            # Fallback stations
             self.stations = []
             lat_step = (40.800 - 40.700) / 4
             lon_step = (-73.930 - (-74.020)) / 3
@@ -282,96 +278,156 @@ class ManhattanEVNetwork:
                         'name': station_names[idx] if idx < len(station_names) else f'Station {idx}',
                         'power': random.choice([150, 250, 350]),
                         'capacity': random.randint(6, 12),
-                        'street': f'Grid location {lat_i}-{lon_i}'
+                        'street': f'Grid location {lat_i}-{lon_i}',
+                        'vehicles_charging': []
                     })
                     idx += 1
         
-        # Initialize tracking
         for station in self.stations:
             self.charging_sessions[station['id']] = {}
         
         print(f"⚡ Created {len(self.stations)} EV stations within Manhattan traffic grid")
         return self.stations
     
+    def route_ev_to_station(self, vehicle_id, vehicle_pos):
+        """Route an EV to the nearest available charging station"""
+        try:
+            # Find nearest available station
+            best_station = None
+            min_distance = float('inf')
+            
+            for station in self.stations:
+                # Check if station has capacity
+                if len(station['vehicles_charging']) < station['capacity']:
+                    # Calculate distance
+                    distance = math.sqrt((vehicle_pos[0] - station['lon'])**2 + 
+                                       (vehicle_pos[1] - station['lat'])**2)
+                    
+                    if distance < min_distance:
+                        min_distance = distance
+                        best_station = station
+            
+            if best_station and min_distance < 0.01:  # Within reasonable distance
+                # Convert GPS to SUMO coordinates
+                sumo_pos = traci.simulation.convertGeo(best_station['lon'], best_station['lat'], True)
+                
+                # Get nearest edge to station
+                edges = traci.edge.getIDList()
+                if edges:
+                    # Set new route to charging station
+                    nearest_edge = traci.simulation.convertRoad(sumo_pos[0], sumo_pos[1])[0]
+                    if nearest_edge:
+                        current_edge = traci.vehicle.getRoadID(vehicle_id)
+                        if current_edge and current_edge != nearest_edge:
+                            try:
+                                # Calculate route to charging station
+                                route = traci.simulation.findRoute(current_edge, nearest_edge)
+                                if route and route.edges:
+                                    traci.vehicle.setRoute(vehicle_id, list(route.edges))
+                                    return best_station
+                            except:
+                                pass
+        except Exception as e:
+            pass
+        
+        return None
+    
     def process_ev_charging(self, vehicles):
-        """Process EV charging with tunable propensity and proximity."""
+        """Process EV charging with smart routing"""
         charging_vehicles = {}
         total_evs = 0
         charging_count = 0
-
-        # Resolve parameters
+        
         try:
             share = int(self.ev_share_percent)
         except Exception:
             share = 30
         share = max(0, min(100, share))
-
+        
         try:
             bias = int(self.ev_charging_bias_percent)
         except Exception:
             bias = 30
         bias = max(0, min(100, bias))
-
-        # Dynamic capture radius in degrees (~lat/lon)
-        base_radius = 0.002  # ~200 m
-        max_extra = 0.006    # add up to ~600 m
+        
+        # Dynamic capture radius
+        base_radius = 0.002
+        max_extra = 0.006
         capture_radius = base_radius + (bias / 100.0) * max_extra
-        extended_radius = min(0.02, capture_radius * 2.0)
-
-        def try_assign_to_station(station_id, station, vehicle_id):
-            nonlocal charging_count
-            if station_id not in charging_vehicles:
-                charging_vehicles[station_id] = []
-            if len(charging_vehicles[station_id]) < station['capacity']:
-                charging_vehicles[station_id].append(vehicle_id)
-                charging_count += 1
-                if vehicle_id not in self.charging_sessions[station_id]:
-                    self.charging_sessions[station_id][vehicle_id] = {'start': time.time(), 'energy_kwh': 0}
-                session = self.charging_sessions[station_id][vehicle_id]
-                duration_hours = (time.time() - session['start']) / 3600
-                session['energy_kwh'] = min(station['power'] * duration_hours, 100)
-                return True
-            return False
-
+        
         current_tick = int(time.time())
+        
         for vehicle in vehicles:
             vid = vehicle['id']
             is_ev = (hash(vid) % 100) < share
             vehicle['is_ev'] = bool(is_ev)
+            
             if not is_ev:
                 continue
-
+            
             total_evs += 1
+            
+            # Check if EV needs charging
+            if vid not in self.ev_vehicles:
+                self.ev_vehicles[vid] = {
+                    'battery': random.uniform(20, 80),  # Battery percentage
+                    'charging': False,
+                    'target_station': None
+                }
+            
+            ev_data = self.ev_vehicles[vid]
             speed = float(vehicle.get('speed', 0) or 0)
-            # Pseudo-random desire plus bias and speed condition
-            desire_roll = (hash(f"{vid}:{current_tick}") % 100)
-            desire_to_charge = desire_roll < bias or speed < 2.0
-
-            # Try nearby stations within capture radius first
-            assigned = False
+            
+            # Decide if vehicle needs to charge
+            needs_charging = ev_data['battery'] < 30 or (ev_data['battery'] < 50 and random.random() < bias/100)
+            
+            if needs_charging and not ev_data['charging']:
+                # Route to nearest station
+                station = self.route_ev_to_station(vid, (vehicle['x'], vehicle['y']))
+                if station:
+                    ev_data['target_station'] = station['id']
+            
+            # Check if at charging station
             for station in self.stations:
                 lat_diff = abs(vehicle['y'] - station['lat'])
                 lon_diff = abs(vehicle['x'] - station['lon'])
+                
                 if lat_diff < capture_radius and lon_diff < capture_radius:
-                    if try_assign_to_station(station['id'], station, vid):
-                        assigned = True
-                        break
-            if assigned:
-                continue
-
-            # If strong desire, snap to nearest within extended radius
-            if desire_to_charge and bias > 0:
-                nearest = None
-                nearest_dist = 1e9
-                vx = vehicle['x']; vy = vehicle['y']
-                for station in self.stations:
-                    d = abs(vx - station['lon']) + abs(vy - station['lat'])
-                    if d < nearest_dist:
-                        nearest_dist = d
-                        nearest = station
-                if nearest and nearest_dist < extended_radius:
-                    try_assign_to_station(nearest['id'], nearest, vid)
-
+                    if station['id'] not in charging_vehicles:
+                        charging_vehicles[station['id']] = []
+                    
+                    if len(charging_vehicles[station['id']]) < station['capacity']:
+                        if speed < 2.0:  # Vehicle is stopped/slow
+                            charging_vehicles[station['id']].append(vid)
+                            charging_count += 1
+                            ev_data['charging'] = True
+                            vehicle['charging'] = True
+                            
+                            # Update battery
+                            ev_data['battery'] = min(100, ev_data['battery'] + 0.5)
+                            
+                            if vid not in self.charging_sessions[station['id']]:
+                                self.charging_sessions[station['id']][vid] = {
+                                    'start': time.time(),
+                                    'energy_kwh': 0
+                                }
+                            
+                            session = self.charging_sessions[station['id']][vid]
+                            duration_hours = (time.time() - session['start']) / 3600
+                            session['energy_kwh'] = min(station['power'] * duration_hours, 100)
+                            
+                            # If fully charged, leave
+                            if ev_data['battery'] >= 95:
+                                ev_data['charging'] = False
+                                ev_data['target_station'] = None
+                                vehicle['charging'] = False
+                            
+                            break
+        
+        # Update station occupancy
+        for station in self.stations:
+            station['vehicles_charging'] = charging_vehicles.get(station['id'], [])
+        
         return total_evs, charging_count, charging_vehicles
 
 class PowerGridManager:
@@ -389,12 +445,68 @@ class PowerGridManager:
         self.network = NYCPowerNetworkSimple()
         self.network.build_network()
         
-        self.network.lines['DL_Manhattan_Traffic']['capacity_mw'] = 350
-        self.network.lines['DL_Brooklyn_Traffic']['capacity_mw'] = 250
-        self.network.lines['DL_Queens_Traffic']['capacity_mw'] = 300
+        # Update capacities for Manhattan distribution lines (using correct names)
+        # These are the actual distribution lines in the new network
+        if 'DL_Times_Square' in self.network.lines:
+            self.network.lines['DL_Times_Square']['capacity_mw'] = 100
+        if 'DL_Central_Park' in self.network.lines:
+            self.network.lines['DL_Central_Park']['capacity_mw'] = 80
+        if 'DL_Union_Square' in self.network.lines:
+            self.network.lines['DL_Union_Square']['capacity_mw'] = 90
+        if 'DL_Wall_Street' in self.network.lines:
+            self.network.lines['DL_Wall_Street']['capacity_mw'] = 100
+        if 'DL_Columbus_Circle' in self.network.lines:
+            self.network.lines['DL_Columbus_Circle']['capacity_mw'] = 80
         
         print("✅ NYC Power Grid initialized")
         return self.network
+    
+    def get_power_network_data(self):
+        """Get power network data for visualization"""
+        if not self.network:
+            return None
+        
+        return {
+            'buses': [
+                {
+                    'id': bus_id,
+                    'lat': bus_data['lat'],
+                    'lon': bus_data['lon'],
+                    'voltage': bus_data['voltage'],
+                    'type': bus_data['type']
+                }
+                for bus_id, bus_data in self.network.buses.items()
+            ],
+            'lines': [
+                {
+                    'id': line_id,
+                    'from': line_data['from'],
+                    'to': line_data['to'],
+                    'capacity': line_data['capacity_mw'],
+                    'flow': line_data.get('current_flow', 0),
+                    'from_pos': [
+                        self.network.buses[line_data['from']]['lon'],
+                        self.network.buses[line_data['from']]['lat']
+                    ],
+                    'to_pos': [
+                        self.network.buses[line_data['to']]['lon'],
+                        self.network.buses[line_data['to']]['lat']
+                    ]
+                }
+                for line_id, line_data in self.network.lines.items()
+            ],
+            'generators': [
+                {
+                    'id': gen_id,
+                    'lat': gen_data['lat'],
+                    'lon': gen_data['lon'],
+                    'capacity': gen_data['capacity_mw'],
+                    'output': gen_data.get('current_output', 0),
+                    'type': gen_data['type']
+                }
+                for gen_id, gen_data in self.network.generators.items()
+            ]
+        }
     
     def calculate_real_time_load(self, traffic_data, ev_data):
         """Calculate real-time power load"""
@@ -438,11 +550,32 @@ class PowerGridManager:
         
         self.total_energy += total_load / 3600
         
-        line_utilization = {
-            'DL_Manhattan_Traffic': min(95, (ev_charging_mw / 3.5) * 100),
-            'DL_Brooklyn_Traffic': min(85, (traffic_lights_mw / 2.5) * 100),
-            'DL_Queens_Traffic': min(80, (street_lights_mw / 3.0) * 100)
-        }
+        # Update line flows for all lines
+        for line_name, line in self.network.lines.items():
+            # Distribution lines (DL_*) carry local loads
+            if line_name.startswith('DL_'):
+                line['current_flow'] = min(total_load * 0.05, line['capacity_mw'])
+            # Transmission lines (TL_*) carry bulk power
+            else:
+                line['current_flow'] = min(total_load * 0.15, line['capacity_mw'])
+        
+        # Update generator outputs
+        remaining_load = total_load
+        for gen_name, gen in self.network.generators.items():
+            if remaining_load > 0:
+                gen['current_output'] = min(gen['capacity_mw'], remaining_load)
+                remaining_load -= gen['current_output']
+            else:
+                gen['current_output'] = 0
+        
+        # Calculate line utilization for key distribution lines
+        line_utilization = {}
+        for line_name in ['DL_Times_Square', 'DL_Central_Park', 'DL_Union_Square', 
+                         'DL_Wall_Street', 'DL_Columbus_Circle']:
+            if line_name in self.network.lines:
+                line = self.network.lines[line_name]
+                utilization = (line['current_flow'] / line['capacity_mw'] * 100) if line['capacity_mw'] > 0 else 0
+                line_utilization[line_name] = min(95, utilization)
         
         load_factor = (total_load / self.peak_demand * 100) if self.peak_demand > 0 else 0
         renewable_percent = 15.0 if 10 <= hour <= 16 else 5.0
@@ -479,7 +612,6 @@ class PowerGridManager:
             return 'decreasing'
         else:
             return 'stable'
-
 # Initialize systems
 traffic_controller = ManhattanTrafficController()
 ev_network = ManhattanEVNetwork()
@@ -513,7 +645,7 @@ def create_manhattan_sumocfg(city):
         f.write('        <routing-algorithm value="dijkstra"/>\n')
         f.write('        <device.rerouting.probability value="0.5"/>\n')
         f.write('        <device.rerouting.period value="60"/>\n')
-        f.write('        <scale value="0.3"/>\n')  # Reduced for better performance
+        f.write('        <scale value="0.3"/>\n')
         f.write('        <lateral-resolution value="0.8"/>\n')
         f.write('    </processing>\n')
         
@@ -535,7 +667,6 @@ def get_manhattan_vehicles():
             pos = traci.vehicle.getPosition(vid)
             gps = traci.simulation.convertGeo(*pos)
             
-            # Check if in Manhattan bounds
             if (40.700 <= gps[1] <= 40.800 and -74.020 <= gps[0] <= -73.930):
                 manhattan_vehicles.append({
                     'id': vid,
@@ -544,7 +675,8 @@ def get_manhattan_vehicles():
                     'angle': traci.vehicle.getAngle(vid),
                     'speed': traci.vehicle.getSpeed(vid),
                     'type': traci.vehicle.getTypeID(vid),
-                    'is_ev': False
+                    'is_ev': False,
+                    'charging': False
                 })
         except:
             continue
@@ -604,7 +736,8 @@ def prepare_ev_station_data(charging_vehicles):
             'evs_charging': num_charging,
             'utilization': utilization,
             'power_output_mw': power_output_mw,
-            'status': 'busy' if utilization > 80 else 'available'
+            'status': 'busy' if utilization > 80 else 'available',
+            'vehicles_charging': vehicles_at_station
         })
     
     return station_data, total_power_mw
@@ -633,15 +766,12 @@ def manhattan_simulation():
         traci.start(sumo_cmd)
         print("✅ SUMO started successfully")
         
-        # Initialize traffic controller first
         traffic_controller.initialize_manhattan_lights()
         
-        # Get traffic light positions for EV station placement
         traffic_light_positions = []
         for tl_id, light_data in traffic_controller.lights.items():
             traffic_light_positions.append(light_data['position'])
         
-        # Create EV stations WITHIN the traffic light area
         ev_network.create_manhattan_grid_stations(traffic_light_positions)
         power_grid.initialize_nyc_grid()
         
@@ -652,33 +782,25 @@ def manhattan_simulation():
             traci.simulationStep()
             step_counter += 1
             
-            # Update traffic lights every 10 steps
             if step_counter % 10 == 0:
                 traffic_controller.update_cycle()
             
-            # Main update every 5 steps for smoother visualization
             if step_counter % 5 == 0:
                 current_time = time.time()
                 
-                # Only send updates if enough time has passed (throttling)
-                if current_time - last_update_time >= 0.1:  # 100ms minimum between updates
-                    # Get Manhattan vehicles
+                if current_time - last_update_time >= 0.1:
                     vehicles = get_manhattan_vehicles()
                     metrics['vehicles']['total'] = len(vehicles)
                     
-                    # Process EV charging
                     total_evs, charging_evs, charging_vehicles = ev_network.process_ev_charging(vehicles)
                     metrics['vehicles']['evs'] = total_evs
                     metrics['vehicles']['charging'] = charging_evs
                     
-                    # Get traffic lights
                     traffic_lights = get_manhattan_traffic_lights()
                     metrics['traffic_lights']['total'] = len(traffic_lights)
                     
-                    # Prepare EV station data
                     ev_stations, total_ev_power_mw = prepare_ev_station_data(charging_vehicles)
                     
-                    # Calculate power
                     traffic_data = {
                         'lights_count': len(traffic_lights),
                         'vehicle_count': len(vehicles)
@@ -687,14 +809,15 @@ def manhattan_simulation():
                     
                     power_data = power_grid.calculate_real_time_load(traffic_data, ev_data)
                     
-                    # Update metrics
                     metrics['power']['total_mw'] = power_data['total_load_mw']
                     metrics['power']['ev_mw'] = power_data['ev_charging_mw']
                     metrics['power']['traffic_mw'] = power_data['traffic_infrastructure_mw']
                     metrics['grid']['load_factor'] = power_data['load_factor']
                     metrics['grid']['renewable_percent'] = power_data['renewable_percent']
                     
-                    # Debug output
+                    # Get power network data for visualization
+                    power_network_data = power_grid.get_power_network_data()
+                    
                     if step_counter % 100 == 0:
                         print(f"\n📊 Step {step_counter} | Time: {traci.simulation.getTime():.1f}s")
                         print(f"  🚗 Vehicles: {len(vehicles)} in Manhattan ({total_evs} EVs)")
@@ -702,12 +825,12 @@ def manhattan_simulation():
                         print(f"  🚦 Lights: {metrics['traffic_lights']['green']}G/{metrics['traffic_lights']['yellow']}Y/{metrics['traffic_lights']['red']}R")
                         print(f"  💡 Power: {power_data['total_load_mw']} MW (EV: {power_data['ev_charging_mw']} MW)")
                     
-                    # Send to frontend
                     socketio.emit('update', {
                         'vehicles': vehicles,
                         'traffic_lights': traffic_lights,
                         'ev_stations': ev_stations,
                         'power': power_data,
+                        'power_network': power_network_data,  # Add power network data
                         'metrics': metrics,
                         'simulation_time': traci.simulation.getTime(),
                         'timestamp': datetime.now().isoformat()
@@ -757,7 +880,6 @@ def handle_restart():
         if simulation_thread:
             simulation_thread.join(timeout=2)
     
-    # Reset metrics
     for key in metrics:
         if isinstance(metrics[key], dict):
             for subkey in metrics[key]:
@@ -799,7 +921,7 @@ if __name__ == "__main__":
     print("📍 Focus: Manhattan (40.70-40.80°N, -74.02--73.93°W)")
     print("🚦 Traffic: Realistic Manhattan grid patterns")
     print("⚡ Power: Real-time NYC power grid simulation")
-    print("🔌 EV Network: 12 charging stations within traffic grid")
+    print("🔌 EV Network: 12 charging stations with smart routing")
     print("=" * 80)
     print(f"🌐 Server: http://{HOST}:{PORT}")
     print("=" * 80)

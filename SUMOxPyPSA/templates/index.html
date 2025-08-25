@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUMOxPyPSA Manhattan - Professional Traffic-Power Grid System</title>
+    <title>SUMOxPyPSA Manhattan - Traffic & Power Grid System</title>
     
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -38,22 +38,112 @@
             bottom: 0;
             z-index: 1;
         }
-        /* vehicle icon wrapper (Leaflet translates this) */
-        .leaflet-div-icon.vehicle,
-        .leaflet-div-icon.ev {
-        background: transparent;
-        border: none;
+        
+        /* Vehicle styles */
+        .vehicle-icon {
+            width: 20px;
+            height: 20px;
+            background: #2196F3;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            transition: all 0.3s ease;
         }
-
-        /* the inner element we rotate */
-        .leaflet-div-icon .rot {
-        width: 28px;          /* tweak to your taste */
-        height: 28px;
-        transform-origin: center center;
-        will-change: transform;
-        display: block;
+        
+        .vehicle-icon.ev {
+            background: #4CAF50;
+            width: 24px;
+            height: 24px;
         }
-
+        
+        .vehicle-icon.ev.charging {
+            background: #FFC107;
+            animation: charging-pulse 1s infinite;
+        }
+        
+        .vehicle-icon.ev.routing {
+            background: #9C27B0;
+            animation: routing-pulse 2s infinite;
+        }
+        
+        @keyframes charging-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.8; }
+        }
+        
+        @keyframes routing-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Vehicle direction arrow */
+        .vehicle-icon::after {
+            content: '▲';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 8px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        /* Power Grid Styles */
+        .power-line {
+            stroke: #FF5722;
+            stroke-width: 3;
+            fill: none;
+            stroke-dasharray: 5, 5;
+            animation: power-flow 2s linear infinite;
+        }
+        
+        .power-line.high-voltage {
+            stroke: #F44336;
+            stroke-width: 4;
+        }
+        
+        .power-line.distribution {
+            stroke: #FF9800;
+            stroke-width: 2;
+        }
+        
+        @keyframes power-flow {
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -10; }
+        }
+        
+        .substation-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #673AB7 0%, #512DA8 100%);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .generator-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #009688 0%, #00796B 100%);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .generator-icon.solar {
+            background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%);
+        }
         
         /* Top Header Bar */
         .header-bar {
@@ -178,6 +268,46 @@
             margin-left: 2px;
         }
         
+        /* Slider controls */
+        .control-group {
+            margin: 15px 0;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #e9ecef;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+        
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4px;
+            font-size: 12px;
+            color: #6c757d;
+        }
+        
         .btn {
             width: 100%;
             padding: 12px;
@@ -242,6 +372,31 @@
             transition: width 0.5s ease;
         }
         
+        /* Grid Toggle Button */
+        .grid-toggle {
+            position: absolute;
+            top: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .grid-toggle:hover {
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        .grid-toggle.active {
+            background: #673AB7;
+            color: white;
+        }
+        
         /* Traffic Light Styles */
         .traffic-light {
             width: 8px;
@@ -265,13 +420,10 @@
             box-shadow: 0 0 10px #ff0000;
         }
         
-        /* Vehicle colorization */
-        .vehicle-marker .rot {
-            filter: none; /* keep original (yellow) */
-        }
-        .ev-marker .rot {
-            /* turn yellow base icon to blue */
-            filter: hue-rotate(180deg) saturate(1.2) brightness(1);
+        /* EV Station Styles */
+        .ev-station-marker {
+            background: transparent;
+            border: none;
         }
         
         /* Chart Container */
@@ -454,6 +606,11 @@
         <span>System Online</span>
     </div>
     
+    <!-- Grid Toggle Button -->
+    <div class="grid-toggle" id="grid-toggle">
+        <i class="fas fa-bolt"></i> Toggle Power Grid
+    </div>
+    
     <!-- Control Panel -->
     <div class="control-panel">
         <div class="panel-header">
@@ -480,19 +637,23 @@
                 </div>
             </div>
             
-            <div style="margin: 10px 0 20px;">
-                <label for="ev-share" class="metric-label" style="display:block; margin-bottom:6px;">EV Share</label>
-                <input id="ev-share" type="range" min="0" max="100" value="30" step="1" style="width:100%;">
-                <div style="display:flex; justify-content:space-between; margin-top:4px; font-size:12px; color:#6c757d;">
-                    <span>0%</span><span id="ev-share-value">30%</span><span>100%</span>
+            <div class="control-group">
+                <label for="ev-share" class="metric-label">EV Share (%)</label>
+                <input id="ev-share" type="range" min="0" max="100" value="30" class="slider">
+                <div class="slider-labels">
+                    <span>0%</span>
+                    <span id="ev-share-value">30%</span>
+                    <span>100%</span>
                 </div>
             </div>
-
-            <div style="margin: 0 0 10px;">
-                <label for="ev-bias" class="metric-label" style="display:block; margin-bottom:6px;">EV Charging Propensity</label>
-                <input id="ev-bias" type="range" min="0" max="100" value="30" step="1" style="width:100%;">
-                <div style="display:flex; justify-content:space-between; margin-top:4px; font-size:12px; color:#6c757d;">
-                    <span>Low</span><span id="ev-bias-value">30%</span><span>High</span>
+            
+            <div class="control-group">
+                <label for="ev-bias" class="metric-label">EV Charging Propensity</label>
+                <input id="ev-bias" type="range" min="0" max="100" value="30" class="slider">
+                <div class="slider-labels">
+                    <span>Low</span>
+                    <span id="ev-bias-value">30%</span>
+                    <span>High</span>
                 </div>
             </div>
             
@@ -594,37 +755,31 @@
         <div class="loading-content">
             <div class="loading-spinner"></div>
             <h2>Initializing Manhattan Grid System...</h2>
+            <p>Loading Traffic & Power Infrastructure...</p>
         </div>
     </div>
     
     <script>
-        function setMarkerAngle(marker, angleDeg) {
-        if (!marker || !marker._icon) return;
-        const rot = marker._icon.querySelector('.rot');
-        if (!rot) return;
-        rot.style.transform = `rotate(${angleDeg}deg)`;
-        }
-
-        // Initialize map with BRIGHT tiles centered on Manhattan
+        // Initialize map centered on Manhattan
         const map = L.map('map', {
             center: [40.7580, -73.9855],  // Times Square
-            zoom: 14,
+            zoom: 13,
             minZoom: 12,
             maxZoom: 18,
             maxBounds: [[40.65, -74.1], [40.85, -73.85]],
-            renderer: L.canvas({ padding: 0.5 })  // Use canvas renderer for better performance
+            renderer: L.canvas({ padding: 0.5 })
         });
         
-        // Use BRIGHT map tiles
+        // Use bright map tiles
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
             maxZoom: 20,
-            updateWhenIdle: false,  // Keep updating during pan
-            updateWhenZooming: false  // Keep updating during zoom
+            updateWhenIdle: false,
+            updateWhenZooming: false
         }).addTo(map);
         
-        // Add Manhattan boundary rectangle
+        // Add Manhattan boundary
         const manhattanBounds = L.rectangle(
             [[40.700, -74.020], [40.800, -73.930]],
             {
@@ -636,99 +791,208 @@
             }
         ).addTo(map);
         
-        // Create layer groups for better management
+        // Layer groups
         const vehicleLayer = L.layerGroup().addTo(map);
         const trafficLightLayer = L.layerGroup().addTo(map);
         const evStationLayer = L.layerGroup().addTo(map);
+        const powerGridLayer = L.layerGroup();  // Not added by default
         
-        // Storage for markers
+        // Storage
         let vehicles = {};
         let trafficLights = {};
         let evStations = {};
+        let powerLines = {};
+        let substations = {};
+        let generators = {};
+        let gridVisible = false;
         
-        const carIcon = L.divIcon({
-            className: 'vehicle leaflet-div-icon vehicle-marker',
-            iconSize: [28, 28],
-            iconAnchor: [14, 14],
-            html: `<img class="rot" src="/static/car-icon.PNG" alt="car">`
+        // Create vehicle icon
+        function createVehicleIcon(isEV, isCharging, isRouting) {
+            let className = 'vehicle-icon';
+            if (isEV) {
+                className += ' ev';
+                if (isCharging) {
+                    className += ' charging';
+                } else if (isRouting) {
+                    className += ' routing';
+                }
+            }
+            
+            return L.divIcon({
+                className: className,
+                iconSize: isCharging ? [24, 24] : (isEV ? [22, 22] : [20, 20]),
+                iconAnchor: isCharging ? [12, 12] : (isEV ? [11, 11] : [10, 10]),
+                html: `<div class="${className}"></div>`
             });
-
-        const evIcon = L.divIcon({
-            className: 'ev leaflet-div-icon ev-marker',
-            iconSize: [28, 28],
-            iconAnchor: [14, 14],
-            html: `<img class="rot" src="/static/car-icon.PNG" alt="ev">`
-            });
-
+        }
         
+        // Create traffic light icon
         function createTrafficLightIcon(color) {
             return L.divIcon({
                 className: `traffic-light ${color}`,
                 iconSize: [8, 8],
-                iconAnchor: [4, 4],
-                html: `<div class="traffic-light-inner ${color}"></div>`  // Add inner div for better rendering
+                iconAnchor: [4, 4]
             });
         }
         
-        function createEVStationIconForStation(station) {
-            // Determine utilization percent
-            let util = 0;
-            if (typeof station.utilization === 'number' && !isNaN(station.utilization)) {
-                util = station.utilization;
-            } else if (typeof station.evs_charging === 'number' && typeof station.capacity === 'number' && station.capacity > 0) {
-                util = (station.evs_charging / station.capacity) * 100;
+        // Create EV station icon
+        function createEVStationIcon(station) {
+            const utilization = station.utilization || 0;
+            const chargingCount = station.evs_charging || 0;
+            const capacity = station.capacity || 1;
+            
+            let color = '#44ff44';  // Green
+            if (utilization >= 80) {
+                color = '#f44336';  // Red
+            } else if (utilization >= 50) {
+                color = '#ff9800';  // Orange
+            } else if (utilization >= 25) {
+                color = '#ffd400';  // Yellow
             }
-
-            // Map utilization to color bands: green <25, yellow <50, orange <75, red >=75
-            let color = '#44ff44';
-            if (util < 25) {
-                color = '#44ff44'; // green
-            } else if (util < 50) {
-                color = '#ffd400'; // yellow
-            } else if (util < 75) {
-                color = '#ff9800'; // orange
-            } else {
-                color = '#f44336'; // red
+            
+            // Show vehicles at station
+            let vehicleIndicator = '';
+            if (chargingCount > 0) {
+                vehicleIndicator = `<div style="position: absolute; top: -8px; right: -8px; 
+                    background: #2196F3; color: white; border-radius: 50%; 
+                    width: 20px; height: 20px; display: flex; align-items: center; 
+                    justify-content: center; font-size: 11px; font-weight: bold;
+                    border: 2px solid white;">${chargingCount}</div>`;
             }
-
-            // Highlight hard-full with a stronger red
-            if (util >= 100) {
-                color = '#d32f2f';
-            }
-
+            
             return L.divIcon({
-                html: `<div style="background: ${color}; width: 30px; height: 30px; border-radius: 50%;
-                       border: 3px solid white; display: flex; align-items: center; justify-content: center;
-                       box-shadow: 0 2px 8px rgba(0,0,0,0.3); font-size: 16px; font-weight: bold; color: white;">
-                       ⚡</div>`,
-                iconSize: [36, 36],
-                iconAnchor: [18, 18],
+                html: `<div style="position: relative;">
+                    <div style="background: ${color}; width: 32px; height: 32px; border-radius: 50%;
+                         border: 3px solid white; display: flex; align-items: center; justify-content: center;
+                         box-shadow: 0 2px 8px rgba(0,0,0,0.3); font-size: 18px; font-weight: bold; color: white;">
+                         ⚡
+                    </div>
+                    ${vehicleIndicator}
+                </div>`,
+                iconSize: [38, 38],
+                iconAnchor: [19, 19],
                 className: 'ev-station-marker'
             });
         }
         
-        // Force map redraw function
-        function forceMapRedraw() {
-            // Method 1: Invalidate size
-            map.invalidateSize();
+        // Create substation icon
+        function createSubstationIcon(bus) {
+            const icon = bus.type === 'transmission' ? '⚡' : '🔌';
+            const size = bus.type === 'transmission' ? 40 : 32;
             
-            // Method 2: Trigger a minimal pan to force redraw
-            const center = map.getCenter();
-            map.panBy([1, 0]);
-            map.panBy([-1, 0]);
-            
-            // Method 3: Force layer redraw
-            vehicleLayer.eachLayer(layer => {
-                if (layer._icon) {
-                    layer._icon.style.display = 'none';
-                    setTimeout(() => {
-                        if (layer._icon) {
-                            layer._icon.style.display = '';
-                        }
-                    }, 0);
-                }
+            return L.divIcon({
+                html: `<div class="substation-icon" style="width: ${size}px; height: ${size}px;">
+                    ${icon}
+                </div>`,
+                iconSize: [size, size],
+                iconAnchor: [size/2, size/2],
+                className: 'substation-marker'
             });
         }
+        
+        // Create generator icon
+        function createGeneratorIcon(generator) {
+            const icon = generator.type === 'solar' ? '☀️' : '⚙️';
+            const className = generator.type === 'solar' ? 'solar' : '';
+            
+            return L.divIcon({
+                html: `<div class="generator-icon ${className}">
+                    ${icon}
+                </div>`,
+                iconSize: [36, 36],
+                iconAnchor: [18, 18],
+                className: 'generator-marker'
+            });
+        }
+        
+        // Draw power lines
+        function drawPowerGrid(powerNetwork) {
+            if (!powerNetwork) return;
+            
+            // Clear existing power grid
+            powerGridLayer.clearLayers();
+            
+            // Draw power lines
+            if (powerNetwork.lines) {
+                powerNetwork.lines.forEach(line => {
+                    const polyline = L.polyline(
+                        [
+                            [line.from_pos[1], line.from_pos[0]],
+                            [line.to_pos[1], line.to_pos[0]]
+                        ],
+                        {
+                            color: line.capacity > 400 ? '#F44336' : '#FF9800',
+                            weight: line.capacity > 400 ? 4 : 2,
+                            opacity: 0.8,
+                            className: line.capacity > 400 ? 'power-line high-voltage' : 'power-line distribution'
+                        }
+                    );
+                    
+                    const utilization = (line.flow / line.capacity * 100).toFixed(1);
+                    polyline.bindPopup(`
+                        <strong>${line.id}</strong><br>
+                        Capacity: ${line.capacity} MW<br>
+                        Current Flow: ${line.flow.toFixed(1)} MW<br>
+                        Utilization: ${utilization}%
+                    `);
+                    
+                    powerGridLayer.addLayer(polyline);
+                });
+            }
+            
+            // Draw substations
+            if (powerNetwork.buses) {
+                powerNetwork.buses.forEach(bus => {
+                    const marker = L.marker(
+                        [bus.lat, bus.lon],
+                        { icon: createSubstationIcon(bus) }
+                    );
+                    
+                    marker.bindPopup(`
+                        <strong>${bus.id}</strong><br>
+                        Type: ${bus.type}<br>
+                        Voltage: ${bus.voltage} kV
+                    `);
+                    
+                    powerGridLayer.addLayer(marker);
+                });
+            }
+            
+            // Draw generators
+            if (powerNetwork.generators) {
+                powerNetwork.generators.forEach(gen => {
+                    const marker = L.marker(
+                        [gen.lat, gen.lon],
+                        { icon: createGeneratorIcon(gen) }
+                    );
+                    
+                    const utilization = (gen.output / gen.capacity * 100).toFixed(1);
+                    marker.bindPopup(`
+                        <strong>${gen.id}</strong><br>
+                        Type: ${gen.type}<br>
+                        Capacity: ${gen.capacity} MW<br>
+                        Output: ${gen.output.toFixed(1)} MW<br>
+                        Utilization: ${utilization}%
+                    `);
+                    
+                    powerGridLayer.addLayer(marker);
+                });
+            }
+        }
+        
+        // Toggle power grid visibility
+        document.getElementById('grid-toggle').addEventListener('click', () => {
+            gridVisible = !gridVisible;
+            const toggleBtn = document.getElementById('grid-toggle');
+            
+            if (gridVisible) {
+                powerGridLayer.addTo(map);
+                toggleBtn.classList.add('active');
+            } else {
+                map.removeLayer(powerGridLayer);
+                toggleBtn.classList.remove('active');
+            }
+        });
         
         // Charts
         let trafficChart, powerChart;
@@ -795,102 +1059,67 @@
         socket.on('connect', () => {
             console.log('✅ Connected to Manhattan Grid System');
             setTimeout(() => {
-                const loadingElement = document.getElementById('loading');
-                if (loadingElement) {
-                    loadingElement.classList.add('hidden');
-                }
+                document.getElementById('loading').classList.add('hidden');
             }, 1000);
         });
         
         socket.on('system_ready', (data) => {
             console.log('System ready:', data.message);
         });
-        function setIconRotation(marker, angleDeg) {
-        const el = marker._icon;
-        if (!el) return;
-
-        // Keep Leaflet's translate3d(...) and just add rotation
-        const t = el.style.transform || "";
-        const withoutRotate = t.replace(/rotate\([^)]*\)/, "").trim();
-        el.style.transform = `${withoutRotate} rotate(${angleDeg}deg)`;
-        el.style.transformOrigin = "center center";
-        el.style.willChange = "transform";
-    }
-
         
-        // CRITICAL FIX: Optimized update handler with forced rendering
         socket.on('update', (data) => {
             updateCounter++;
             const activeVehicleIds = new Set();
+            const evChargingIds = new Set();
             
-            // Update vehicles with forced rendering
-            if (data.vehicles && Array.isArray(data.vehicles)) {
-                // Batch updates for performance
-                const updates = [];
-                
-                data.vehicles.forEach(vehicle => {
-                    activeVehicleIds.add(vehicle.id);
-                    const icon = vehicle.is_ev ? evIcon : carIcon;
-                    
-                    if (!vehicles[vehicle.id]) {
-                        // Create new vehicle marker with explicit pane
-                        const marker = L.marker([vehicle.y, vehicle.x], { 
-                            icon: icon,
-                            zIndexOffset: 100,
-                            pane: 'markerPane',  // Explicit pane
-                            riseOnHover: false
+            // Track which EVs are charging
+            if (data.ev_stations) {
+                data.ev_stations.forEach(station => {
+                    if (station.vehicles_charging) {
+                        station.vehicles_charging.forEach(vid => {
+                            evChargingIds.add(vid);
                         });
-                        
-                        // Add to layer group instead of directly to map
-                        vehicleLayer.addLayer(marker);
-                        vehicles[vehicle.id] = marker;
-                        
-                        // Force icon to render
-                        setTimeout(() => {
-                            if (marker._icon) {
-                                setIconRotation(marker, vehicle.angle);
-                            }
-                        }, 0);
-
-                        
-                    } else {
-                        // Update existing vehicle
-                            // Update existing vehicle
-                            const marker = vehicles[vehicle.id];
-                            marker.setLatLng([vehicle.y, vehicle.x]);
-
-                            if (marker._icon) {
-                                setIconRotation(marker, vehicle.angle);
-                            }
-
-                                                    
-                        // Update icon if EV status changed
-                        if ((vehicle.is_ev && marker.options.icon !== evIcon) || 
-                            (!vehicle.is_ev && marker.options.icon !== carIcon)) {
-                            marker.setIcon(icon);
-                        }
                     }
                 });
-                
-                // Force immediate rendering of new vehicles
-                if (updates.length > 0) {
-                    requestAnimationFrame(() => {
-                        vehicleLayer.eachLayer(layer => {
-                            if (layer._icon && !layer._icon.style.display) {
-                                layer._icon.style.display = '';
-                            }
-                        });
-                    });
-                }
             }
             
-            // Remove vehicles that are no longer active
+            // Update vehicles
+            if (data.vehicles && Array.isArray(data.vehicles)) {
+                data.vehicles.forEach(vehicle => {
+                    activeVehicleIds.add(vehicle.id);
+                    
+                    const isCharging = evChargingIds.has(vehicle.id) || vehicle.charging;
+                    const isRouting = vehicle.is_ev && !isCharging && vehicle.speed > 2;
+                    const icon = createVehicleIcon(vehicle.is_ev, isCharging, isRouting);
+                    
+                    if (!vehicles[vehicle.id]) {
+                        const marker = L.marker([vehicle.y, vehicle.x], { 
+                            icon: icon,
+                            zIndexOffset: isCharging ? 200 : (vehicle.is_ev ? 100 : 0),
+                            pane: 'markerPane',
+                            riseOnHover: true
+                        });
+                        
+                        vehicleLayer.addLayer(marker);
+                        vehicles[vehicle.id] = marker;
+                    } else {
+                        vehicles[vehicle.id].setLatLng([vehicle.y, vehicle.x]);
+                        vehicles[vehicle.id].setIcon(icon);
+                        vehicles[vehicle.id].setZIndexOffset(isCharging ? 200 : (vehicle.is_ev ? 100 : 0));
+                    }
+                    
+                    // Add rotation for direction
+                    if (vehicles[vehicle.id]._icon) {
+                        vehicles[vehicle.id]._icon.style.transform = `rotate(${vehicle.angle - 90}deg)`;
+                    }
+                });
+            }
+            
+            // Remove inactive vehicles
             Object.keys(vehicles).forEach(id => {
                 if (!activeVehicleIds.has(id)) {
-                    if (vehicles[id]) {
-                        vehicleLayer.removeLayer(vehicles[id]);
-                        delete vehicles[id];
-                    }
+                    vehicleLayer.removeLayer(vehicles[id]);
+                    delete vehicles[id];
                 }
             });
             
@@ -903,18 +1132,13 @@
                             { 
                                 icon: createTrafficLightIcon(light.color),
                                 zIndexOffset: 50,
-                                pane: 'markerPane',
                                 interactive: false
                             }
                         );
                         trafficLightLayer.addLayer(marker);
                         trafficLights[light.id] = marker;
                     } else {
-                        const currentClass = trafficLights[light.id].options.icon.options.className;
-                        const newClass = `traffic-light ${light.color}`;
-                        if (currentClass !== newClass) {
-                            trafficLights[light.id].setIcon(createTrafficLightIcon(light.color));
-                        }
+                        trafficLights[light.id].setIcon(createTrafficLightIcon(light.color));
                     }
                 });
             }
@@ -922,62 +1146,62 @@
             // Update EV stations
             if (data.ev_stations && Array.isArray(data.ev_stations)) {
                 data.ev_stations.forEach(station => {
-                    if (station.lat >= 40.700 && station.lat <= 40.800 && 
-                        station.lon >= -74.020 && station.lon <= -73.930) {
+                    if (!evStations[station.id]) {
+                        const marker = L.marker(
+                            [station.lat, station.lon],
+                            { 
+                                icon: createEVStationIcon(station),
+                                zIndexOffset: 150
+                            }
+                        );
                         
-                        if (!evStations[station.id]) {
-                            const marker = L.marker(
-                                [station.lat, station.lon],
-                                { 
-                                    icon: createEVStationIconForStation(station),
-                                    zIndexOffset: 200,
-                                    pane: 'markerPane'
-                                }
-                            );
-                            
-                            const popupContent = `
-                                <div style="min-width: 250px;">
-                                    <h3>⚡ ${station.name}</h3>
-                                    <p>📍 ${station.street}</p>
-                                    <p>⚡ ${station.power} kW</p>
-                                    <p>🚗 ${station.evs_charging}/${station.capacity} vehicles</p>
-                                    <p>📊 ${station.utilization.toFixed(1)}% utilization</p>
-                                    <p>🔌 ${station.power_output_mw.toFixed(3)} MW output</p>
-                                </div>
-                            `;
-                            
-                            marker.bindPopup(popupContent);
-                            evStationLayer.addLayer(marker);
-                            evStations[station.id] = marker;
-                        } else {
-                            evStations[station.id].setIcon(createEVStationIconForStation(station));
-                        }
+                        marker.bindPopup(`
+                            <div style="min-width: 250px;">
+                                <h3>⚡ ${station.name}</h3>
+                                <p>📍 ${station.street}</p>
+                                <p>⚡ ${station.power} kW</p>
+                                <p>🚗 ${station.evs_charging}/${station.capacity} vehicles</p>
+                                <p>📊 ${station.utilization.toFixed(1)}% utilization</p>
+                                <p>🔌 ${station.power_output_mw.toFixed(3)} MW output</p>
+                            </div>
+                        `);
+                        
+                        evStationLayer.addLayer(marker);
+                        evStations[station.id] = marker;
+                    } else {
+                        evStations[station.id].setIcon(createEVStationIcon(station));
                     }
                 });
             }
             
-
+            // Update power grid visualization
+            if (data.power_network) {
+                drawPowerGrid(data.power_network);
+            }
             
             // Update metrics
             const metrics = data.metrics || {};
             const power = data.power || {};
             
-            // Update all UI elements
+            // Header stats
             document.getElementById('sim-time').textContent = Math.round(data.simulation_time || 0) + 's';
             document.getElementById('total-load').textContent = (power.total_load_mw || 0).toFixed(1) + ' MW';
             document.getElementById('grid-efficiency').textContent = (power.load_factor || 0).toFixed(1) + '%';
-            document.getElementById('evs-charging').textContent = metrics.vehicles?.charging || 0;
+            document.getElementById('evs-charging').textContent = metrics.vehicles?.charging || evChargingIds.size || 0;
             
+            // Control panel
             document.getElementById('vehicle-count').textContent = metrics.vehicles?.total || 0;
             document.getElementById('ev-count').textContent = metrics.vehicles?.evs || 0;
             document.getElementById('tl-count').textContent = metrics.traffic_lights?.total || 0;
             document.getElementById('station-count').textContent = 
                 (data.ev_stations || []).filter(s => s.evs_charging > 0).length;
             
+            // Power panel
             document.getElementById('power-total').textContent = (power.total_load_mw || 0).toFixed(1);
             document.getElementById('power-ev').textContent = (power.ev_charging_mw || 0).toFixed(3);
             document.getElementById('power-traffic').textContent = (power.traffic_infrastructure_mw || 0).toFixed(1);
             
+            // Power bars
             document.getElementById('power-bar').style.width = 
                 Math.min(100, ((power.total_load_mw || 0) / 3000) * 100).toFixed(1) + '%';
             document.getElementById('ev-bar').style.width = 
@@ -985,8 +1209,17 @@
             document.getElementById('traffic-bar').style.width = 
                 Math.min(100, ((power.traffic_infrastructure_mw || 0) / 50) * 100).toFixed(1) + '%';
             
+            // Info cards
             document.getElementById('peak-demand').textContent = (power.peak_demand_mw || 0).toFixed(1) + ' MW';
             document.getElementById('renewable').textContent = (power.renewable_percent || 0).toFixed(1) + '%';
+            
+            // Update traffic flow status
+            const trafficDensity = metrics.vehicles?.total || 0;
+            let trafficStatus = 'Normal';
+            if (trafficDensity > 500) trafficStatus = 'Heavy';
+            else if (trafficDensity > 300) trafficStatus = 'Moderate';
+            else if (trafficDensity < 100) trafficStatus = 'Light';
+            document.getElementById('traffic-flow').textContent = trafficStatus;
             
             // Update charts
             if (trafficChart) {
@@ -1006,83 +1239,12 @@
             }
         });
         
-        // Add CSS to ensure vehicle visibility
-        const style = document.createElement('style');
-        style.textContent = `
-            .vehicle-marker, .ev-marker {
-                opacity: 1 !important;
-                visibility: visible !important;
-                z-index: 1000 !important;
-            }
-            .leaflet-marker-icon {
-                opacity: 1 !important;
-                visibility: visible !important;
-            }
-            .traffic-light-inner {
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-            }
-            .traffic-light-inner.green { background: #00ff00; box-shadow: 0 0 5px #00ff00; }
-            .traffic-light-inner.yellow { background: #ffff00; box-shadow: 0 0 5px #ffff00; }
-            .traffic-light-inner.red { background: #ff0000; box-shadow: 0 0 5px #ff0000; }
-        `;
-        document.head.appendChild(style);
-        
         // Control handlers
         document.getElementById('start-btn').addEventListener('click', () => {
             console.log('Starting simulation...');
             socket.emit('start_simulation');
             document.getElementById('start-btn').style.display = 'none';
             document.getElementById('restart-btn').style.display = 'block';
-            
-            // Start periodic forced redraw
-        });
-        
-        // EV share control
-        const evShareSlider = document.getElementById('ev-share');
-        const evShareValue = document.getElementById('ev-share-value');
-        function sendEvShare(val){
-            socket.emit('set_ev_percentage', { percent: Number(val) });
-        }
-        evShareSlider.addEventListener('input', (e) => {
-            evShareValue.textContent = `${e.target.value}%`;
-        });
-        evShareSlider.addEventListener('change', (e) => {
-            sendEvShare(e.target.value);
-        });
-        socket.on('connect', () => {
-            // Send initial value on connect
-            sendEvShare(evShareSlider.value);
-        });
-        socket.on('ev_percentage_updated', (data) => {
-            if (typeof data?.percent === 'number') {
-                evShareSlider.value = data.percent;
-                evShareValue.textContent = `${data.percent}%`;
-            }
-        });
-
-        // EV charging propensity control
-        const evBiasSlider = document.getElementById('ev-bias');
-        const evBiasValue = document.getElementById('ev-bias-value');
-        function sendEvBias(val){
-            socket.emit('set_ev_charging_bias', { percent: Number(val) });
-        }
-        evBiasSlider.addEventListener('input', (e) => {
-            evBiasValue.textContent = `${e.target.value}%`;
-        });
-        evBiasSlider.addEventListener('change', (e) => {
-            sendEvBias(e.target.value);
-        });
-        socket.on('connect', () => {
-            // Send initial bias on connect
-            sendEvBias(evBiasSlider.value);
-        });
-        socket.on('ev_charging_bias_updated', (data) => {
-            if (typeof data?.percent === 'number') {
-                evBiasSlider.value = data.percent;
-                evBiasValue.textContent = `${data.percent}%`;
-            }
         });
         
         document.getElementById('restart-btn').addEventListener('click', () => {
@@ -1093,10 +1255,14 @@
             vehicleLayer.clearLayers();
             trafficLightLayer.clearLayers();
             evStationLayer.clearLayers();
+            powerGridLayer.clearLayers();
             
             vehicles = {};
             trafficLights = {};
             evStations = {};
+            powerLines = {};
+            substations = {};
+            generators = {};
             trafficHistory = [];
             powerHistory = [];
             updateCounter = 0;
@@ -1113,11 +1279,36 @@
             }
         });
         
+        // EV share control
+        const evShareSlider = document.getElementById('ev-share');
+        const evShareValue = document.getElementById('ev-share-value');
+        
+        evShareSlider.addEventListener('input', (e) => {
+            evShareValue.textContent = `${e.target.value}%`;
+        });
+        
+        evShareSlider.addEventListener('change', (e) => {
+            socket.emit('set_ev_percentage', { percent: Number(e.target.value) });
+        });
+        
+        // EV charging propensity control
+        const evBiasSlider = document.getElementById('ev-bias');
+        const evBiasValue = document.getElementById('ev-bias-value');
+        
+        evBiasSlider.addEventListener('input', (e) => {
+            evBiasValue.textContent = `${e.target.value}%`;
+        });
+        
+        evBiasSlider.addEventListener('change', (e) => {
+            socket.emit('set_ev_charging_bias', { percent: Number(e.target.value) });
+        });
+        
         // Initialize
         window.addEventListener('load', () => {
             initCharts();
-            console.log('🏙️ Manhattan Grid System Ready');
-            console.log('✅ Canvas renderer enabled for better performance');
+            console.log('🏙️ Manhattan Grid System with Power Network Ready');
+            console.log('⚡ Power grid visualization available');
+            console.log('🚗 Smart EV routing enabled');
         });
     </script>
 </body>
